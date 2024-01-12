@@ -75,13 +75,22 @@ const Login = () => {
           </div>
           <form action="" className="w-full">
             <input
-              className="w-full mb-3 py-2 px-4 rounded-full bg-white/80 shadow-lg focus:outline-none"
+              className={
+                emptyFields && emptyFields.includes("email")
+                  ? "w-full py-2 px-4 rounded-full bg-white/80 shadow-lg focus:outline-none border-2 border-red-500 mb-2"
+                  : "w-full py-2 px-4 rounded-full bg-white/80 shadow-lg focus:outline-none mb-2"
+              }
               type="email"
               placeholder="Email"
               onChange={(e) => setEmail(e.target.value)}
+              autoFocus={true}
             />
             <input
-              className="w-full mb-3 py-2 px-4 rounded-full bg-white/80 shadow-lg focus:outline-none"
+              className={
+                emptyFields && emptyFields.includes("password")
+                  ? "w-full py-2 px-4 rounded-full bg-white/80 shadow-lg focus:outline-none border-2 border-red-500 mb-2"
+                  : "w-full py-2 px-4 rounded-full bg-white/80 shadow-lg focus:outline-none mb-2"
+              }
               type="password"
               placeholder="Password"
               onChange={(e) => setPassword(e.target.value)}
@@ -102,12 +111,12 @@ const Login = () => {
               </button>
             </div>
           </form>
+          {error && (
+            <p className="text-center text-sm text-red-500 font-semibold">
+              {error}
+            </p>
+          )}
           <div className="w-full space-y-2">
-            {error && (
-              <p className="text-center text-sm text-red-500 font-semibold">
-                {error}
-              </p>
-            )}
             <div className="w-full flex justify-center">
               <Link to="/signup">
                 <button className="py-2 px-5 rounded-lg bg-gray-500 font-bold shadow-xl text-white ">

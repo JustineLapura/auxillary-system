@@ -31,16 +31,19 @@ function App() {
         <Route path="/services" element={<Services />} />
         <Route path="/rentals" element={<Facilities />} />
         <Route path="/rentals/:id" element={<SingleFacility />} />
-        <Route path="/rentals/facility/:name" element={<BookFacility />} />
+        <Route
+          path="/rentals/facility/:name"
+          element={user ? <BookFacility /> : <Navigate to="/login" />}
+        />
         <Route path="/dorm" element={<Dormitory />} />
         <Route path="/dorm/inquire" element={<DormInquiry />} />
         <Route
           path="/dorm/available-room-men"
-          element={<MensRoomAvailability />}
+          element={user ? <MensRoomAvailability /> : <Navigate to="/login" />}
         />
         <Route
           path="/dorm/available-room-ladies"
-          element={<LadiesRoomAvailability />}
+          element={user ? <LadiesRoomAvailability /> : <Navigate to="/login" />}
         />
         <Route path="/contacts" element={<Contacts />} />
         <Route

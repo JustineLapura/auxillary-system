@@ -41,7 +41,7 @@ const Signup = () => {
   };
 
   return (
-    <div className="h-full w-full py-24 bg-gradient-to-b from-blue-500 to-yellow-300 flex justify-center items-center text-gray-900">
+    <div className="min-h-screen w-full bg-gradient-to-b from-blue-500 to-yellow-300 flex justify-center items-center text-gray-900">
       <div className="w-[80%] md:w-[40%] py-4 px-6 mt-6 rounded-xl flex flex-col items-center gap-6 bg-white/30">
         <h1 className="mt-2 text-xl md:text-2xl text-white font-bold">
           Create an Account
@@ -81,6 +81,7 @@ const Signup = () => {
               placeholder="Firstname"
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
+              autoFocus={true}
               required
             />
             <input
@@ -181,7 +182,7 @@ const Signup = () => {
             </button>
           </div>
           {error && (
-            <p className="w-full text-red-500 text-center mt-3 font-semibold">
+            <p className="w-full text-red-500 text-center text-sm mt-4 font-semibold">
               {error}
             </p>
           )}
