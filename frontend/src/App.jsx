@@ -17,9 +17,14 @@ import AdminLogin from "./pages/admin/login/AdminLogin";
 import Dashboard from "./pages/admin/dashboard/Dashboard";
 import Layout from "./pages/admin/Layout";
 import Bookings from "./pages/admin/bookings/Bookings";
-import RentedFacilities from "./pages/admin/rented-facilities/RentedFacilities";
-import AddFacilities from "./pages/admin/add-facilities/AddFacilities";
+import RentedFacilities from "./pages/admin/rentedFacilities/RentedFacilities";
+import AddFacilities from "./pages/admin/addFacility/AddFacilities";
 import { AuthContext } from "./context/AuthContext";
+import BookedFacility from "./pages/admin/bookings/bookedFacility/BookedFacility";
+import StudentProfile from "./pages/admin/studentProfile/StudentProfile";
+import ManageDorm from "./pages/admin/manageDorm/ManageDorm";
+import DormList from "./pages/admin/dormList/DormList";
+import Inquiries from "./pages/admin/inquiries/Inquiries";
 
 function App() {
   const { user } = useContext(AuthContext);
@@ -58,8 +63,13 @@ function App() {
         <Route path="/admin" element={<Layout />}>
           <Route index element={<Dashboard />} />
           <Route path="bookings" element={<Bookings />} />
+          <Route path="bookings/:id" element={<BookedFacility />} />
           <Route path="rented-facilities" element={<RentedFacilities />} />
           <Route path="add-facilities" element={<AddFacilities />} />
+          <Route path="student-profile" element={<StudentProfile />} />
+          <Route path="manage-dorm" element={<ManageDorm />} />
+          <Route path="dorm-list" element={<DormList />} />
+          <Route path="inquiries" element={<Inquiries />} />
         </Route>
       </Routes>
     </div>

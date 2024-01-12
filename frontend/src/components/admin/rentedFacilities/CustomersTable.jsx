@@ -47,18 +47,6 @@ const CustomersTable = () => {
               time={rentedFacility.time}
             />
           ))}
-          <tr className="text-xs md:text-base font-semibold text-gray-700 py-2">
-            <td>Conference Room</td>
-            <td>Jireh Lapura</td>
-            <td>09/22/2021</td>
-            <td>2:00 PM</td>
-          </tr>
-          <tr className="text-xs md:text-base font-semibold text-gray-700 py-2">
-            <td>Convention Center</td>
-            <td>Jireh Lapura</td>
-            <td>09/22/2021</td>
-            <td>2:00 PM</td>
-          </tr>
         </tbody>
       </table>
     </div>
