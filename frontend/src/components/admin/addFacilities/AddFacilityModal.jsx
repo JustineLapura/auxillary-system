@@ -1,14 +1,89 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaTimes } from "react-icons/fa";
-
+import axios from "axios";
+import { useSnackbar } from "notistack";
 
 const AddFacilityModal = ({ addModal, setAddModal }) => {
+  const [name, setName] = useState("");
+  const [desc, setDesc] = useState("");
+  const [file, setFile] = useState(null);
+  const [governmentPrice, setGovernmentPrice] = useState("");
+  const [nonGovernmentPrice, setNonGovernmentPrice] = useState("");
+  const [otherPrice, setOtherPrice] = useState("");
+  const [error, setError] = useState(null);
+  const [emptyFields, setEmptyFields] = useState([]);
+
+  const { enqueueSnackbar } = useSnackbar();
+
+  const handleAddFacility = async () => {
+    const newFacility = {
+      name,
+      desc,
+      governmentPrice,
+      nonGovernmentPrice,
+      otherPrice,
+    };
+    if (file) {
+      const data = new FormData();
+      const filename = Date.now() + file.name;
+      data.append("name", filename);
+      data.append("file", file);
+      newFacility.photo = filename;
+      try {
+        await axios.post("http://localhost:4000/api/upload/", data);
+      } catch (error) {
+        console.log("Error uploading file:", error);
+      }
+    }
+
+    try {
+      const response = await fetch("http://localhost:4000/api/facility", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newFacility),
+      });
+
+      const json = await response.json();
+
+      if (!response.ok) {
+        setEmptyFields(json.emptyFields);
+        const errorMessage = json.error || "An error occurred";
+        setError(errorMessage);
+        enqueueSnackbar(errorMessage, {
+          variant: "error",
+        });
+      }
+
+      if (response.ok) {
+        enqueueSnackbar("Facility has been created", { variant: "success" });
+        console.log(json);
+        setName("");
+        setDesc("");
+        setFile(null);
+        setGovernmentPrice("");
+        setNonGovernmentPrice("");
+        setOtherPrice("");
+        setAddModal(false);
+
+        // navigate("/admin/add-facilities");
+
+        // Reload the page upon successful submission
+        window.location.reload();
+      }
+    } catch (error) {
+      console.error("Error creating post:", error);
+      // Handle create post error
+    }
+  };
+
   return (
     <div
       className={
         addModal
-          ? "fixed w-[90%] max-w-[600px] h-[90%] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gray-100 z-20 rounded-lg space-y-6 p-5 ease-in duration-300"
-          : "fixed w-[90%] max-w-[600px] h-[90%] top-[-100%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gray-100 z-20 rounded-lg space-y-6 p-5 ease-in duration-300"
+          ? "fixed w-[90%] max-w-[600px] h-[90%] top-1/2 left-1/2 transdiv -translate-x-1/2 -translate-y-1/2 bg-gray-200 z-20 rounded-lg space-y-6 p-5 ease-in duration-300 overflow-y-scroll"
+          : "fixed w-[90%] max-w-[600px] h-[90%] top-[-100%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gray-200 z-20 rounded-lg space-y-6 p-5 ease-in duration-300"
       }
     >
       <h1 className="font-bold text-2xl">Add Facility</h1>
@@ -16,41 +91,87 @@ const AddFacilityModal = ({ addModal, setAddModal }) => {
       <div className="w-full mt-8">
         <h1 className="text-lg font-semibold">Facility Name:</h1>
         <input
-          className="border w-full rounded-lg py-2 text-lg ps-2 mt-1"
+          className={
+            emptyFields && emptyFields.includes("name")
+              ? "border border-red-500 w-full rounded-lg py-1 text-lg ps-2 mt-1"
+              : "border w-full rounded-lg py-1 text-lg ps-2 mt-1"
+          }
           type="text"
           name=""
           id=""
+          onChange={(e) => setName(e.target.value)}
+          value={name}
         />
       </div>
 
       <div className="w-full">
         <h1 className="text-lg font-semibold">Facility Image:</h1>
         <input
-          className="border w-full rounded py-2 bg-white ps-2"
+          className="border w-full rounded py-1 bg-white ps-2"
           type="file"
           name="facilityImage"
           id="facilityImage"
           accept="image/*"
+          onChange={(e) => setFile(e.target.files[0])}
         />
       </div>
 
       <div className="w-full">
         <h1 className="text-lg font-semibold">Facility Details:</h1>
         <textarea
-          className="border w-full rounded-lg text-lg py-2 ps-2 mt-1"
+          className={
+            emptyFields && emptyFields.includes("desc")
+              ? "border border-red-500 w-full rounded-lg text-lg py-1 ps-2 mt-1"
+              : "border w-full rounded-lg text-lg py-1 ps-2 mt-1"
+          }
           name="facilityDetails"
           id="facilityDetails"
-          rows={5}
+          rows={2}
+          onChange={(e) => setDesc(e.target.value)}
+          value={desc}
         ></textarea>
+      </div>
+      <div className="w-full">
+        <h1 className="text-lg font-semibold text-center">Price Rate:</h1>
+        <div className="flex justify-between items-center gap-4">
+          <div className="flex flex-col">
+            <label htmlFor="">Government:</label>
+            <input
+              className="w-[150px] border border-gray-300 focus:outline-none ps-1"
+              type="number"
+              onChange={(e) => setGovernmentPrice(e.target.value)}
+              value={governmentPrice}
+            />
+          </div>
+          <div className="flex flex-col">
+            <label htmlFor="">Non-Government:</label>
+            <input
+              className="w-[150px] border border-gray-300 focus:outline-none ps-1"
+              type="number"
+              onChange={(e) => setNonGovernmentPrice(e.target.value)}
+              value={nonGovernmentPrice}
+            />
+          </div>
+          <div className="flex flex-col">
+            <label htmlFor="">Others:</label>
+            <input
+              className="w-[150px] border border-gray-300 focus:outline-none ps-1"
+              type="number"
+              onChange={(e) => setOtherPrice(e.target.value)}
+              value={otherPrice}
+            />
+          </div>
+        </div>
       </div>
       <div className="w-full flex justify-center items-center mt-4">
         <button
-          onClick={() => setAddModal(false)}
+          onClick={handleAddFacility}
           className="text-white bg-blue-500 font-bold py-2 px-5 rounded hover:bg-blue-600 hover:scale-105 duration-300 "
         >
           Submit
         </button>
       </div>
+      <p className="text-red-500 font-semibold text-center mt-2">{error}</p>
 
       {/* close button  */}
       <div
