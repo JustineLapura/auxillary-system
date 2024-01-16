@@ -7,9 +7,9 @@ const AddFacilityModal = ({ addModal, setAddModal }) => {
   const [name, setName] = useState("");
   const [desc, setDesc] = useState("");
   const [file, setFile] = useState(null);
-  const [governmentPrice, setGovernmentPrice] = useState("");
-  const [nonGovernmentPrice, setNonGovernmentPrice] = useState("");
-  const [otherPrice, setOtherPrice] = useState("");
+  const [governmentPrice, setGovernmentPrice] = useState(null);
+  const [nonGovernmentPrice, setNonGovernmentPrice] = useState(null);
+  const [otherPrice, setOtherPrice] = useState(null);
   const [error, setError] = useState(null);
   const [emptyFields, setEmptyFields] = useState([]);
 
@@ -58,7 +58,6 @@ const AddFacilityModal = ({ addModal, setAddModal }) => {
 
       if (response.ok) {
         enqueueSnackbar("Facility has been created", { variant: "success" });
-        console.log(json);
         setName("");
         setDesc("");
         setFile(null);
@@ -66,8 +65,6 @@ const AddFacilityModal = ({ addModal, setAddModal }) => {
         setNonGovernmentPrice("");
         setOtherPrice("");
         setAddModal(false);
-
-        // navigate("/admin/add-facilities");
 
         // Reload the page upon successful submission
         window.location.reload();
@@ -82,8 +79,8 @@ const AddFacilityModal = ({ addModal, setAddModal }) => {
     <div
       className={
         addModal
-          ? "fixed w-[90%] max-w-[600px] h-[90%] top-1/2 left-1/2 transdiv -translate-x-1/2 -translate-y-1/2 bg-gray-200 z-20 rounded-lg space-y-6 p-5 ease-in duration-300 overflow-y-scroll"
-          : "fixed w-[90%] max-w-[600px] h-[90%] top-[-100%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gray-200 z-20 rounded-lg space-y-6 p-5 ease-in duration-300"
+          ? "fixed w-[90%] max-w-[600px] h-[90%] top-1/2 left-1/2 transdiv -translate-x-1/2 -translate-y-1/2 bg-gray-200 z-20 rounded-lg space-y-4 p-5 ease-in duration-300 overflow-y-scroll"
+          : "fixed w-[90%] max-w-[600px] h-[90%] top-[-100%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gray-200 z-20 rounded-lg space-y-4 p-5 ease-in duration-300"
       }
     >
       <h1 className="font-bold text-2xl">Add Facility</h1>
@@ -93,8 +90,8 @@ const AddFacilityModal = ({ addModal, setAddModal }) => {
         <input
           className={
             emptyFields && emptyFields.includes("name")
-              ? "border border-red-500 w-full rounded-lg py-1 text-lg ps-2 mt-1"
-              : "border w-full rounded-lg py-1 text-lg ps-2 mt-1"
+              ? "border border-red-500 w-full rounded-lg py-1 text-lg ps-2 mt-1 focus:outline-none"
+              : "border w-full rounded-lg py-1 text-lg ps-2 mt-1 focus:outline-none"
           }
           type="text"
           name=""
@@ -121,8 +118,8 @@ const AddFacilityModal = ({ addModal, setAddModal }) => {
         <textarea
           className={
             emptyFields && emptyFields.includes("desc")
-              ? "border border-red-500 w-full rounded-lg text-lg py-1 ps-2 mt-1"
-              : "border w-full rounded-lg text-lg py-1 ps-2 mt-1"
+              ? "border border-red-500 w-full rounded-lg text-lg py-1 ps-2 mt-1 focus:outline-none"
+              : "border w-full rounded-lg text-lg py-1 ps-2 mt-1 focus:outline-none"
           }
           name="facilityDetails"
           id="facilityDetails"
@@ -132,33 +129,36 @@ const AddFacilityModal = ({ addModal, setAddModal }) => {
         ></textarea>
       </div>
       <div className="w-full">
-        <h1 className="text-lg font-semibold text-center">Price Rate:</h1>
+        <h1 className="text-lg font-semibold text-center my-3">Price Rate:</h1>
         <div className="flex justify-between items-center gap-4">
           <div className="flex flex-col">
-            <label htmlFor="">Government:</label>
+            <label className="text-gray-500" htmlFor="">Government:</label>
             <input
               className="w-[150px] border border-gray-300 focus:outline-none ps-1"
               type="number"
               onChange={(e) => setGovernmentPrice(e.target.value)}
               value={governmentPrice}
+              placeholder="Enter price here"
             />
           </div>
           <div className="flex flex-col">
-            <label htmlFor="">Non-Government:</label>
+            <label className="text-gray-500" htmlFor="">Non-Government:</label>
             <input
               className="w-[150px] border border-gray-300 focus:outline-none ps-1"
               type="number"
               onChange={(e) => setNonGovernmentPrice(e.target.value)}
               value={nonGovernmentPrice}
+              placeholder="Enter price here"
             />
           </div>
           <div className="flex flex-col">
-            <label htmlFor="">Others:</label>
+            <label className="text-gray-500" htmlFor="">Others:</label>
             <input
               className="w-[150px] border border-gray-300 focus:outline-none ps-1"
               type="number"
               onChange={(e) => setOtherPrice(e.target.value)}
               value={otherPrice}
+              placeholder="Enter price here"
             />
           </div>
         </div>

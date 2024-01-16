@@ -3,6 +3,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const multer = require("multer");
+const path = require("path");
 const authRoutes = require("./routes/auth");
 const userRoutes = require("./routes/user");
 const facilityRoutes = require("./routes/facilities");
@@ -13,7 +14,7 @@ app.use(cors());
 
 // MIDDLEWARE
 app.use(express.json());
-// app.use("/images", express.static(path.join(__dirname, "/images")));
+app.use("/images", express.static(path.join(__dirname, "/images")));
 
 app.use((req, res, next) => {
   console.log(req.path, req.method);
@@ -41,7 +42,7 @@ const storage = multer.diskStorage({
     cb(null, "images");
   },
   filename: (req, file, cb) => {
-    cb(null, "hello.jpeg");
+    cb(null, req.body.name);
   },
 });
 

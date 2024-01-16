@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import DeleteFacilityModal from "./DeleteFacilityModal";
 import ViewFacilityModal from "./ViewFacilityModal";
 
-const FacilityTableCard = ({ id, img, facilityName }) => {
+const FacilityTableCard = ({ facility, no }) => {
   const [deleteModal, setDeleteModal] = useState(false);
   const [viewModal, setViewModal] = useState(false);
   return (
     <>
       <tr>
-        <td>{id}</td>
-        <td>{facilityName}</td>
+        <td>{no + 1}</td>
+        <td>{facility.name}</td>
         <td>
           <button
             onClick={() => setViewModal(true)}
@@ -28,16 +28,14 @@ const FacilityTableCard = ({ id, img, facilityName }) => {
 
       {/* View Modal   */}
       <ViewFacilityModal
-        id={id}
-        name={facilityName}
-        img={img}
+        facility={facility}
         viewModal={viewModal}
         setViewModal={setViewModal}
       />
       {/* Delete Modal  */}
       <DeleteFacilityModal
-        id={id}
-        facilityName={facilityName}
+        id={facility._id}
+        facilityName={facility.name}
         deleteModal={deleteModal}
         setDeleteModal={setDeleteModal}
       />

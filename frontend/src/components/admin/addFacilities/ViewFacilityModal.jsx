@@ -1,6 +1,9 @@
 import React from "react";
 
-const ViewFacilityModal = ({ id, img, name, viewModal, setViewModal }) => {
+const ViewFacilityModal = ({ facility, viewModal, setViewModal }) => {
+  console.log("Facility: ", facility);
+  const PF = "http://localhost:4000/images/";
+
   return (
     <>
       {/* View Modal Overlay  */}
@@ -20,21 +23,20 @@ const ViewFacilityModal = ({ id, img, name, viewModal, setViewModal }) => {
             : "fixed w-[90%] max-w-[500px] h-[90%] max-h-[600px] flex flex-col justify-between bg-white rounded-xl top-[-100%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 p-5 ease-in duration-300"
         }
       >
-        <img
-          className="w-full rounded-xl"
-          width={300}
-          height={200}
-          src={img}
-          alt={name}
-        />
+        {facility && facility.photo && (
+          <img
+            className="w-full h-[300px] rounded-xl object-cover"
+            width={300}
+            height={200}
+            src={PF + facility.photo}
+            alt={facility.name}
+          />
+        )}
         <h1 className="text-center font-bold text-gray-900 text-2xl mt-6">
-          {name}
+          {facility && facility.name}
         </h1>
         <p className="text-sm mt-4 text-gray-700">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque harum
-          et, quaerat ab exercitationem at voluptatibus natus ullam iusto
-          possimus velit sit culpa eveniet sapiente laudantium. Magnam ab fuga
-          fugiat.
+          {facility && facility.desc}
         </p>
         <div className="mt-6 flex justify-end items-center gap-4">
           <button className="px-6 py-2 rounded-xl bg-green-600 font-bold text-white">
