@@ -7,6 +7,7 @@ const path = require("path");
 const authRoutes = require("./routes/auth");
 const userRoutes = require("./routes/user");
 const facilityRoutes = require("./routes/facilities");
+const studentRoutes = require("./routes/student");
 
 const app = express();
 
@@ -24,6 +25,7 @@ app.use((req, res, next) => {
 app.use("/api/auth", authRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/facility", facilityRoutes);
+app.use("/api/student", studentRoutes);
 
 // connect to db
 mongoose

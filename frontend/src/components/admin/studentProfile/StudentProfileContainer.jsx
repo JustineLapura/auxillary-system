@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import StudentsTable from "./StudentsTable";
+import AddStudentModal from "./AddStudentModal";
 
 const StudentProfileContainer = () => {
   const students = [
@@ -25,9 +26,11 @@ const StudentProfileContainer = () => {
     },
     // Add more student data as needed
   ];
+
   return (
     <div className="w-full bg-white rounded-lg h-[330px] mt-6">
       <StudentsTable students={students} />
+      
     </div>
   );
 };
