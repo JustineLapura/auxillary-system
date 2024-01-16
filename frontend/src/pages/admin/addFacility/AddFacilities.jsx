@@ -4,13 +4,24 @@ import TopHeader from "../../../components/admin/addFacilities/TopHeader";
 import FacilityTable from "../../../components/admin/addFacilities/FacilityTable";
 import FacilityGrid from "../../../components/admin/addFacilities/FacilityGrid";
 import AddFacilityModal from "../../../components/admin/addFacilities/AddFacilityModal";
+import axios from "axios";
 
 const AddFacilities = () => {
   const [addModal, setAddModal] = useState(false);
-  const [facilitiesData, setFacilitiesData] = useState([]);
+  const [facilities, setFacilities] = useState([]);
+  console.log("Facilities from AddFacility ", facilities);
 
   useEffect(() => {
-    setFacilitiesData(facilities);
+    const fetchFacilities = async () => {
+      try {
+        const response = await axios.get(`http://localhost:4000/api/facility`);
+        setFacilities(response.data);
+      } catch (error) {
+        console.log("Error Fetching:", error);
+      }
+    };
+
+    fetchFacilities();
   }, []);
 
   return (
@@ -18,16 +29,16 @@ const AddFacilities = () => {
       {/* Top Header Section  */}
       <div className="">
         <TopHeader
-          facilitiesCount={facilitiesData.length}
+          facilitiesCount={facilities.length}
           setAddModal={setAddModal}
         />
       </div>
 
       {/* Facility Table  */}
-      <FacilityTable facilities={facilitiesData} />
+      <FacilityTable facilities={facilities} />
 
       {/* Facility Grid  */}
-      <FacilityGrid facilities={facilitiesData} />
+      <FacilityGrid facilities={facilities} />
 
       {/*Modal Overlay  */}
       <div

@@ -2,23 +2,7 @@ import React, { useState, useEffect } from "react";
 import FacilityTableCard from "./FacilityTableCard";
 import axios from "axios";
 
-const FacilityTable = () => {
-  const [facilities, setFacilities] = useState([]);
-  console.log(facilities);
-
-  useEffect(() => {
-    const fetchFacilities = async () => {
-      try {
-        const response = await axios.get(`http://localhost:4000/api/facility`);
-        setFacilities(response.data);
-      } catch (error) {
-        console.log("Error Fetching:", error);
-      }
-    };
-
-    fetchFacilities();
-  }, []);
-
+const FacilityTable = ({ facilities }) => {
   return (
     <div className="w-full mt-10 hidden sm:block">
       <table className="w-full">

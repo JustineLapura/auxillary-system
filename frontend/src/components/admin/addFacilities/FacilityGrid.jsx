@@ -7,10 +7,11 @@ const FacilityGrid = ({ facilities }) => {
       {facilities &&
         facilities.map((facility) => (
           <FacilityGridCard
-            key={facility.id}
-            id={facility.id}
-            img={facility.img}
-            facilityName={facility.name}
+            key={facility._id}
+            // id={facility._id}
+            // img={facility.photo}
+            // facilityName={facility.name}
+            facility={facility}
           />
         ))}
     </div>

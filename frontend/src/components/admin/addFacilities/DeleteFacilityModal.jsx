@@ -1,4 +1,6 @@
+import axios from "axios";
 import React from "react";
+import { useSnackbar } from "notistack";
 
 const DeleteFacilityModal = ({
   id,
@@ -6,6 +8,20 @@ const DeleteFacilityModal = ({
   deleteModal,
   setDeleteModal,
 }) => {
+  const { enqueueSnackbar } = useSnackbar();
+
+  const handleDeleteFacility = async () => {
+    try {
+      await axios.delete("http://localhost:4000/api/facility/" + id);
+      enqueueSnackbar("Facility has been deleted", { variant: "success" });
+      // Reload the page upon successful submission
+      window.location.reload();
+    } catch (error) {
+      console.log(error);
+    }
+
+    setDeleteModal(false)
+  };
   return (
     <>
       {/*Modal Overlay  */}
@@ -24,7 +40,7 @@ const DeleteFacilityModal = ({
         }
       >
         <h1 className="text-xl text-center">
-          Are you sure you want to delete <br /> {facilityName}?
+          Are you sure you want to delete <br /> <span className="text-blue-800 text-2xl">{facilityName}</span>?
         </h1>
         <div className="flex justify-between items-center gap-3">
           <button
@@ -34,7 +50,7 @@ const DeleteFacilityModal = ({
             No
           </button>
           <button
-            onClick={() => setDeleteModal(false)}
+            onClick={handleDeleteFacility}
             className="py-2 px-5 rounded-xl bg-blue-500 text-white"
           >
             Yes
