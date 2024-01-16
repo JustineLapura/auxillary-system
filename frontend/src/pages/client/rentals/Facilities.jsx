@@ -1,9 +1,24 @@
-import React from "react";
-import { facilities } from "../../../facilities";
+import React, { useState, useEffect } from "react";
+// import { facilities } from "../../../facilities";
 import RentalFacilityCards from "../../../components/rentals/RentalFacilityCards";
 import Navbar from "../../../components/navbar/Navbar";
+import axios from "axios";
 
 const Facilities = () => {
+  const [facilities, setFacilities] = useState([]);
+  console.log("Facilities from Rentals: ", facilities);
+  useEffect(() => {
+    const fetchFacilities = async () => {
+      try {
+        const response = await axios.get(`http://localhost:4000/api/facility`);
+        setFacilities(response.data);
+      } catch (error) {
+        console.log("Error Fetching:", error);
+      }
+    };
+
+    fetchFacilities();
+  }, []);
   return (
     <>
       <Navbar />
@@ -15,10 +30,11 @@ const Facilities = () => {
           <div className="grid place-items-center gap-20 lg:gap-36 sm:grid-cols-2 md:grid-cols-3 mt-16">
             {facilities.map((facility) => (
               <RentalFacilityCards
-                key={facility.id}
-                id={facility.id}
-                img={facility.img}
-                facilityName={facility.name}
+                key={facility._id}
+                // id={facility.id}
+                // img={facility.img}
+                // facilityName={facility.name}
+                facility={facility}
               />
             ))}
           </div>

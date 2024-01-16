@@ -3,16 +3,15 @@ import { facilities } from "../../../facilities";
 import FacilityCard from "../../../components/rentals/FacilityCard";
 import { useParams } from "react-router-dom";
 import Navbar from "../../../components/navbar/Navbar";
-// import FacilityCard from "@/components/rentals/FacilityCard";
-// import BookingModal from "@/components/rentals/BookingModal";
+import axios from "axios";
 
 const SingleFacility = ({ params }) => {
   const [facility, setFacility] = useState([]); // Provide the correct type for the state
+  console.log("Facility from SingleFacilityCard: ", facility);
 
   const [isBooking, setIsBooking] = useState(false);
 
   const { id } = useParams();
-  const displayedFacility = facility[id - 1];
   console.log(id);
 
   // console.log(facilities);
@@ -21,17 +20,30 @@ const SingleFacility = ({ params }) => {
   };
 
   useEffect(() => {
-    setFacility(facilities);
+    const fetchFacilities = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:4000/api/facility/${id}`
+        );
+        setFacility(response.data);
+      } catch (error) {
+        console.log("Error Fetching:", error);
+      }
+    };
+
+    fetchFacilities();
   }, []);
+
   return (
     <>
       <Navbar />
       <div className="w-full h-full px-6 pt-32">
-        {displayedFacility ? (
+        {facility ? (
           <FacilityCard
-            id={displayedFacility.id}
-            img={displayedFacility.img}
-            name={displayedFacility.name}
+            // id={displayedFacility.id}
+            // img={displayedFacility.img}
+            // name={displayedFacility.name}
+            facility={facility}
             setIsBooking={() => setIsBooking(true)}
           />
         ) : (
