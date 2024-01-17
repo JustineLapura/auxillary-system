@@ -16,11 +16,13 @@ const DormTable = ({ dorms }) => {
           </tr>
         </thead>
         <tbody>
-          {dorms.map((dorm) => (
-            <tr key={dorm.id}>
-              <td className="py-2 px-4 border-b">{dorm.id}</td>
-              <td className="py-2 px-4 border-b">{dorm.dormitory}</td>
-              <td className="py-2 px-4 border-b">{dorm.roomNo}</td>
+          {dorms.map((dorm, i) => (
+            <tr key={dorm._id}>
+              <td className="py-2 px-4 border-b">{i + 1}</td>
+              <td className="py-2 px-4 border-b capitalize">
+                {dorm.type} Dorm
+              </td>
+              <td className="py-2 px-4 border-b">{dorm.roomNumber}</td>
               <td className="py-2 px-4 border-b">{dorm.monthlyRate}</td>
               <td className="py-2 px-4 border-b">{dorm.status}</td>
               {/* Add more cells as needed */}
