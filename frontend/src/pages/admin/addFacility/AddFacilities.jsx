@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { facilities } from "../../../facilities";
 import TopHeader from "../../../components/admin/addFacilities/TopHeader";
 import FacilityTable from "../../../components/admin/addFacilities/FacilityTable";
 import FacilityGrid from "../../../components/admin/addFacilities/FacilityGrid";

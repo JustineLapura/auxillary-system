@@ -21,6 +21,12 @@ const createStudent = async (req, res) => {
       .json({ error: "You must fill in all the fields", emptyFields });
   }
 
+  // Validate phone number: accept only numbers and require a minimum length of 10
+  const isValidPhoneNumber = /^\d{10}$/.test(contact);
+  if (!isValidPhoneNumber) {
+    return res.status(400).json({ error: "Invalid phone number format" });
+  }
+
   const emailExists = await Student.findOne({ email });
   if (emailExists) {
     return res.status(400).json({ error: "email already in use" });
