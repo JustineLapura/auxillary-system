@@ -1,5 +1,4 @@
 import React from "react";
-import MainDorm from "../../../components/dormitory/MainDorm";
 import Pricing from "../../../components/dormitory/Pricing";
 import MenSection from "../../../components/dormitory/MenSection";
 import LadiesSection from "../../../components/dormitory/LadiesSection";
@@ -10,7 +9,7 @@ import Navbar from "../../../components/navbar/Navbar";
 const Dormitory = () => {
   return (
     <div>
-      <Navbar/>
+      <Navbar />
       {/* <MainDorm /> */}
       <Pricing />
       <MenSection />

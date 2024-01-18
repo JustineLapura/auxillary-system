@@ -21,11 +21,9 @@ const createDormManagement = async (req, res) => {
     const existingDorm = await DormManagement.findOne({ type, roomNumber });
 
     if (existingDorm) {
-      return res
-        .status(400)
-        .json({
-          error: "Dorm with the same type and roomNumber already exists",
-        });
+      return res.status(400).json({
+        error: "Dorm with the same type and roomNumber already exists",
+      });
     }
 
     const dormManagement = await DormManagement.create(req.body);

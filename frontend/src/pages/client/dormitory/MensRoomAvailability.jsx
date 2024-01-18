@@ -1,7 +1,30 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "../../../components/navbar/Navbar";
+import axios from "axios";
 
 const MensRoomAvailability = () => {
+  const [dorms, setDorms] = useState([]);
+  const mensDorm = dorms
+    .filter((dorm) => dorm.type === "male")
+    .sort((a, b) => a.roomNumber - b.roomNumber);
+
+  console.log("Mens Dorm: ", mensDorm);
+
+  useEffect(() => {
+    const fetchDorms = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:4000/api/dormManagement`
+        );
+        setDorms(response.data);
+      } catch (error) {
+        console.log("Error Fetching:", error);
+      }
+    };
+
+    fetchDorms();
+  }, []);
+
   return (
     <>
       <Navbar />
@@ -19,36 +42,20 @@ const MensRoomAvailability = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td className="border-2 border-gray-600 px-4 py-2 font-semibold text-center">
-                1
-              </td>
-              <td className="border-2 border-gray-600 px-4 py-2 bg-green-300"></td>
-            </tr>
-            <tr>
-              <td className="border-2 border-gray-600 px-4 py-2 font-semibold text-center">
-                2
-              </td>
-              <td className="border-2 border-gray-600 px-4 py-2 bg-green-300"></td>
-            </tr>
-            <tr>
-              <td className="border-2 border-gray-600 px-4 py-2 font-semibold text-center">
-                3
-              </td>
-              <td className="border-2 border-gray-600 px-4 py-2 bg-red-400"></td>
-            </tr>
-            <tr>
-              <td className="border-2 border-gray-600 px-4 py-2 font-semibold text-center">
-                4
-              </td>
-              <td className="border-2 border-gray-600 px-4 py-2 bg-green-300"></td>
-            </tr>
-            <tr>
-              <td className="border-2 border-gray-600 px-4 py-2 font-semibold text-center">
-                5
-              </td>
-              <td className="border-2 border-gray-600 px-4 py-2 bg-green-300"></td>
-            </tr>
+            {mensDorm.map((dorm) => (
+              <tr>
+                <td className="border-2 border-gray-600 px-4 py-2 font-semibold text-center">
+                  {dorm.roomNumber}
+                </td>
+                <td
+                  className={
+                    dorm.status === "vacant"
+                      ? "border-2 border-gray-600 px-4 py-2 bg-green-300"
+                      : "border-2 border-gray-600 px-4 py-2 bg-red-400"
+                  }
+                ></td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
