@@ -20,6 +20,7 @@ const DormContainer = () => {
 
     fetchDorms();
   }, []);
+  
   return (
     <div className="w-full bg-white rounded-lg h-[330px] mt-6">
       <DormTable dorms={dorms} />

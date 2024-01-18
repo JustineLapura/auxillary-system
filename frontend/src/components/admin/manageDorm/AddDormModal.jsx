@@ -13,12 +13,6 @@ const AddDormModal = ({ addModal, setAddModal }) => {
 
   const handleAddDormManagement = async (e) => {
     e.preventDefault();
-    // alert(`
-    //   type: ${type}
-    //   roomNumber: ${roomNumber}
-    //   status: ${status}
-    //   monthlyRate: ${monthlyRate}
-    // `);
 
     const newDormManagement = {
       type,

@@ -1,27 +1,24 @@
 // src/components/DormListContainer.js
-import React from "react";
+import React, { useState, useEffect } from "react";
 import DormListTable from "./DormListTable";
+import axios from "axios";
 
 const DormListContainer = () => {
-  const dorms = [
-    {
-      id: 1,
-      name: "John Doe",
-      dormitory: "Male Dorm",
-      roomNo: "101",
-      dateStarted: "2024-01-01",
-      dueDate: "2024-02-01",
-    },
-    {
-      id: 2,
-      name: "Jane Doe",
-      dormitory: "Female Dorm",
-      roomNo: "201",
-      dateStarted: "2024-01-15",
-      dueDate: "2024-02-15",
-    },
-    // Add more dorm data as needed
-  ];
+  const [dorms, setDorms] = useState([]);
+  console.log(dorms);
+
+  useEffect(() => {
+    const fetchDorms = async () => {
+      try {
+        const response = await axios.get(`http://localhost:4000/api/dormList`);
+        setDorms(response.data);
+      } catch (error) {
+        console.log("Error Fetching:", error);
+      }
+    };
+
+    fetchDorms();
+  }, []);
   return (
     <div className="w-full bg-white rounded-lg h-[330px] mt-6">
       <DormListTable dorms={dorms} />

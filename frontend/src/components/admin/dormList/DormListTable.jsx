@@ -1,12 +1,16 @@
-// src/components/DormListTable.js
 import React from "react";
 
 const DormListTable = ({ dorms }) => {
+  const formatDate = (dateString) => {
+    const options = { year: "numeric", month: "long", day: "numeric" };
+    return new Date(dateString).toLocaleDateString(undefined, options);
+  };
+
   return (
     <div className="hidden lg:block container mx-auto p-4">
       <table className="min-w-full bg-white border border-gray-300 text-center">
         <thead>
-          <tr>
+          <tr className="text-gray-900">
             <th className="py-2 px-4 border-b">ID</th>
             <th className="py-2 px-4 border-b">Name</th>
             <th className="py-2 px-4 border-b">Dormitory</th>
@@ -17,14 +21,14 @@ const DormListTable = ({ dorms }) => {
           </tr>
         </thead>
         <tbody>
-          {dorms.map((dorm) => (
-            <tr key={dorm.id}>
-              <td className="py-2 px-4 border-b">{dorm.id}</td>
+          {dorms.map((dorm, i) => (
+            <tr key={dorm.id} className="text-gray-500">
+              <td className="py-2 px-4 border-b">{i + 1}</td>
               <td className="py-2 px-4 border-b">{dorm.name}</td>
-              <td className="py-2 px-4 border-b">{dorm.dormitory}</td>
-              <td className="py-2 px-4 border-b">{dorm.roomNo}</td>
-              <td className="py-2 px-4 border-b">{dorm.dateStarted}</td>
-              <td className="py-2 px-4 border-b">{dorm.dueDate}</td>
+              <td className="py-2 px-4 border-b capitalize">{dorm.type}</td>
+              <td className="py-2 px-4 border-b">{dorm.roomNumber}</td>
+              <td className="py-2 px-4 border-b">{formatDate(dorm.dueStart)}</td>
+              <td className="py-2 px-4 border-b">{formatDate(dorm.dueDate)}</td>
               {/* Add more cells as needed */}
             </tr>
           ))}

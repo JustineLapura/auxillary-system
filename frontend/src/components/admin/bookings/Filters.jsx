@@ -8,7 +8,7 @@ const Filters = () => {
       </h1>
       <div className="w-full grid sm:grid-cols-2 md:grid-cols-3 place-items-center gap-8 px-8">
         <select
-          className="w-[300px] border-2 rounded p-2 text-center border-gray-700"
+          className="w-[300px] border-2 rounded text-center border-gray-700 py-1"
           name="bookingStatus"
           id="bookingStatus"
         >
@@ -18,16 +18,18 @@ const Filters = () => {
         </select>
         <input
           type="text"
-          className="w-[300px] border-2 rounded p-2 text-center border-gray-700"
+          className="w-[300px] border-2 rounded text-center border-gray-700 py-1"
           placeholder="Start Time"
         />
         <input
           type="text"
-          className="w-[300px] border-2 rounded p-2 text-center border-gray-700"
+          className="w-[300px] border-2 rounded text-center border-gray-700 py-1"
           placeholder="End Time"
         />
+      </div>
+      <div className="w-full max-w-[750px] mx-auto mt-6 lg:flex justify-between">
         <select
-          className="w-[300px] border-2 rounded p-2 text-center border-gray-700"
+          className="w-[300px] border-2 rounded text-center border-gray-700 py-1"
           name="bookingStatus"
           id="bookingStatus"
         >
@@ -36,7 +38,7 @@ const Filters = () => {
           <option value="pending">Option 2</option>
         </select>
         <select
-          className="w-[300px] border-2 rounded p-2 text-center border-gray-700"
+          className="w-[300px] border-2 rounded text-center border-gray-700 py-1"
           name="bookingStatus"
           id="bookingStatus"
         >

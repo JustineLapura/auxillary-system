@@ -5,64 +5,67 @@ const AddDormModal = ({ addModal, setAddModal }) => {
   const [name, setName] = useState("");
   const [type, setType] = useState("");
   const [roomNumber, setRoomNumber] = useState("");
-  const [dueStart, setDueStart] = useState("");
-  const [dueDate, setDueDate] = useState("");
+  const [dueStart, setDueStart] = useState(null);
+  const [dueDate, setDueDate] = useState(null);
   const [emptyFields, setEmptyFields] = useState("");
+  const [error, setError] = useState(null);
 
   const { enqueueSnackbar } = useSnackbar();
 
   const handleAddDormList = async (e) => {
     e.preventDefault();
-    alert(`
-      name: ${name}
-      type: ${type}
-      roomNumber: ${roomNumber}
-      dueStart: ${dueStart}
-      dueDate: ${dueDate}
-    `);
+    // alert(`
+    //   name: ${name}
+    //   type: ${type}
+    //   roomNumber: ${roomNumber}
+    //   dueStart: ${dueStart}
+    //   dueDate: ${dueDate}
+    // `);
 
-    //   const newDormManagement = {
-    //     type,
-    //     roomNumber,
-    //     status,
-    //     monthlyRate,
-    //   };
+    const newDormList = {
+      name,
+      type,
+      roomNumber,
+      dueStart,
+      dueDate,
+    };
 
-    //   try {
-    //     const response = await fetch("http://localhost:4000/api/dormManagement", {
-    //       method: "POST",
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //       },
-    //       body: JSON.stringify(newDormManagement),
-    //     });
+    try {
+      const response = await fetch("http://localhost:4000/api/dormList", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newDormList),
+      });
 
-    //     const json = await response.json();
+      const json = await response.json();
 
-    //     if (!response.ok) {
-    //       setEmptyFields(json.emptyFields);
-    //       const errorMessage = json.error || "An error occurred";
-    //       setError(errorMessage);
-    //       enqueueSnackbar(errorMessage, {
-    //         variant: "error",
-    //       });
-    //     }
+      if (!response.ok) {
+        setEmptyFields(json.emptyFields);
+        const errorMessage = json.error || "An error occurred";
+        setError(errorMessage);
+        enqueueSnackbar(errorMessage, {
+          variant: "error",
+        });
+      }
 
-    //     if (response.ok) {
-    //       enqueueSnackbar("New student has been created", { variant: "success" });
-    //       setType("");
-    //       setRoomNumber("");
-    //       setStatus("");
-    //       setMonthlyRate("");
-    //       setAddModal(false);
+      if (response.ok) {
+        enqueueSnackbar("New student has been created", { variant: "success" });
+        setName("");
+        setType("");
+        setRoomNumber("");
+        setDueStart(null);
+        setDueDate(null);
+        setAddModal(false);
 
-    //       // Reload the page upon successful submission
-    //       window.location.reload();
-    //     }
-    //   } catch (error) {
-    //     console.error("Error creating post:", error);
-    //     // Handle create post error
-    //   }
+        // Reload the page upon successful submission
+        window.location.reload();
+      }
+    } catch (error) {
+      console.error("Error creating post:", error);
+      // Handle create post error
+    }
   };
 
   return (
@@ -80,7 +83,11 @@ const AddDormModal = ({ addModal, setAddModal }) => {
         </label>
         <input
           type="text"
-          className="w-full rounded py-1 mt-2 ps-1 text-gray-500 focus:outline-none"
+          className={
+            emptyFields && emptyFields.includes("name")
+              ? "w-full rounded py-1 mt-2 ps-1 text-gray-500 focus:outline-none border border-red-500"
+              : "w-full rounded py-1 mt-2 ps-1 text-gray-500 focus:outline-none"
+          }
           onChange={(e) => setName(e.target.value)}
           value={name}
         />
@@ -90,7 +97,11 @@ const AddDormModal = ({ addModal, setAddModal }) => {
           Dormitory:
         </label>
         <select
-          className="w-full rounded py-1 mt-2 text-center text-gray-500 focus:outline-none cursor-pointer"
+          className={
+            emptyFields && emptyFields.includes("type")
+              ? "w-full rounded py-1 mt-2 text-center text-gray-500 focus:outline-none cursor-pointer border border-red-500"
+              : "w-full rounded py-1 mt-2 text-center text-gray-500 focus:outline-none cursor-pointer"
+          }
           name=""
           id=""
           onChange={(e) => setType(e.target.value)}
@@ -107,7 +118,11 @@ const AddDormModal = ({ addModal, setAddModal }) => {
         </label>
         <input
           type="number"
-          className="w-full rounded py-1 mt-2 ps-1 text-gray-500 focus:outline-none"
+          className={
+            emptyFields && emptyFields.includes("roomNumber")
+              ? "w-full rounded py-1 mt-2 ps-1 text-gray-500 focus:outline-none border border-red-500"
+              : "w-full rounded py-1 mt-2 ps-1 text-gray-500 focus:outline-none"
+          }
           onChange={(e) => setRoomNumber(e.target.value)}
           value={roomNumber}
         />
@@ -119,7 +134,11 @@ const AddDormModal = ({ addModal, setAddModal }) => {
           </label>
           <input
             type="date"
-            className="w-full rounded py-1 mt-2 ps-1 text-gray-500 focus:outline-none"
+            className={
+              emptyFields && emptyFields.includes("dueStart")
+                ? "w-full rounded py-1 mt-2 ps-1 text-gray-500 focus:outline-none cursor-pointer border border-red-500"
+                : "w-full rounded py-1 mt-2 ps-1 text-gray-500 focus:outline-none cursor-pointer"
+            }
             onChange={(e) => setDueStart(e.target.value)}
             value={dueStart}
           />
@@ -130,7 +149,11 @@ const AddDormModal = ({ addModal, setAddModal }) => {
           </label>
           <input
             type="date"
-            className="w-full rounded py-1 mt-2 ps-1 text-gray-500 focus:outline-none"
+            className={
+              emptyFields && emptyFields.includes("dueDate")
+                ? "w-full rounded py-1 mt-2 ps-1 text-gray-500 focus:outline-none cursor-pointer border border-red-500"
+                : "w-full rounded py-1 mt-2 ps-1 text-gray-500 focus:outline-none cursor-pointer"
+            }
             onChange={(e) => setDueDate(e.target.value)}
             value={dueDate}
           />
@@ -149,6 +172,9 @@ const AddDormModal = ({ addModal, setAddModal }) => {
           </button>
         </div>
       </div>
+      {error && (
+        <p className="text-red-500 font-semibold text-center mt-2">{error}</p>
+      )}
     </form>
   );
 };
