@@ -6,7 +6,7 @@ import PaginationSection from "../../../components/admin/bookings/PaginationSect
 
 const Bookings = () => {
   return (
-    <div className="flex flex-col justify-between w-full h-full min-h-[100%] p-5">
+    <div className="flex flex-col justify-between w-full h-[85vh] p-5">
       {/* Filters  */}
       <Filters />
 

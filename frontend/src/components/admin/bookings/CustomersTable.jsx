@@ -1,46 +1,30 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import CustomersTableCard from "./CustomersTableCard";
-
-const costumers = [
-  {
-    id: 1,
-    name: "Justine Lapura",
-    facility: "Conference Room",
-    date: "2023-09-26",
-    startTime: "09:00 AM",
-    endTime: "10:00 AM",
-    agency: "Government",
-    status: "Pending",
-
-  },
-  {
-    id: 2,
-    name: "Jireh Lapura",
-    facility: "Convention Center",
-    date: "2023-09-30",
-    startTime: "02:00 PM",
-    endTime: "5:00 PM",
-    agency: "Government",
-    status: "Approved",
-
-  },
-  {
-    id: 3,
-    name: "Jethro Lapura",
-    facility: "Audio Visual Center",
-    date: "2023-09-26",
-    startTime: "09:00 AM",
-    endTime: "10:00 AM",
-    agency: "Government",
-    status: "Cancelled",
-
-  },
-];
+import axios from "axios";
 
 const CustomersTable = () => {
+  const [clients, setClients] = useState([]);
+
+  const pendingClients = clients.filter(
+    (client) => client.status === "pending"
+  );
+
+  useEffect(() => {
+    const fetchClients = async () => {
+      try {
+        const response = await axios.get(`http://localhost:4000/api/booking`);
+        setClients(response.data);
+      } catch (error) {
+        console.log("Error Fetching:", error);
+      }
+    };
+
+    fetchClients();
+  }, []);
+
   return (
-    <div className="hidden md:block w-full mt-12">
-      <table className="w-full">
+    <div className="hidden md:block w-full h-[400px] mt-12">
+      <table className="min-w-full ">
         <thead>
           <tr className="lg:font-bold text-xs lg:text-lg">
             <th>No.</th>
@@ -55,8 +39,12 @@ const CustomersTable = () => {
           </tr>
         </thead>
         <tbody>
-          {costumers.map((costumer) => (
-            <CustomersTableCard key={costumer.id} costumer={costumer} />
+          {pendingClients.map((client, index) => (
+            <CustomersTableCard
+              key={client._id}
+              client={client}
+              index={index}
+            />
           ))}
           {/* Add more data rows here */}
         </tbody>

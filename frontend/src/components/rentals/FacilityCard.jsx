@@ -58,14 +58,14 @@ const FacilityCard = ({ facility, setIsBooking }) => {
           </ul>
         </div>
         <div className="hidden lg:block mb-12">
-          <Link to={`/rentals/facility/${facility.name}`}>
+          {/* <Link to={`/rentals/facility/${facility.name}`}> */}
             <button
               onClick={setIsBooking}
               className="py-3 px-6 rounded-full bg-blue-800 text-lg text-white font-semibold hover:bg-blue-600 hover:text-blue-100 hover:scale-105 duration-300"
             >
               Book now
             </button>
-          </Link>
+          {/* </Link> */}
         </div>
         <div className="w-full max-w-[600px] flex justify-between text-xl md:text-2xl pb-8 md:pb-0">
           <h1 className="text-gray-700 font-bold">How was your Experience?</h1>
