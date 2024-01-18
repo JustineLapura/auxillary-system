@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaSearch } from "react-icons/fa";
+import AddDormModal from "./AddDormModal";
 
 const TopHeader = () => {
+  const [addModal, setAddModal] = useState(false);
+
   return (
     <>
       <div className="flex justify-between items-center text-lg ">
@@ -34,12 +37,26 @@ const TopHeader = () => {
 
       <div className="w-full flex items-center mt-12">
         <button
-          //   onClick={() => setAddModal(true)}
+          onClick={() => setAddModal(true)}
           className="flex text-white bg-blue-600/90 hover:bg-blue-800 py-2 sm:py-3 px-5 rounded-lg font-semibold"
         >
           + Add <span className="hidden sm:block ps-2">New</span>
         </button>
       </div>
+
+      {/*Modal Overlay  */}
+      <div
+        className={
+          addModal
+            ? "fixed top-0 left-0 h-screen w-full bg-blue-900/60 z-20"
+            : ""
+        }
+        onClick={() => setAddModal(false)}
+      />
+
+      {addModal && (
+        <AddDormModal addModal={addModal} setAddModal={setAddModal} />
+      )}
     </>
   );
 };

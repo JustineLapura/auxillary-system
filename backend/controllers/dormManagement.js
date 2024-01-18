@@ -22,7 +22,7 @@ const createDormManagement = async (req, res) => {
 
     if (existingDorm) {
       return res.status(400).json({
-        error: "Dorm with the same type and roomNumber already exists",
+        error: "Dorm with the same type and room number already exists",
       });
     }
 

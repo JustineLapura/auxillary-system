@@ -2,25 +2,29 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-const dormManagementSchema = new Schema(
+const dormListSchema = new Schema(
   {
+    name: {
+      type: String,
+      required: true,
+    },
     type: {
       type: String,
       required: true,
     },
     roomNumber: {
       type: Number,
+    },
+    dueStart: {
+      type: Date,
       required: true,
     },
-    status: {
-      type: String,
-    },
-    monthlyRate: {
-      type: Number,
+    dueDate: {
+      type: Date,
       required: true,
     },
   },
   { timestamps: true }
 );
 
-module.exports = mongoose.model("DormManagement", dormManagementSchema);
+module.exports = mongoose.model("DormList", dormListSchema);
