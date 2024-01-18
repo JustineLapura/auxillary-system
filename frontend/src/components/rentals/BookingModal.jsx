@@ -1,6 +1,7 @@
 import { enqueueSnackbar, useSnackbar } from "notistack";
 import React, { useState, useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const BookingModal = ({ facility, isBooking, setIsBooking }) => {
   const { user } = useContext(AuthContext).user || {};
@@ -15,6 +16,8 @@ const BookingModal = ({ facility, isBooking, setIsBooking }) => {
   const [emptyFields, setEmptyFields] = useState([]);
 
   const { enqueueSnackbar } = useSnackbar();
+
+  const navigate = useNavigate();
 
   const handleBook = async (e) => {
     e.preventDefault();
@@ -75,8 +78,8 @@ const BookingModal = ({ facility, isBooking, setIsBooking }) => {
         setEndTime(null);
         setIsBooking(false);
 
-        // Reload the page upon successful submission
-        // window.location.reload();
+        // navigate to profile section
+        navigate("/profile");
       }
     } catch (error) {
       console.error("Error creating post:", error);

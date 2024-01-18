@@ -25,6 +25,7 @@ import StudentProfile from "./pages/admin/studentProfile/StudentProfile";
 import ManageDorm from "./pages/admin/manageDorm/ManageDorm";
 import DormList from "./pages/admin/dormList/DormList";
 import Inquiries from "./pages/admin/inquiries/Inquiries";
+import Profile from "./pages/client/profile/Profile";
 
 function App() {
   const { user } = useContext(AuthContext);
@@ -51,6 +52,7 @@ function App() {
           element={user ? <LadiesRoomAvailability /> : <Navigate to="/login" />}
         />
         <Route path="/contacts" element={<Contacts />} />
+        <Route path="/profile" element={<Profile />} />
         <Route
           path="/login"
           element={!user ? <Login /> : <Navigate to="/" />}

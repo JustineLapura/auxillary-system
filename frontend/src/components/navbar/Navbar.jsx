@@ -9,7 +9,7 @@ import { useLogout } from "../../hooks/useLogout";
 const Navbar = () => {
   const [nav, setNav] = useState(false);
 
-  const { user } = useContext(AuthContext);
+  const { user } = useContext(AuthContext).user || {};
   const { logout } = useLogout();
 
   const handleLogout = () => {
@@ -69,27 +69,32 @@ const Navbar = () => {
             <li>Contact Us</li>
           </Link>
         </ul>
-        {user && (
+      </div>
+      {user && (
+        <div className="flex gap-4 items-center text-white">
+          <Link to="/profile">
+            <p className="font-bold cursor-pointer">{user.email}</p>
+          </Link>
           <button
             className="py-3 border border-yellow-400 bg-yellow-400 hover:bg-yellow-300 font-bold hover:scale-105 duration-300 px-6 rounded-xl "
             onClick={handleLogout}
           >
             Logout
           </button>
-        )}
-        {!user && (
-          <div className="flex items-center gap-8 text-xl font-bold">
-            <Link className="hover:text-blue-200/90" to="/login">
-              <button>Login</button>
-            </Link>
-            <Link to="/signup">
-              <button className="py-3 border border-yellow-400 bg-yellow-400 hover:bg-yellow-300 hover:scale-105 duration-300 px-6 rounded-xl ">
-                Sign Up
-              </button>
-            </Link>
-          </div>
-        )}
-      </div>
+        </div>
+      )}
+      {!user && (
+        <div className="flex items-center gap-8 text-xl font-bold text-white">
+          <Link className="hover:text-blue-200/90" to="/login">
+            <button>Login</button>
+          </Link>
+          <Link to="/signup">
+            <button className="py-3 border border-yellow-400 bg-yellow-400 hover:bg-yellow-300 hover:scale-105 duration-300 px-6 rounded-xl ">
+              Sign Up
+            </button>
+          </Link>
+        </div>
+      )}
     </div>
   );
 };
