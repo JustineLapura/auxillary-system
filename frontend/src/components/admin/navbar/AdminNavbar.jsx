@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 const AdminNavbar = () => {
   //   const [nav, setNav] = useState(false);
+  const navigate = useNavigate();
 
-  //   const handleLogout = () => {
-  //     setIsLoggedin(false)
-  //     router.push("/")
-  //   }
+  const handleLogout = () => {
+    navigate("/admin-login");
+  };
 
   return (
     <div className="fixed h-24 w-full bg-blue-900/90 mx-auto flex justify-between items-center px-4 z-20">
@@ -28,7 +29,10 @@ const AdminNavbar = () => {
 
       {/* right  */}
       <div className="h-full hidden lg:flex items-center gap-16 text-white">
-        <button className="py-3 border border-yellow-400 bg-yellow-400 hover:bg-yellow-300 font-bold hover:scale-105 duration-300 px-6 rounded-xl ">
+        <button
+          onClick={handleLogout}
+          className="py-3 border border-yellow-400 bg-yellow-400 hover:bg-yellow-300 font-bold hover:scale-105 duration-300 px-6 rounded-xl "
+        >
           Logout
         </button>
       </div>

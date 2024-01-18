@@ -1,12 +1,48 @@
 import React, { useState, useContext } from "react";
 import { FaArrowAltCircleLeft } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useSnackbar } from "notistack";
 
 const AdminLogin = () => {
   const [isHovered, setIsHovered] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errorPrompt, setErrorPrompt] = useState("");
+
+  const navigate = useNavigate();
+  const { enqueueSnackbar } = useSnackbar();
+
+  let emptyFields = [];
+  console.log("EmptyFields: ", emptyFields);
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+
+    if (!username) {
+      emptyFields.push("username");
+    }
+    if (!password) {
+      emptyFields.push("password");
+    }
+
+    if (emptyFields.length > 0) {
+      setErrorPrompt("You must fill in all the fields ");
+      return;
+    }
+
+    if (username !== "admin") {
+      setErrorPrompt("Incorrect username");
+      return;
+    }
+
+    if (password !== "admin") {
+      setErrorPrompt("Incorrect password");
+      return;
+    }
+
+    enqueueSnackbar("You logged in successfuly!", { variant: "success" });
+    navigate("/admin");
+  };
 
   console.log("Username: ", username, "Password: ", password);
 
@@ -22,7 +58,7 @@ const AdminLogin = () => {
             alt="logo"
           />
         </div>
-        <div className="flex flex-col gap-6 justify-center items-center px-16">
+        <form className="flex flex-col gap-6 justify-center items-center px-16">
           <div className="">
             <img
               className="w-24 lg:hidden"
@@ -38,10 +74,15 @@ const AdminLogin = () => {
           </h1>
 
           <input
-            className="py-2 px-4 rounded-full bg-white/80 shadow-lg focus:outline-none"
+            className={
+              emptyFields.includes("username")
+                ? "py-2 px-4 rounded-full bg-white/80 shadow-lg focus:outline-none border border-red-500"
+                : "py-2 px-4 rounded-full bg-white/80 shadow-lg focus:outline-none"
+            }
             type="text"
             placeholder="Username"
             onChange={(e) => setUsername(e.target.value)}
+            autoFocus={true}
           />
           <input
             className="py-2 px-4 rounded-full bg-white/80 shadow-lg focus:outline-none"
@@ -49,25 +90,27 @@ const AdminLogin = () => {
             placeholder="Password"
             onChange={(e) => setPassword(e.target.value)}
           />
-          {errorPrompt && (
-            <p className="text-center text-sm text-red-500">{errorPrompt}</p>
-          )}
           <div className="w-full space-y-2">
             <div className="flex justify-center gap-2">
               {/* <Link to="/login">
                 <button className="py-2 px-2 rounded-lg bg-red-500/80 font-bold shadow-xl text-white ">
-                  <FaArrowAltCircleLeft size={25} />
+                <FaArrowAltCircleLeft size={25} />
                 </button>
               </Link> */}
               <button
                 className="py-2 px-8 rounded-lg bg-blue-500 font-bold shadow-xl text-white "
-                // onClick={handleLogin}
+                onClick={handleLogin}
               >
                 Log in
               </button>
             </div>
           </div>
-        </div>
+          {errorPrompt && (
+            <p className="text-center text-sm text-red-500 font-semibold">
+              {errorPrompt}
+            </p>
+          )}
+        </form>
       </div>
     </div>
   );
