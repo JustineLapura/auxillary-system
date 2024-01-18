@@ -1,12 +1,16 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { enqueueSnackbar, useSnackbar } from "notistack";
 
 const BookedFacility = () => {
   const [client, setClient] = useState({});
   console.log("Client from BookedFacility: ", client);
 
+  const { enqueueSnackbar } = useSnackbar();
+
   const { id } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchClient = async () => {
@@ -22,6 +26,21 @@ const BookedFacility = () => {
 
     fetchClient();
   }, []);
+
+  const handleApprove = async () => {
+    try {
+      await axios.put(`http://localhost:4000/api/booking/${id}/approve`);
+      // Optionally, you can fetch the updated booking after approval
+      const response = await axios.get(
+        `http://localhost:4000/api/booking/${id}`
+      );
+      setClient(response.data);
+      enqueueSnackbar("Approved Successfuly", { variant: "success" });
+      navigate("/admin/rented-facilities");
+    } catch (error) {
+      console.log("Error Approving:", error);
+    }
+  };
 
   const formatDate = (dateString) => {
     const options = { year: "numeric", month: "long", day: "numeric" };
@@ -115,8 +134,15 @@ const BookedFacility = () => {
       </div>
 
       <div className="w-full flex justify-end gap-6 mt-12">
-        <button className="w-[150px] py-2 rounded-lg bg-gray-500 text-white font-semibold">Suggest Date</button>
-        <button className="w-[150px] py-2 rounded-lg bg-blue-500 text-white font-semibold">Approve</button>
+        <button className="w-[150px] py-2 rounded-lg bg-gray-500 text-white font-semibold">
+          Suggest Date
+        </button>
+        <button
+          className="w-[150px] py-2 rounded-lg bg-blue-500 text-white font-semibold"
+          onClick={handleApprove}
+        >
+          Approve
+        </button>
       </div>
     </div>
   );

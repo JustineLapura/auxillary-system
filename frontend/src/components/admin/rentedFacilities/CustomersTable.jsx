@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import CustomersTableCard from "./RentedFacilityTable";
+import axios from "axios";
 
 const rentedFacilities = [
   {
@@ -26,25 +27,43 @@ const rentedFacilities = [
 ];
 
 const CustomersTable = () => {
+  const [clients, setClients] = useState([]);
+
+  const approvedClients = clients.filter(
+    (client) => client.status === "approved"
+  );
+
+  useEffect(() => {
+    const fetchClients = async () => {
+      try {
+        const response = await axios.get(`http://localhost:4000/api/booking`);
+        setClients(response.data);
+      } catch (error) {
+        console.log("Error Fetching:", error);
+      }
+    };
+
+    fetchClients();
+  }, []);
+
   return (
-    <div className="w-full mt-10 hidden sm:block">
+    <div className="w-full h-[250px] mt-10 hidden sm:block">
       <table className="w-full rounded-lg">
         <thead className="md:text-2xl text-left">
           <tr>
             <th>Facility Name</th>
             <th>Booked By</th>
             <th>Date</th>
-            <th>Time</th>
+            <th>Time Start</th>
+            <th>Time End</th>
+            <th>Status</th>
           </tr>
         </thead>
         <tbody>
-          {rentedFacilities.map((rentedFacility) => (
+          {approvedClients.map((client) => (
             <CustomersTableCard
-              key={rentedFacility.id}
-              facility={rentedFacility.facility}
-              name={rentedFacility.name}
-              date={rentedFacility.date}
-              time={rentedFacility.time}
+              key={client._id}
+              client={client}
             />
           ))}
         </tbody>
