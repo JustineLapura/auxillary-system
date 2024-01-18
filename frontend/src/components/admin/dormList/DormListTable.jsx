@@ -1,4 +1,5 @@
 import React from "react";
+import { FaRegEdit, FaTrashAlt } from "react-icons/fa";
 
 const DormListTable = ({ dorms }) => {
   const formatDate = (dateString) => {
@@ -17,6 +18,7 @@ const DormListTable = ({ dorms }) => {
             <th className="py-2 px-4 border-b">Room No.</th>
             <th className="py-2 px-4 border-b">Date Started</th>
             <th className="py-2 px-4 border-b">Due Date</th>
+            <th className="py-2 px-4 border-b">Action</th>
             {/* Add more columns as needed */}
           </tr>
         </thead>
@@ -27,8 +29,20 @@ const DormListTable = ({ dorms }) => {
               <td className="py-2 px-4 border-b">{dorm.name}</td>
               <td className="py-2 px-4 border-b capitalize">{dorm.type}</td>
               <td className="py-2 px-4 border-b">{dorm.roomNumber}</td>
-              <td className="py-2 px-4 border-b">{formatDate(dorm.dueStart)}</td>
+              <td className="py-2 px-4 border-b">
+                {formatDate(dorm.dueStart)}
+              </td>
               <td className="py-2 px-4 border-b">{formatDate(dorm.dueDate)}</td>
+              <td className="h-full flex justify-center items-center gap-2 py-2 px-4">
+                <FaRegEdit
+                  className="text-yellow-500 cursor-pointer hover:scale-125 duration-200"
+                  size={20}
+                />
+                <FaTrashAlt
+                  className="text-red-500 cursor-pointer hover:scale-125 duration-200"
+                  size={20}
+                />
+              </td>
               {/* Add more cells as needed */}
             </tr>
           ))}
