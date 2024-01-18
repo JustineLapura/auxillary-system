@@ -49,7 +49,7 @@ const Sidebar = () => {
             </h1>
           </div>
         </Link>
-        <Link to="/admin/add-facilities">
+        <Link to="/admin/records">
           <div className="group w-full flex justify-between items-center gap-4 px-2 lg:hover:bg-gray-100">
             <div className="w-full bg-gray-100 group-hover:bg-white hover:bg-gray-200 cursor-pointer my-4 p-3 rounded-lg inline-block">
               <FaTooth size={20} />

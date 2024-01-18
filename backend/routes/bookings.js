@@ -8,6 +8,7 @@ const {
   getBookingById,
   getAllBookings,
   approveBooking,
+  completeBooking,
 } = require("../controllers/bookings");
 
 // Create a Booking
@@ -27,7 +28,10 @@ router.get("/:id", getBookingById);
 // Get all Bookings
 router.get("/", getAllBookings);
 
-// Get a specific Booking
+// approve Booking
 router.put("/:id/approve", approveBooking);
+
+// complete Booking
+router.put("/:id/complete", completeBooking);
 
 module.exports = router;

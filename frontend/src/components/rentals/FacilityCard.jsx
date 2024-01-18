@@ -1,10 +1,23 @@
-import React from "react";
+import React, { useContext } from "react";
 import { AiFillStar } from "react-icons/ai";
 import { FaCircle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 
 const FacilityCard = ({ facility, setIsBooking }) => {
+  const { user } = useContext(AuthContext).user || {};
+
   const PF = "http://localhost:4000/images/";
+
+  const navigate = useNavigate();
+
+  const handleBook = () => {
+    if (!user) {
+      navigate("/login");
+    } else {
+      setIsBooking(true);
+    }
+  };
 
   return (
     <div className="w-full h-ful lg:flex justify-between items-center gap-16">
@@ -59,12 +72,12 @@ const FacilityCard = ({ facility, setIsBooking }) => {
         </div>
         <div className="hidden lg:block mb-12">
           {/* <Link to={`/rentals/facility/${facility.name}`}> */}
-            <button
-              onClick={setIsBooking}
-              className="py-3 px-6 rounded-full bg-blue-800 text-lg text-white font-semibold hover:bg-blue-600 hover:text-blue-100 hover:scale-105 duration-300"
-            >
-              Book now
-            </button>
+          <button
+            onClick={handleBook}
+            className="py-3 px-6 rounded-full bg-blue-800 text-lg text-white font-semibold hover:bg-blue-600 hover:text-blue-100 hover:scale-105 duration-300"
+          >
+            Book now
+          </button>
           {/* </Link> */}
         </div>
         <div className="w-full max-w-[600px] flex justify-between text-xl md:text-2xl pb-8 md:pb-0">

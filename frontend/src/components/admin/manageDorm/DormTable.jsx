@@ -4,7 +4,7 @@ import React from "react";
 const DormTable = ({ dorms }) => {
   return (
     <div className="hidden lg:block container mx-auto p-4">
-      <table className="min-w-full bg-white border border-gray-300 text-center">
+      <table className="min-w-full bg-white border border-gray-300 text-center ">
         <thead>
           <tr className="text-gray-900">
             <th className="py-2 px-4 border-b">ID</th>

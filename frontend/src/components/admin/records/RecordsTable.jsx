@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
-import CustomersTableCard from "./RentedFacilityTable";
+import RecordsTableCard from "./RecordsTableCard";
 import axios from "axios";
 
-const CustomersTable = () => {
+
+const RecordsTable = () => {
   const [clients, setClients] = useState([]);
 
-  const approvedClients = clients.filter(
-    (client) => client.status === "approved"
+  const completedClients = clients.filter(
+    (client) => client.status === "completed"
   );
 
   useEffect(() => {
@@ -27,18 +28,21 @@ const CustomersTable = () => {
       <table className="w-full rounded-lg">
         <thead className="md:text-2xl text-center">
           <tr>
-            <th>Facility Name</th>
-            <th>Booked By</th>
+            <th>Client's Name</th>
+            <th>Facility</th>
             <th>Date</th>
             <th>Time Start</th>
             <th>Time End</th>
+            <th>Price Rate</th>
             <th>Status</th>
-            <th>Action</th>
           </tr>
         </thead>
         <tbody>
-          {approvedClients.map((client) => (
-            <CustomersTableCard key={client._id} client={client} />
+          {completedClients.map((client) => (
+            <RecordsTableCard
+              key={client._id}
+              client={client}
+            />
           ))}
         </tbody>
       </table>
@@ -46,4 +50,4 @@ const CustomersTable = () => {
   );
 };
 
-export default CustomersTable;
+export default RecordsTable;

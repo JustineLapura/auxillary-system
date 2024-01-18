@@ -131,6 +131,29 @@ const approveBooking = async (req, res) => {
     }
   };
 
+  
+// Complete a Booking
+const completeBooking = async (req, res) => {
+    try {
+      const booking = await Booking.findByIdAndUpdate(
+        req.params.id,
+        { status: "completed" },
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
+  
+      if (!booking) {
+        return res.status(404).json({ error: "Booking not found" });
+      }
+  
+      res.status(200).json(booking);
+    } catch (error) {
+      res.status(400).json({ error: error.message });
+    }
+  };
+
 module.exports = {
   createBooking,
   updateBooking,
@@ -138,5 +161,6 @@ module.exports = {
   deleteAllBookings,
   getBookingById,
   getAllBookings,
-  approveBooking
+  approveBooking,
+  completeBooking
 };
