@@ -24,7 +24,7 @@ const RecordsTableCard = ({ client }) => {
         <td className="py-1 my-1">{formatTime(client.startTime)}</td>
         <td className="py-1 my-1">{formatTime(client.endTime)}</td>
         <td className="py-1 my-1">₱10,000</td>
-        <td className="capitalize py-1 my-1">{client.status}</td>
+        <td className="capitalize py-1 my-1 text-green-500 font-bold">{client.status}</td>
       </tr>
     </>
   );

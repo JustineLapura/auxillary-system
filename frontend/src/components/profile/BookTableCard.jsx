@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const BookTableCard = ({ client, index }) => {
-
   const formatDate = (dateString) => {
     const options = { year: "numeric", month: "long", day: "numeric" };
     return new Date(dateString).toLocaleDateString(undefined, options);
@@ -27,9 +26,24 @@ const BookTableCard = ({ client, index }) => {
         <td>{formatTime(client.startTime)}</td>
         <td>{formatTime(client.endTime)}</td>
         <td>{client.agency}</td>
-        <td>{client.status}</td>
+        <td
+          className={
+            client.status === "pending"
+              ? "text-yellow-500 font-bold capitalize"
+              : client.status === "approved"
+              ? "text-blue-500 font-bold capitalize"
+              : client.status === "completed"
+              ? "text-green-500 font-bold capitalize"
+              : "text-gray-500 font-bold capitalize"
+          }
+        >
+          {client.status}
+        </td>
         <td className="hover:underline">
-          <Link to={`/profile/booking/${client._id}`} className="cursor-pointer">
+          <Link
+            to={`/profile/booking/${client._id}`}
+            className="cursor-pointer"
+          >
             View
           </Link>
         </td>

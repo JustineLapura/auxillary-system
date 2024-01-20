@@ -2,13 +2,13 @@ import axios from "axios";
 import React from "react";
 import { useSnackbar } from "notistack";
 
-const DeleteStudentModal = ({ student, deleteModal, setDeleteModal }) => {
+const DeleteDormModal = ({ dorm, deleteModal, setDeleteModal }) => {
   const { enqueueSnackbar } = useSnackbar();
 
-  const handleDeleteStudent = async () => {
+  const handleDeleteDorm = async () => {
     try {
-      await axios.delete("http://localhost:4000/api/student/" + student._id);
-      enqueueSnackbar("Student has been deleted", { variant: "success" });
+      await axios.delete("http://localhost:4000/api/dormList/" + dorm._id);
+      enqueueSnackbar("Dorm has been deleted", { variant: "success" });
       // Reload the page upon successful submission
       window.location.reload();
     } catch (error) {
@@ -24,7 +24,7 @@ const DeleteStudentModal = ({ student, deleteModal, setDeleteModal }) => {
         onClick={() => setDeleteModal(false)}
         className={
           deleteModal
-            ? "fixed top-0 left-0 h-screen w-full bg-blue-900/60 z-20"
+            ? "fixed top-0 left-0 h-screen w-full bg-blue-900/20 z-20"
             : ""
         }
       />
@@ -36,10 +36,11 @@ const DeleteStudentModal = ({ student, deleteModal, setDeleteModal }) => {
         }
       >
         <h1 className="text-xl text-center">
-          Are you sure you want to delete <br />
-          <br />{" "}
-          <span className="text-blue-800 text-2xl">
-            {student.firstName} {student.lastName}
+          Are you sure you want to delete <br /> <br />
+          <span className="text-blue-800 text-2xl capitalize">{dorm.name}</span>
+          <br />
+          <span className="text-blue-800 text-2xl capitalize">
+            {dorm.type} dorm: room {dorm.roomNumber}
           </span>
           ?
         </h1>
@@ -51,7 +52,7 @@ const DeleteStudentModal = ({ student, deleteModal, setDeleteModal }) => {
             No
           </button>
           <button
-            onClick={handleDeleteStudent}
+            onClick={handleDeleteDorm}
             className="py-2 px-5 rounded-xl bg-blue-500 text-white"
           >
             Yes
@@ -62,4 +63,4 @@ const DeleteStudentModal = ({ student, deleteModal, setDeleteModal }) => {
   );
 };
 
-export default DeleteStudentModal;
+export default DeleteDormModal;

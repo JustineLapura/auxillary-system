@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaRegEdit, FaTrashAlt } from "react-icons/fa";
+import DeleteDormModal from "./DeleteDormModal";
 
 const DormListTable = ({ dorms }) => {
+  const [deleteModal, setDeleteModal] = useState(false);
+
   const formatDate = (dateString) => {
     const options = { year: "numeric", month: "long", day: "numeric" };
     return new Date(dateString).toLocaleDateString(undefined, options);
@@ -41,7 +44,15 @@ const DormListTable = ({ dorms }) => {
                 <FaTrashAlt
                   className="text-red-500 cursor-pointer hover:scale-125 duration-200"
                   size={20}
+                  onClick={() => setDeleteModal(true)}
                 />
+                {deleteModal && (
+                  <DeleteDormModal
+                    dorm={dorm}
+                    deleteModal={deleteModal}
+                    setDeleteModal={setDeleteModal}
+                  />
+                )}
               </td>
               {/* Add more cells as needed */}
             </tr>

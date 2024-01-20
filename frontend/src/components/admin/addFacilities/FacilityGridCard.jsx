@@ -1,4 +1,3 @@
-"use client";
 import React, { useState } from "react";
 import DeleteFacilityModal from "./DeleteFacilityModal";
 import ViewFacilityModal from "./ViewFacilityModal";

@@ -46,7 +46,7 @@ const CustomersTableCard = ({ client }) => {
         <td>{formatDate(client.date)}</td>
         <td>{formatTime(client.startTime)}</td>
         <td>{formatTime(client.endTime)}</td>
-        <td className="capitalize">{client.status}</td>
+        <td className="capitalize text-blue-800 font-bold">{client.status}</td>
         <td>
           <button
             onClick={handleComplete}

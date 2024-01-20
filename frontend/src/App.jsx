@@ -53,7 +53,10 @@ function App() {
           element={user ? <LadiesRoomAvailability /> : <Navigate to="/login" />}
         />
         <Route path="/contacts" element={<Contacts />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route
+          path="/profile"
+          element={user ? <Profile /> : <Navigate to="/login" />}
+        />
         <Route
           path="/login"
           element={!user ? <Login /> : <Navigate to="/" />}

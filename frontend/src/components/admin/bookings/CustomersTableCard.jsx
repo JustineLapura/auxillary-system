@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const CustomersTableCard = ({ client, index }) => {
-
   const formatDate = (dateString) => {
     const options = { year: "numeric", month: "long", day: "numeric" };
     return new Date(dateString).toLocaleDateString(undefined, options);
@@ -27,7 +26,7 @@ const CustomersTableCard = ({ client, index }) => {
         <td>{formatTime(client.startTime)}</td>
         <td>{formatTime(client.endTime)}</td>
         <td>{client.agency}</td>
-        <td>{client.status}</td>
+        <td className="text-yellow-500 font-bold ">{client.status}</td>
         <td className="hover:underline">
           <Link to={`/admin/bookings/${client._id}`} className="cursor-pointer">
             View

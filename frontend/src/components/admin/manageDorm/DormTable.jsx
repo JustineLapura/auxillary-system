@@ -1,19 +1,21 @@
 // src/components/DormTable.js
 import axios from "axios";
-import React from "react";
+import React, { useState } from "react";
 import { FaRegEdit, FaTrashAlt } from "react-icons/fa";
+import DeleteDormModal from "./DeleteDormModal";
 
 const DormTable = ({ dorms }) => {
-  const handleDeleteDorm = async (id) => {
-    try {
-      await axios.delete("http://localhost:4000/api/dormManagement/" + id);
-      enqueueSnackbar("Dorm has been deleted", { variant: "success" });
-      // Reload the page upon successful submission
-      window.location.reload();
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const [deleteModal, setDeleteModal] = useState(false);
+  // const handleDeleteDorm = async (id) => {
+  //   try {
+  //     await axios.delete("http://localhost:4000/api/dormManagement/" + id);
+  //     enqueueSnackbar("Dorm has been deleted", { variant: "success" });
+  //     // Reload the page upon successful submission
+  //     window.location.reload();
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   return (
     <div className="hidden lg:block container mx-auto p-4">
@@ -47,8 +49,15 @@ const DormTable = ({ dorms }) => {
                 <FaTrashAlt
                   className="text-red-500 cursor-pointer hover:scale-125 duration-200"
                   size={20}
-                  onClick={() => handleDeleteDorm(dorm._id)}
+                  onClick={() => setDeleteModal(true)}
                 />
+                {deleteModal && (
+                  <DeleteDormModal
+                    dorm={dorm}
+                    deleteModal={deleteModal}
+                    setDeleteModal={setDeleteModal}
+                  />
+                )}
               </td>
               {/* Add more cells as needed */}
             </tr>

@@ -5,7 +5,7 @@ const TopHeader = ({ facilitiesCount, setAddModal }) => {
   return (
     <>
       <div className="flex justify-between items-center text-lg font-bold">
-        <h1 className="text-gray-900 text-3xl md:text-5xl">Facilties</h1>
+        <h1 className="text-gray-900 text-3xl md:text-5xl">Facilities</h1>
         <button
           onClick={() => setAddModal(true)}
           className="flex text-white bg-green-500/90 hover:bg-green-600 py-2 sm:py-3 px-5 rounded-lg"

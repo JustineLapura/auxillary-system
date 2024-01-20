@@ -19,16 +19,16 @@ const Navbar = () => {
   return (
     <div className="fixed h-24 w-full bg-blue-900/90 mx-auto flex justify-between items-center px-4 z-20">
       {/* left */}
-      <div className="text-white font-bold text-xl flex gap-4 items-center">
+      <div className="hidden lg:flex text-white font-bold text-xl gap-4 items-center">
         {/* image  */}
         <img
-          className="w-14 rounded-full border-2 border-white"
+          className=" w-14 rounded-full border-2 border-white"
           width={80}
           height={80}
           src="/auxillaryLogo.png"
           alt="logo"
         />
-        <h1 className="text-xl font-black">
+        <h1 className=" text-xl font-black">
           Auxilliary <br />
           Services
         </h1>
@@ -76,7 +76,7 @@ const Navbar = () => {
             <p className="font-bold cursor-pointer">{user.email}</p>
           </Link>
           <button
-            className="py-3 border border-yellow-400 bg-yellow-400 hover:bg-yellow-300 font-bold hover:scale-105 duration-300 px-6 rounded-xl "
+            className="py-2 border border-yellow-400 bg-yellow-400 hover:bg-yellow-300 font-bold hover:scale-105 duration-300 px-4 rounded-xl "
             onClick={handleLogout}
           >
             Logout

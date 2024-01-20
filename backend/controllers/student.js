@@ -27,6 +27,15 @@ const createStudent = async (req, res) => {
     return res.status(400).json({ error: "Invalid phone number format" });
   }
 
+  const nameExists = await Student.findOne({
+    firstName,
+    lastName,
+  });
+
+  if (nameExists) {
+    return res.status(400).json({ error: "Student already exists" });
+  }
+
   const emailExists = await Student.findOne({ email });
   if (emailExists) {
     return res.status(400).json({ error: "email already in use" });
