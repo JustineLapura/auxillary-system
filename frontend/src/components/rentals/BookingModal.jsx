@@ -5,8 +5,8 @@ import { useNavigate } from "react-router-dom";
 
 const BookingModal = ({ facility, isBooking, setIsBooking }) => {
   const { user } = useContext(AuthContext).user || {};
-  console.log("Facility from Booking Modal: ", facility);
-  console.log("User from Booking Modal: ", user);
+  // console.log("Facility from Booking Modal: ", facility);
+  // console.log("User from Booking Modal: ", user);
 
   const [agency, setAgency] = useState("");
   const [date, setDate] = useState(null);
@@ -92,7 +92,7 @@ const BookingModal = ({ facility, isBooking, setIsBooking }) => {
       onSubmit={handleBook}
       className={
         isBooking
-          ? "fixed w-[60%] max-w-[600px] h-[90%] lg:h-[78%] top-1/2 left-1/2 transdiv -translate-x-1/2 -translate-y-1/2 bg-gray-200 z-20 rounded-lg space-y-3 p-5 ease-in duration-300 overflow-y-scroll lg:overflow-hidden"
+          ? "fixed w-[60%] max-w-[600px] h-[90%] lg:h-[78%] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gray-200 z-20 rounded-lg space-y-3 p-5 ease-in duration-300 overflow-y-scroll lg:overflow-hidden"
           : "fixed w-[60%] max-w-[600px] h-[90%] lg:h-[78%] top-[-100%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gray-200 z-20 rounded-lg space-y-3 p-5 ease-in duration-300"
       }
     >

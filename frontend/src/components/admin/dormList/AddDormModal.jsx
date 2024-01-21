@@ -2,7 +2,8 @@ import { enqueueSnackbar, useSnackbar } from "notistack";
 import React, { useState } from "react";
 
 const AddDormModal = ({ addModal, setAddModal }) => {
-  const [name, setName] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [type, setType] = useState("");
   const [roomNumber, setRoomNumber] = useState("");
   const [dueStart, setDueStart] = useState(null);
@@ -23,7 +24,8 @@ const AddDormModal = ({ addModal, setAddModal }) => {
     // `);
 
     const newDormList = {
-      name,
+      firstName,
+      lastName,
       type,
       roomNumber,
       dueStart,
@@ -52,7 +54,8 @@ const AddDormModal = ({ addModal, setAddModal }) => {
 
       if (response.ok) {
         enqueueSnackbar("New student has been created", { variant: "success" });
-        setName("");
+        setFirstName("");
+        setLastName("");
         setType("");
         setRoomNumber("");
         setDueStart(null);
@@ -68,29 +71,59 @@ const AddDormModal = ({ addModal, setAddModal }) => {
     }
   };
 
+  // const handleDueStart = (selectedDate) => {
+  //   // Set Due Start
+  //   setDueStart(selectedDate);
+
+  //   // Calculate Due Date by adding 1 month to Due Start
+  //   const dueStartDate = new Date(selectedDate);
+  //   const dueDate = new Date(dueStartDate);
+  //   dueDate.setMonth(dueStartDate.getMonth() + 1);
+
+  //   // Set Due Date directly
+  //   setDueDate(dueDate.toISOString()); // Save Due Date as ISO string
+  // };
+
   return (
     <form
       onSubmit={handleAddDormList}
       className={
         addModal
-          ? "fixed w-[80%] max-w-[500px] h-[70%] top-1/2 left-1/2 transdiv -translate-x-1/2 -translate-y-1/2 bg-gray-200 z-20 rounded-lg space-y-3 p-5 ease-in duration-300"
+          ? "fixed w-[80%] max-w-[500px] h-[70%] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gray-200 z-20 rounded-lg space-y-3 p-5 ease-in duration-300"
           : "fixed w-[80%] max-w-[500px] h-[70%] top-[-100%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gray-200 z-20 rounded-lg space-y-3 p-5 ease-in duration-300"
       }
     >
-      <div className="w-full flex flex-col">
-        <label htmlFor="" className="font-semibold ">
-          Name:
-        </label>
-        <input
-          type="text"
-          className={
-            emptyFields && emptyFields.includes("name")
-              ? "w-full rounded py-1 mt-2 ps-1 text-gray-500 focus:outline-none border border-red-500"
-              : "w-full rounded py-1 mt-2 ps-1 text-gray-500 focus:outline-none"
-          }
-          onChange={(e) => setName(e.target.value)}
-          value={name}
-        />
+      <div className="w-full flex gap-6">
+        <div className="w-full flex flex-col">
+          <label htmlFor="" className="font-semibold ">
+            Firstname:
+          </label>
+          <input
+            type="text"
+            className={
+              emptyFields && emptyFields.includes("lastName")
+                ? "w-full rounded py-1 mt-2 ps-1 text-gray-500 focus:outline-none border border-red-500"
+                : "w-full rounded py-1 mt-2 ps-1 text-gray-500 focus:outline-none"
+            }
+            onChange={(e) => setFirstName(e.target.value)}
+            value={firstName}
+          />
+        </div>
+        <div className="w-full flex flex-col">
+          <label htmlFor="" className="font-semibold ">
+            Lastname:
+          </label>
+          <input
+            type="text"
+            className={
+              emptyFields && emptyFields.includes("lastName")
+                ? "w-full rounded py-1 mt-2 ps-1 text-gray-500 focus:outline-none border border-red-500"
+                : "w-full rounded py-1 mt-2 ps-1 text-gray-500 focus:outline-none"
+            }
+            onChange={(e) => setLastName(e.target.value)}
+            value={lastName}
+          />
+        </div>
       </div>
       <div className="w-full flex flex-col">
         <label htmlFor="" className="font-semibold">
@@ -130,7 +163,7 @@ const AddDormModal = ({ addModal, setAddModal }) => {
       <div className="w-full flex gap-6">
         <div className="w-full flex flex-col">
           <label htmlFor="" className="font-semibold ">
-            Due Start:
+            Date Start:
           </label>
           <input
             type="date"
@@ -145,7 +178,7 @@ const AddDormModal = ({ addModal, setAddModal }) => {
         </div>
         <div className="w-full flex flex-col">
           <label htmlFor="" className="font-semibold ">
-            Due Start:
+            Due Date:
           </label>
           <input
             type="date"

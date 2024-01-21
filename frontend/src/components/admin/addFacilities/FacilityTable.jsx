@@ -18,9 +18,6 @@ const FacilityTable = ({ facilities }) => {
             facilities.map((facility, i) => (
               <FacilityTableCard
                 key={facility._id}
-                // id={facility._id}
-                // img={facility.photo}
-                // name={facility.name}
                 no={i}
                 facility={facility}
               />

@@ -8,9 +8,9 @@ const LadiesSection = () => {
         LADIE'S DORMITORY
       </h1>
       <img
-        src="/SSU.jpg"
+        src="/ladies.png"
         alt=""
-        className="w-full max-w-[800px] lg:h-[450px] rounded-xl"
+        className="w-full max-w-[800px] lg:h-[450px] rounded-xl object-cover"
       />
       <p className="max-w-[800px] font-semibold text-gray-500 mt-10 text-justify md:text-xl">
         Our men's dormitory is conveniently located near Samar State University

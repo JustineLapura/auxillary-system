@@ -13,8 +13,12 @@ const Pricing = () => {
         </thead>
         <tbody>
           <tr>
-            <td className="border-2 border-gray-600 px-4 py-2 font-semibold">500.00</td>
-            <td className="border-2 border-gray-600 px-4 py-2 font-semibold">500.00</td>
+            <td className="border-2 border-gray-600 px-4 py-2 font-semibold">
+              ₱500.00
+            </td>
+            <td className="border-2 border-gray-600 px-4 py-2 font-semibold">
+              ₱500.00
+            </td>
           </tr>
         </tbody>
       </table>

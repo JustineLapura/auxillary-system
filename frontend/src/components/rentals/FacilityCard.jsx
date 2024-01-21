@@ -51,21 +51,21 @@ const FacilityCard = ({ facility, setIsBooking }) => {
               <FaCircle size={5} />
               Government Agencies -
               {facility.governmentPrice
-                ? "₱" + facility.governmentPrice + "/hour"
+                ? "₱" + facility.governmentPrice + "/8hour"
                 : "N/A"}
             </li>
             <li className="flex gap-2 items-center">
               <FaCircle size={5} />
               Non-Government Agencies -
               {facility.nonGovernmentPrice
-                ? "₱" + facility.nonGovernmentPrice + "/hour"
+                ? "₱" + facility.nonGovernmentPrice + "/8hour"
                 : "N/A"}
             </li>
             <li className="flex gap-2 items-center">
               <FaCircle size={5} />
               Others -
               {facility.otherPrice
-                ? "₱" + facility.otherPrice + "/hour"
+                ? "₱" + facility.otherPrice + "/8hour"
                 : "N/A"}
             </li>
           </ul>

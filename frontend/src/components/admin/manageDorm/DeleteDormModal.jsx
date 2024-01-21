@@ -26,7 +26,7 @@ const DeleteDormModal = ({ dorm, deleteModal, setDeleteModal }) => {
         onClick={() => setDeleteModal(false)}
         className={
           deleteModal
-            ? "fixed top-0 left-0 h-screen w-full bg-blue-900/2;0 z-20"
+            ? "fixed top-0 left-0 h-screen w-full bg-blue-900/60 z-20"
             : ""
         }
       />
@@ -38,9 +38,10 @@ const DeleteDormModal = ({ dorm, deleteModal, setDeleteModal }) => {
         }
       >
         <h1 className="text-xl text-center">
-          Are you sure you want to delete <br />{" "}
+          Are you sure you want to delete <br /> <br /> <br />{" "}
           <span className="text-blue-800 text-2xl capitalize">
-            {dorm.type} dorm: room {dorm.roomNumber}
+             {dorm.type} dorm : room{" "}
+            {dorm.roomNumber}
           </span>
           ?
         </h1>

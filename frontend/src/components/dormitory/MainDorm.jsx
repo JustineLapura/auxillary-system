@@ -2,7 +2,7 @@ import React from "react";
 
 const MainDorm = () => {
   return (
-    <div className='relative h-screen w-full flex justify-center items-center bg-[url("/SSU.jpg")] bg-no-repeat bg-cover bg-center'>
+    <div className='relative h-screen w-full flex justify-center items-center bg-[url("/dormitory.jpg")] bg-no-repeat bg-cover bg-center'>
       {/* <div className="relative z-10">
           <Navbar />
         </div> */}

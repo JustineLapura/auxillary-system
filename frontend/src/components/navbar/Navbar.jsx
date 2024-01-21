@@ -56,17 +56,14 @@ const Navbar = () => {
       {/* right  */}
       <div className="h-full hidden lg:flex items-center gap-16 text-white">
         <ul className="flex justify-center items-center uppercase text-lg gap-8">
-          <Link className="hover:text-blue-200/90" to="/">
+          <Link className="hover:text-blue-200/90 font-bold" to="/">
             <li>Home</li>
           </Link>
-          <Link className="hover:text-blue-200/90" to="/rentals">
+          <Link className="hover:text-blue-200/90 font-bold" to="/rentals">
             <li>Facility</li>
           </Link>
-          <Link className="hover:text-blue-200/90" to="/dorm">
+          <Link className="hover:text-blue-200/90 font-bold" to="/dorm">
             <li>Dormitory</li>
-          </Link>
-          <Link className="hover:text-blue-200/90" to="/contacts">
-            <li>Contact Us</li>
           </Link>
         </ul>
       </div>

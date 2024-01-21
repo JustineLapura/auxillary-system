@@ -1,13 +1,15 @@
 const DormList = require("../models/dormList");
 const DormManagement = require("../models/dormManagement");
+const Student = require("../models/students");
 
 // Create Dorm List Entry
 const createDormList = async (req, res) => {
-  const { name, type, roomNumber, dueStart, dueDate } = req.body;
+  const { firstName, lastName, type, roomNumber, dueStart, dueDate } = req.body;
 
   let emptyFields = [];
 
-  if (!name) emptyFields.push("name");
+  if (!firstName) emptyFields.push("firstName");
+  if (!lastName) emptyFields.push("lastName");
   if (!type) emptyFields.push("type");
   if (!roomNumber) emptyFields.push("roomNumber");
   if (!dueStart) emptyFields.push("dueStart");
@@ -22,7 +24,8 @@ const createDormList = async (req, res) => {
   try {
     // Check for duplicate entry
     const existingDorm = await DormList.findOne({
-      name,
+      firstName,
+      lastName,
       type,
       roomNumber,
       dueStart,
@@ -41,6 +44,18 @@ const createDormList = async (req, res) => {
     if (!existingRoom) {
       return res.status(400).json({
         error: "Dorm with the specified room number does not exist",
+      });
+    }
+
+    // Check if the Student exists in StudentProfile
+    const existingStudent = await Student.findOne({
+      firstName,
+      lastName,
+    });
+
+    if (!existingStudent) {
+      return res.status(400).json({
+        error: "Student does not exist",
       });
     }
 
