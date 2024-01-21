@@ -13,15 +13,10 @@ const MenSection = () => {
         className="w-full max-w-[800px] lg:h-[450px] rounded-xl object-cover"
       />
       <p className="max-w-[800px] font-semibold text-gray-500 mt-10 text-justify md:text-xl">
-        Nestled near Samar State University, our ladies dormitory stands as a
-        secure and inviting haven, tailored to meet the unique needs of female
-        students. With a prime location offering easy access to local shops,
-        delightful restaurants, and efficient public transportation, our
-        dormitory prioritizes safety, convenience, and comfort. From
-        thoughtfully designed living spaces to curated amenities, we provide an
-        environment fostering community and security. Embrace the convenience
-        and camaraderie that our dormitory offers, ensuring a hassle-free and
-        enriching university experience.
+        Our men's dormitory is conveniently located near Samar State University
+        and within easy reach of local shops, restaurants, and public
+        transportation, making it a prime choice for students looking for a
+        hassle-free living experience.
       </p>
       <div className="w-full max-w-[800px] flex justify-end mt-12">
         <Link to="/dorm/available-room-men">

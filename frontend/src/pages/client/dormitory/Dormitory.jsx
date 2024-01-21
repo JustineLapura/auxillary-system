@@ -1,13 +1,28 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import Pricing from "../../../components/dormitory/Pricing";
 import MenSection from "../../../components/dormitory/MenSection";
 import LadiesSection from "../../../components/dormitory/LadiesSection";
 import MainDorm from "../../../components/dormitory/MainDorm";
 import { FaRegQuestionCircle } from "react-icons/fa";
-import { Link } from "react-router-dom";
 import Navbar from "../../../components/navbar/Navbar";
+import InquireModal from "../../../components/dormitory/InquireModal";
+import { AuthContext } from "../../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const Dormitory = () => {
+  const { user } = useContext(AuthContext).user || {};
+  const [openModal, setOpenModal] = useState(false);
+
+  const navigate = useNavigate();
+
+  const handleOpenInquireModal = () => {
+    if (!user) {
+      navigate("/login");
+    } else {
+      setOpenModal(true);
+    }
+  };
+
   return (
     <div>
       <Navbar />
@@ -16,11 +31,15 @@ const Dormitory = () => {
       <MenSection />
       <LadiesSection />
       <div className="w-full flex justify-center py-10 px-8">
-        <Link to="/dorm/inquire">
-          <button className="px-6 py-3 text-white flex items-center gap-2 bg-yellow-400 rounded-xl text-xl font-semibold mt-12">
-            <FaRegQuestionCircle /> Inquire Now
-          </button>
-        </Link>
+        <button
+          className="px-6 py-3 text-white flex items-center gap-2 bg-yellow-400 rounded-xl text-xl font-semibold mt-12"
+          onClick={handleOpenInquireModal}
+        >
+          <FaRegQuestionCircle /> Inquire Now
+        </button>
+        {openModal && (
+          <InquireModal openModal={openModal} setOpenModal={setOpenModal} />
+        )}
       </div>
     </div>
   );

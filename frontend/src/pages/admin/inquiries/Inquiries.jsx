@@ -4,7 +4,7 @@ import InquiryContainer from "../../../components/admin/inquiries/InquiryContain
 
 const Inquiries = () => {
   return (
-    <div className="w-ful p-5 min-h-screen bg-gray-200">
+    <div className="w-ful p-5 h-[85vh] bg-gray-200">
       <TopHeader />
       <InquiryContainer />
     </div>

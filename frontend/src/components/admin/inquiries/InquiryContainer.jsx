@@ -1,26 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import InquiryTable from "./InquiryTable";
+import axios from "axios";
 
 const InquiryContainer = () => {
-  const inquiries = [
-    {
-      id: 1,
-      name: "John Doe",
-      address: "123 Main St, Cityville",
-      contact: "+1234567890",
-      gmail: "john.doe@example.com",
-    },
-    {
-      id: 2,
-      name: "Jane Doe",
-      address: "456 Oak St, Townsville",
-      contact: "+9876543210",
-      gmail: "jane.doe@example.com",
-    },
-    // Add more inquiry data as needed
-  ];
+  const [inquiries, setInquiries] = useState([]);
+  // console.log(dorms);
+
+  useEffect(() => {
+    const fetchInquiries = async () => {
+      try {
+        const response = await axios.get(`http://localhost:4000/api/inquiry`);
+        setInquiries(response.data);
+      } catch (error) {
+        console.log("Error Fetching:", error);
+      }
+    };
+
+    fetchInquiries();
+  }, []);
   return (
-    <div className="w-full bg-white rounded-lg h-[330px] mt-12">
+    <div className="w-full bg-white rounded-lg h-[400px] mt-12">
       <InquiryTable inquiries={inquiries} />
     </div>
   );

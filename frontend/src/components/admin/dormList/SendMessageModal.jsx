@@ -1,10 +1,13 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { SiGooglemessages } from "react-icons/si";
+import { enqueueSnackbar, useSnackbar } from "notistack";
 
 const SendMessageModal = ({ dorm, messageModal, setMessageModal }) => {
   const [students, setStudents] = useState([]);
   //   console.log("Students from Message Modal: ", students);
+
+  const { enqueueSnackbar } = useSnackbar();
 
   const student = students.filter(
     (student) =>
@@ -35,7 +38,7 @@ const SendMessageModal = ({ dorm, messageModal, setMessageModal }) => {
     const apiKey = "cc3695a40b20dbde0ef11395bea1f9ba7c3148ab";
     const message = `Hello ${dorm.firstName},
 
-    
+
     This is a notice that your dormitory payment for the upcoming month is due on ${formatDate(
       dorm.dueDate
     )}. Please make sure to submit your payment by this date to avoid any late fees or disruptions to your housing. Thank you for your prompt attention to this matter.`;
@@ -49,6 +52,7 @@ const SendMessageModal = ({ dorm, messageModal, setMessageModal }) => {
       .then((data) => console.log(data))
       .catch((error) => console.error(error));
 
+    enqueueSnackbar("Message has been sent.", { variant: "success" });
     setMessageModal(false);
   };
 

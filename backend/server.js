@@ -11,6 +11,7 @@ const studentRoutes = require("./routes/student");
 const dormManagementRoutes = require("./routes/dormManagement");
 const dormListRoutes = require("./routes/dormList");
 const bookingRoutes = require("./routes/bookings");
+const inquiryRoutes = require("./routes/inquiries");
 
 const app = express();
 
@@ -32,6 +33,7 @@ app.use("/api/student", studentRoutes);
 app.use("/api/dormManagement", dormManagementRoutes);
 app.use("/api/dormList", dormListRoutes);
 app.use("/api/booking", bookingRoutes);
+app.use("/api/inquiry", inquiryRoutes);
 
 // connect to db
 mongoose
