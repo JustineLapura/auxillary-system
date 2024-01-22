@@ -117,10 +117,15 @@ const Login = () => {
             </p>
           )}
           <div className="w-full space-y-2">
-            <div className="w-full flex justify-center">
+            <div className="w-full flex flex-col items-center gap-4 justify-center">
               <Link to="/signup">
                 <button className="py-2 px-5 rounded-lg bg-gray-500 font-bold shadow-xl text-white ">
                   Create New Account
+                </button>
+              </Link>
+              <Link to="/admin-login">
+                <button className="py-2 px-9 rounded-lg bg-gray-500 font-bold shadow-xl text-white ">
+                  Log in as admin
                 </button>
               </Link>
             </div>
