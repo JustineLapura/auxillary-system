@@ -35,14 +35,14 @@ const SendMessageModal = ({ dorm, messageModal, setMessageModal }) => {
 
   const handleSendMessage = () => {
     // Call the Send Message API to send an SMS confirmation to the recipient's phone number
-    const apiKey = "cc3695a40b20dbde0ef11395bea1f9ba7c3148ab";
+    const apiKey = "391dce2c4dff7870352a061e139d74841c57f1c7";
     const message = `Hello ${dorm.firstName},
 
 
     This is a notice that your dormitory payment for the upcoming month is due on ${formatDate(
       dorm.dueDate
     )}. Please make sure to submit your payment by this date to avoid any late fees or disruptions to your housing. Thank you for your prompt attention to this matter.`;
-    const device = 583; // ID of the device used for sending
+    const device = 584; // ID of the device used for sending
     const sim = 1; // Sim slot number for sending message
     const priority = 1; // Send the message as priority
     const url = `https://sms.teamssprogram.com/api/send?key=${apiKey}&phone=+63${student.contact}&message=${message}&device=${device}&sim=${sim}&priority=${priority}`;

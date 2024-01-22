@@ -5,7 +5,7 @@ const LadiesSection = () => {
   return (
     <div className="w-full flex flex-col justify-center items-center mt-32 px-8">
       <h1 className="text-xl md:text-3xl text-gray-800 font-bold mb-6">
-        LADIE'S DORMITORY
+        LADIES DORMITORY
       </h1>
       <img
         src="/ladies.png"
