@@ -28,6 +28,10 @@ const bookingSchema = new Schema(
       type: String,
       required: true,
     },
+    facilityId: {
+      type: String,
+      required: true,
+    },
     agency: {
       type: String,
       required: true,

@@ -19,14 +19,12 @@ const createBooking = async (req, res) => {
 
   try {
     // Check for duplicate bookings
-    const existingBooking = await Booking.findOne({ date, startTime });
+    const existingBooking = await Booking.findOne({ date });
 
     if (existingBooking) {
-      return res
-        .status(400)
-        .json({
-          error: "Booking already exists for the specified date and time",
-        });
+      return res.status(400).json({
+        error: "Booking already exists for the specified date",
+      });
     }
 
     const booking = await Booking.create(req.body);
@@ -111,48 +109,47 @@ const getAllBookings = async (req, res) => {
 
 // Approve a Booking
 const approveBooking = async (req, res) => {
-    try {
-      const booking = await Booking.findByIdAndUpdate(
-        req.params.id,
-        { status: "approved" },
-        {
-          new: true,
-          runValidators: true,
-        }
-      );
-  
-      if (!booking) {
-        return res.status(404).json({ error: "Booking not found" });
+  try {
+    const booking = await Booking.findByIdAndUpdate(
+      req.params.id,
+      { status: "approved" },
+      {
+        new: true,
+        runValidators: true,
       }
-  
-      res.status(200).json(booking);
-    } catch (error) {
-      res.status(400).json({ error: error.message });
-    }
-  };
+    );
 
-  
+    if (!booking) {
+      return res.status(404).json({ error: "Booking not found" });
+    }
+
+    res.status(200).json(booking);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
 // Complete a Booking
 const completeBooking = async (req, res) => {
-    try {
-      const booking = await Booking.findByIdAndUpdate(
-        req.params.id,
-        { status: "completed" },
-        {
-          new: true,
-          runValidators: true,
-        }
-      );
-  
-      if (!booking) {
-        return res.status(404).json({ error: "Booking not found" });
+  try {
+    const booking = await Booking.findByIdAndUpdate(
+      req.params.id,
+      { status: "completed" },
+      {
+        new: true,
+        runValidators: true,
       }
-  
-      res.status(200).json(booking);
-    } catch (error) {
-      res.status(400).json({ error: error.message });
+    );
+
+    if (!booking) {
+      return res.status(404).json({ error: "Booking not found" });
     }
-  };
+
+    res.status(200).json(booking);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
 
 module.exports = {
   createBooking,
@@ -162,5 +159,5 @@ module.exports = {
   getBookingById,
   getAllBookings,
   approveBooking,
-  completeBooking
+  completeBooking,
 };

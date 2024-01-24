@@ -15,19 +15,19 @@ const facilitySchema = new Schema(
     },
     photo: {
       type: String,
-      default: "",
+      required: true,
     },
     governmentPrice: {
       type: Number,
-      default: 0,
+      required: true,
     },
     nonGovernmentPrice: {
       type: Number,
-      default: 0,
+      required: true,
     },
     otherPrice: {
       type: Number,
-      default: 0,
+      required: true,
     },
     rating: {
       type: Number,

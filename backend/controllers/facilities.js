@@ -2,11 +2,24 @@ const Facility = require("../models/facilities");
 
 // Create a Facility
 const createFacility = async (req, res) => {
-  const { name, photo, desc } = req.body;
+  const { name, photo, desc, governmentPrice, nonGovernmentPrice, otherPrice } =
+    req.body;
   let emptyFields = [];
 
   if (!name) {
     emptyFields.push("name");
+  }
+  if (!photo) {
+    emptyFields.push("photo");
+  }
+  if (!governmentPrice) {
+    emptyFields.push("governmentPrice");
+  }
+  if (!nonGovernmentPrice) {
+    emptyFields.push("nonGovernmentPrice");
+  }
+  if (!otherPrice) {
+    emptyFields.push("otherPrice");
   }
   if (!desc) {
     emptyFields.push("desc");

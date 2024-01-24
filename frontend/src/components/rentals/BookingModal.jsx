@@ -29,6 +29,7 @@ const BookingModal = ({ facility, isBooking, setIsBooking }) => {
     //   email: ${user.email}
     //   address: ${user.address}
     //   facility: ${facility.name}
+    //   facilityId: ${facility._id}
     //   agency: ${agency}
     //   date: ${date}
     //   startTime: ${startTime}
@@ -42,6 +43,7 @@ const BookingModal = ({ facility, isBooking, setIsBooking }) => {
       phoneNumber: user.phoneNumber,
       address: user.address,
       facility: facility.name,
+      facilityId: facility._id,
       agency,
       date,
       startTime,

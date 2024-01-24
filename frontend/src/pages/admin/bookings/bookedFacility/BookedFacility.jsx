@@ -5,12 +5,40 @@ import { enqueueSnackbar, useSnackbar } from "notistack";
 
 const BookedFacility = () => {
   const [client, setClient] = useState({});
+  const [facility, setFacility] = useState({});
   console.log("Client from BookedFacility: ", client);
+  console.log("Facility from BookedFacility: ", facility);
+  // const agencyPrice =
+  //   client && facility && client.agency === "government"
+  //     ? facility.governmentPrice
+  //     : client.agency === "non-government"
+  //     ? facility.nonGovernmentPrice
+  //     : facility.otherPrice;
+
+  console.log(`
+    Government Price: ${facility.governmentPrice}
+    Non-Government Price: ${facility.nonGovernmentPrice}
+    Other Price: ${facility.otherPrice}
+  `);
 
   const { enqueueSnackbar } = useSnackbar();
 
   const { id } = useParams();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchFacility = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:4000/api/facility/${client.facilityId}`
+        );
+        setFacility(response.data);
+      } catch (error) {
+        console.log("Error Fetching:", error);
+      }
+    };
+    fetchFacility();
+  }, [client.facilityId]);
 
   useEffect(() => {
     const fetchClient = async () => {
@@ -89,7 +117,7 @@ const BookedFacility = () => {
               <p>
                 {client.firstName} {client.lastName}
               </p>
-              <p>{client.address}</p>
+              <p className="text-xs">{client.address}</p>
               <p>{client.phoneNumber}</p>
               <p>{client.email}</p>
             </div>
@@ -124,12 +152,34 @@ const BookedFacility = () => {
 
       <div className="w-full flex justify-around mx-auto mt-12 gap-4 text-gray-600 font-semibold">
         <div className="">
-          <p className="text-xl font-bold text-gray-900">Agency Price:</p>
-          <p>5,000</p>
+          <p className="text-xl font-bold text-gray-900 capitalize">
+            Agency Price ({client && client.agency}):
+          </p>
+          {client.agency === "government" &&
+            facility.governmentPrice !== undefined && (
+              <p>₱{facility.governmentPrice.toLocaleString()}</p>
+            )}
+          {client.agency === "non-government" &&
+            facility.nonGovernmentPrice !== undefined && (
+              <p>₱{facility.nonGovernmentPrice.toLocaleString()}</p>
+            )}
+          {client.agency === "others" && facility.otherPrice !== undefined && (
+            <p>₱{facility.otherPrice.toLocaleString()}</p>
+          )}
         </div>
         <div className="">
           <p className="text-xl font-bold text-gray-900">Total Price:</p>
-          <p>5,000</p>
+          {client.agency === "government" &&
+            facility.governmentPrice !== undefined && (
+              <p>₱{facility.governmentPrice.toLocaleString()}</p>
+            )}
+          {client.agency === "non-government" &&
+            facility.nonGovernmentPrice !== undefined && (
+              <p>₱{facility.nonGovernmentPrice.toLocaleString()}</p>
+            )}
+          {client.agency === "others" && facility.otherPrice !== undefined && (
+            <p>₱{facility.otherPrice.toLocaleString()}</p>
+          )}
         </div>
       </div>
 

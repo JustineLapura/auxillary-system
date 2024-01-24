@@ -104,7 +104,11 @@ const AddFacilityModal = ({ addModal, setAddModal }) => {
       <div className="w-full">
         <h1 className="text-lg font-semibold">Facility Image:</h1>
         <input
-          className="border w-full rounded py-1 bg-white ps-2"
+          className={
+            emptyFields && emptyFields.includes("photo")
+              ? "border w-full rounded py-1 bg-white ps-2 border-red-500"
+              : "border w-full rounded py-1 bg-white ps-2"
+          }
           type="file"
           name="facilityImage"
           id="facilityImage"
@@ -132,9 +136,15 @@ const AddFacilityModal = ({ addModal, setAddModal }) => {
         <h1 className="text-lg font-semibold text-center my-3">Price Rate:</h1>
         <div className="flex justify-between items-center gap-4">
           <div className="flex flex-col">
-            <label className="text-gray-500" htmlFor="">Government:</label>
+            <label className="text-gray-500" htmlFor="">
+              Government:
+            </label>
             <input
-              className="w-[150px] border border-gray-300 focus:outline-none ps-1"
+              className={
+                emptyFields && emptyFields.includes("governmentPrice")
+                  ? "w-[150px] border border-red-500 focus:outline-none ps-1"
+                  : "w-[150px] border border-gray-300 focus:outline-none ps-1"
+              }
               type="number"
               onChange={(e) => setGovernmentPrice(e.target.value)}
               value={governmentPrice}
@@ -142,9 +152,15 @@ const AddFacilityModal = ({ addModal, setAddModal }) => {
             />
           </div>
           <div className="flex flex-col">
-            <label className="text-gray-500" htmlFor="">Non-Government:</label>
+            <label className="text-gray-500" htmlFor="">
+              Non-Government:
+            </label>
             <input
-              className="w-[150px] border border-gray-300 focus:outline-none ps-1"
+              className={
+                emptyFields && emptyFields.includes("nonGovernmentPrice")
+                  ? "w-[150px] border border-red-500 focus:outline-none ps-1"
+                  : "w-[150px] border border-gray-300 focus:outline-none ps-1"
+              }
               type="number"
               onChange={(e) => setNonGovernmentPrice(e.target.value)}
               value={nonGovernmentPrice}
@@ -152,9 +168,15 @@ const AddFacilityModal = ({ addModal, setAddModal }) => {
             />
           </div>
           <div className="flex flex-col">
-            <label className="text-gray-500" htmlFor="">Others:</label>
+            <label className="text-gray-500" htmlFor="">
+              Others:
+            </label>
             <input
-              className="w-[150px] border border-gray-300 focus:outline-none ps-1"
+              className={
+                emptyFields && emptyFields.includes("otherPrice")
+                  ? "w-[150px] border border-red-500 focus:outline-none ps-1"
+                  : "w-[150px] border border-gray-300 focus:outline-none ps-1"
+              }
               type="number"
               onChange={(e) => setOtherPrice(e.target.value)}
               value={otherPrice}

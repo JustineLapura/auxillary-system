@@ -9,9 +9,7 @@ const RentalFacilityCards = ({ facility }) => {
       <div className="w-full h-full">
         {facility && facility.photo && (
           <img
-            className="rounded-xl h-full w-full transform -z-10"
-            width={100}
-            height={100}
+            className="rounded-xl h-[200px] w-full object-cover -z-10"
             src={PF + facility.photo}
             alt="logo"
           />

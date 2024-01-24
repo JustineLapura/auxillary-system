@@ -23,7 +23,7 @@ const FacilityCard = ({ facility, setIsBooking }) => {
     <div className="w-full h-ful lg:flex justify-between items-center gap-16">
       {facility && facility.photo && (
         <img
-          className="w-full h-[360px] md:w-full rounded-lg"
+          className="w-full h-[360px] md:w-full rounded-lg object-cover"
           src={PF + facility.photo}
           alt={facility.name}
         />
