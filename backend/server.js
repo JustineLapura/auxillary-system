@@ -60,3 +60,5 @@ const upload = multer({ storage: storage });
 app.post("/api/upload", upload.single("file"), (req, res) => {
   res.status(200).json({ mssg: "File has been uploaded" });
 });
+
+module.exports = app;
