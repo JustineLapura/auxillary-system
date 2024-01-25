@@ -17,7 +17,7 @@ const app = express();
 
 // Allow requests only from your frontend domain
 const corsOptions = {
-  origin: "https://auxillary-services.vercel.app",
+  origin: "https://auxillary-services-system.vercel.app",
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   credentials: true,
   optionsSuccessStatus: 204,
