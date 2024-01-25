@@ -11,7 +11,7 @@ const Facilities = () => {
     const fetchFacilities = async () => {
       try {
         const response = await axios.get(
-          `https://auxillary-services-api.vercel.app/api/facility`
+          `http://localhost:4000/api/facility`
         );
         setFacilities(response.data);
       } catch (error) {

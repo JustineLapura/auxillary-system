@@ -15,6 +15,15 @@ const inquiryRoutes = require("./routes/inquiries");
 
 const app = express();
 
+// Allow requests only from your frontend domain
+// const corsOptions = {
+//   origin: "https://auxillary-services.vercel.app",
+//   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+//   credentials: true,
+//   optionsSuccessStatus: 204,
+// };
+// app.use(cors(corsOptions));
+
 app.use(cors());
 
 // MIDDLEWARE
