@@ -30,7 +30,7 @@ const BookedFacility = () => {
     const fetchFacility = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:4000/api/facility/${client.facilityId}`
+          `https://auxillary-services-api-rosy.vercel.app/sasdapi/facility/${client.facilityId}`
         );
         setFacility(response.data);
       } catch (error) {

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import RecordsTableCard from "./RecordsTableCard";
 import axios from "axios";
 
-
 const RecordsTable = () => {
   const [clients, setClients] = useState([]);
 
@@ -13,7 +12,9 @@ const RecordsTable = () => {
   useEffect(() => {
     const fetchClients = async () => {
       try {
-        const response = await axios.get(`http://localhost:4000/api/booking`);
+        const response = await axios.get(
+          `https://auxillary-services-api-rosy.vercel.app/api/booking`
+        );
         setClients(response.data);
       } catch (error) {
         console.log("Error Fetching:", error);
@@ -39,10 +40,7 @@ const RecordsTable = () => {
         </thead>
         <tbody>
           {completedClients.map((client) => (
-            <RecordsTableCard
-              key={client._id}
-              client={client}
-            />
+            <RecordsTableCard key={client._id} client={client} />
           ))}
         </tbody>
       </table>

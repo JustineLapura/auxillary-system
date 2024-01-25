@@ -24,13 +24,16 @@ const InquireModal = ({ openModal, setOpenModal }) => {
     };
 
     try {
-      const response = await fetch("http://localhost:4000/api/inquiry", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newInquiry),
-      });
+      const response = await fetch(
+        "https://auxillary-services-api-rosy.vercel.app/api/inquiry",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(newInquiry),
+        }
+      );
 
       const json = await response.json();
 

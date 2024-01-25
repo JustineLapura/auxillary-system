@@ -28,7 +28,7 @@ const AddStudentModal = ({ addModal, setAddModal }) => {
     };
 
     try {
-      const response = await fetch("http://localhost:4000/api/student", {
+      const response = await fetch("https://auxillary-services-api-rosy.vercel.app/api/student", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

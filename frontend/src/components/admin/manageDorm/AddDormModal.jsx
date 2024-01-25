@@ -22,13 +22,16 @@ const AddDormModal = ({ addModal, setAddModal }) => {
     };
 
     try {
-      const response = await fetch("http://localhost:4000/api/dormManagement", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newDormManagement),
-      });
+      const response = await fetch(
+        "https://auxillary-services-api-rosy.vercel.app/api/dormManagement",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(newDormManagement),
+        }
+      );
 
       const json = await response.json();
 

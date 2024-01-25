@@ -9,7 +9,9 @@ const InquiryContainer = () => {
   useEffect(() => {
     const fetchInquiries = async () => {
       try {
-        const response = await axios.get(`http://localhost:4000/api/inquiry`);
+        const response = await axios.get(
+          `https://auxillary-services-api-rosy.vercel.app/api/inquiry`
+        );
         setInquiries(response.data);
       } catch (error) {
         console.log("Error Fetching:", error);

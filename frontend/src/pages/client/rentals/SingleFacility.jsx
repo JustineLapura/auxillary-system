@@ -19,7 +19,7 @@ const SingleFacility = ({ params }) => {
     const fetchFacilities = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:4000/api/facility/${id}`
+          `https://auxillary-services-api-rosy.vercel.app/api/facility/${id}`
         );
         setFacility(response.data);
       } catch (error) {

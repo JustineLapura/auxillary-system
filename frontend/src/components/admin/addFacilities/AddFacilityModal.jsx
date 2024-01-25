@@ -30,20 +30,26 @@ const AddFacilityModal = ({ addModal, setAddModal }) => {
       data.append("file", file);
       newFacility.photo = filename;
       try {
-        await axios.post("http://localhost:4000/api/upload/", data);
+        await axios.post(
+          "https://auxillary-services-api-rosy.vercel.app/api/upload/",
+          data
+        );
       } catch (error) {
         console.log("Error uploading file:", error);
       }
     }
 
     try {
-      const response = await fetch("http://localhost:4000/api/facility", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newFacility),
-      });
+      const response = await fetch(
+        "https://auxillary-services-api-rosy.vercel.app/api/facility",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(newFacility),
+        }
+      );
 
       const json = await response.json();
 

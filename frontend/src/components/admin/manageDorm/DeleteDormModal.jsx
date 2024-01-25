@@ -8,7 +8,8 @@ const DeleteDormModal = ({ dorm, deleteModal, setDeleteModal }) => {
   const handleDeleteDorm = async () => {
     try {
       await axios.delete(
-        "http://localhost:4000/api/dormManagement/" + dorm._id
+        "https://auxillary-services-api-rosy.vercel.app/api/dormManagement/" +
+          dorm._id
       );
       enqueueSnackbar("Dorm has been deleted", { variant: "success" });
       // Reload the page upon successful submission
@@ -40,8 +41,7 @@ const DeleteDormModal = ({ dorm, deleteModal, setDeleteModal }) => {
         <h1 className="text-xl text-center">
           Are you sure you want to delete <br /> <br /> <br />{" "}
           <span className="text-blue-800 text-2xl capitalize">
-             {dorm.type} dorm : room{" "}
-            {dorm.roomNumber}
+            {dorm.type} dorm : room {dorm.roomNumber}
           </span>
           ?
         </h1>

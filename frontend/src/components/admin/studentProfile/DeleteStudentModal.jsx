@@ -7,7 +7,10 @@ const DeleteStudentModal = ({ student, deleteModal, setDeleteModal }) => {
 
   const handleDeleteStudent = async () => {
     try {
-      await axios.delete("http://localhost:4000/api/student/" + student._id);
+      await axios.delete(
+        "https://auxillary-services-api-rosy.vercel.app/api/student/" +
+          student._id
+      );
       enqueueSnackbar("Student has been deleted", { variant: "success" });
       // Reload the page upon successful submission
       window.location.reload();

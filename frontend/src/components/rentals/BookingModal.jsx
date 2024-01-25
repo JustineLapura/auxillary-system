@@ -51,13 +51,16 @@ const BookingModal = ({ facility, isBooking, setIsBooking }) => {
     };
 
     try {
-      const response = await fetch("http://localhost:4000/api/booking", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newBooking),
-      });
+      const response = await fetch(
+        "https://auxillary-services-api-rosy.vercel.app/api/booking",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(newBooking),
+        }
+      );
 
       const json = await response.json();
 

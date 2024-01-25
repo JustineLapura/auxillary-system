@@ -12,7 +12,7 @@ const CustomersTable = () => {
   useEffect(() => {
     const fetchClients = async () => {
       try {
-        const response = await axios.get(`http://localhost:4000/api/booking`);
+        const response = await axios.get(`https://auxillary-services-api-rosy.vercel.app/api/booking`);
         setClients(response.data);
       } catch (error) {
         console.log("Error Fetching:", error);

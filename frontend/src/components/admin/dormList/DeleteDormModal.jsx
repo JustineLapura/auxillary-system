@@ -7,7 +7,10 @@ const DeleteDormModal = ({ dorm, deleteModal, setDeleteModal }) => {
 
   const handleDeleteDorm = async () => {
     try {
-      await axios.delete("http://localhost:4000/api/dormList/" + dorm._id);
+      await axios.delete(
+        "https://auxillary-services-api-rosy.vercel.app/api/dormList/" +
+          dorm._id
+      );
       enqueueSnackbar("Dorm has been deleted", { variant: "success" });
       // Reload the page upon successful submission
       window.location.reload();

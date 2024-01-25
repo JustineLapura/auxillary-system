@@ -14,7 +14,7 @@ const LadiesRoomAvailability = () => {
     const fetchDorms = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:4000/api/dormManagement`
+          `https://auxillary-services-api-rosy.vercel.app/api/dormManagement`
         );
         setDorms(response.data);
       } catch (error) {

@@ -23,7 +23,9 @@ const SendMessageModal = ({ dorm, messageModal, setMessageModal }) => {
   useEffect(() => {
     const fetchStudents = async () => {
       try {
-        const response = await axios.get(`http://localhost:4000/api/student`);
+        const response = await axios.get(
+          `https://auxillary-services-api-rosy.vercel.app/api/student`
+        );
         setStudents(response.data);
       } catch (error) {
         console.log("Error Fetching:", error);

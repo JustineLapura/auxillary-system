@@ -12,7 +12,9 @@ const DeleteFacilityModal = ({
 
   const handleDeleteFacility = async () => {
     try {
-      await axios.delete("http://localhost:4000/api/facility/" + id);
+      await axios.delete(
+        "https://auxillary-services-api-rosy.vercel.app/api/facility/" + id
+      );
       enqueueSnackbar("Facility has been deleted", { variant: "success" });
       // Reload the page upon successful submission
       window.location.reload();
@@ -20,7 +22,7 @@ const DeleteFacilityModal = ({
       console.log(error);
     }
 
-    setDeleteModal(false)
+    setDeleteModal(false);
   };
   return (
     <>
@@ -40,7 +42,8 @@ const DeleteFacilityModal = ({
         }
       >
         <h1 className="text-xl text-center">
-          Are you sure you want to delete <br /> <span className="text-blue-800 text-2xl">{facilityName}</span>?
+          Are you sure you want to delete <br />{" "}
+          <span className="text-blue-800 text-2xl">{facilityName}</span>?
         </h1>
         <div className="flex justify-between items-center gap-3">
           <button

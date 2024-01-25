@@ -13,7 +13,9 @@ const AddFacilities = () => {
   useEffect(() => {
     const fetchFacilities = async () => {
       try {
-        const response = await axios.get(`http://localhost:4000/api/facility`);
+        const response = await axios.get(
+          `https://auxillary-services-api-rosy.vercel.app/api/facility`
+        );
         setFacilities(response.data);
       } catch (error) {
         console.log("Error Fetching:", error);

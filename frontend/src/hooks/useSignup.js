@@ -23,19 +23,22 @@ export const useSignup = () => {
     setIsLoading(true);
     setError(null);
 
-    const response = await fetch("http://localhost:4000/api/auth/signup", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        firstName,
-        lastName,
-        email,
-        phoneNumber,
-        address,
-        password,
-        passwordConfirm,
-      }),
-    });
+    const response = await fetch(
+      "https://auxillary-services-api-rosy.vercel.app/api/auth/signup",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          firstName,
+          lastName,
+          email,
+          phoneNumber,
+          address,
+          password,
+          passwordConfirm,
+        }),
+      }
+    );
     const json = await response.json();
 
     if (!response.ok) {
