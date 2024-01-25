@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 
 import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
-import BookTableCard from "./bookTableCard";
+import BookTableCard from "./BookTableCard";
 
 const BookTable = () => {
   const [clients, setClients] = useState([]);

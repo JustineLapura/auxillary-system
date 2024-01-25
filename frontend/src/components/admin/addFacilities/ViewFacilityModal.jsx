@@ -2,7 +2,7 @@ import React from "react";
 
 const ViewFacilityModal = ({ facility, viewModal, setViewModal }) => {
   console.log("Facility: ", facility);
-  const PF = "https://auxillary-services-api-rosy.vercel.app/images/";
+  const PF = "http://localhost:4000/images/";
 
   return (
     <>

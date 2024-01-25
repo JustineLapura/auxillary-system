@@ -6,17 +6,17 @@ const DeleteDormModal = ({ dorm, deleteModal, setDeleteModal }) => {
   const { enqueueSnackbar } = useSnackbar();
 
   const handleDeleteDorm = async () => {
-    try {
-      await axios.delete(
-        "https://auxillary-services-api-rosy.vercel.app/api/dormManagement/" +
-          dorm._id
-      );
-      enqueueSnackbar("Dorm has been deleted", { variant: "success" });
-      // Reload the page upon successful submission
-      window.location.reload();
-    } catch (error) {
-      console.log(error);
-    }
+    // try {
+    //   await axios.delete(
+    //     "https://auxillary-services-api-rosy.vercel.app/api/dormManagement/" +
+    //       dorm._id
+    //   );
+    //   enqueueSnackbar("Dorm has been deleted", { variant: "success" });
+    //   // Reload the page upon successful submission
+    //   window.location.reload();
+    // } catch (error) {
+    //   console.log(error);
+    // }
 
     setDeleteModal(false);
   };
