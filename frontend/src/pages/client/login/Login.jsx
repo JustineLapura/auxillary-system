@@ -1,7 +1,8 @@
 import React, { useState, useContext } from "react";
-import { AiFillHome } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { useLogin } from "../../../hooks/useLogin";
+import { AiFillHome } from "react-icons/ai";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 const Login = () => {
   const [isHovered, setIsHovered] = useState(false);
@@ -10,7 +11,7 @@ const Login = () => {
 
   const { login, isLoading, error, emptyFields } = useLogin();
 
-  console.log("email: ", email, "Password: ", password);
+  // console.log("email: ", email, "Password: ", password);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -107,7 +108,14 @@ const Login = () => {
                 className="py-2 px-12 rounded-lg bg-blue-500 font-bold shadow-xl text-white "
                 onClick={handleLogin}
               >
-                Login
+                {isLoading ? (
+                  <AiOutlineLoading3Quarters
+                    size={25}
+                    className="animate-spin text-white font-bold"
+                  />
+                ) : (
+                  "Login"
+                )}
               </button>
             </div>
           </form>

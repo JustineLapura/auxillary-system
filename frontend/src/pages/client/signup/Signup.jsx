@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { AiFillHome } from "react-icons/ai";
+import { AiFillHome, AiOutlineLoading3Quarters } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { useSignup } from "../../../hooks/useSignup";
 
@@ -175,10 +175,17 @@ const Signup = () => {
             <button
               disabled={isLoading}
               type="submit"
-              className="py-2 px-6 rounded-lg bg-blue-500 font-bold shadow-xl text-white "
+              className="w-26 py-2 px-6 rounded-lg bg-blue-500 font-bold shadow-xl text-white "
               onClick={handleSignup}
             >
-              Sign Up
+              {isLoading ? (
+                <AiOutlineLoading3Quarters
+                  size={25}
+                  className="animate-spin text-white font-bold"
+                />
+              ) : (
+                "Sign Up"
+              )}
             </button>
           </div>
           {error && (
