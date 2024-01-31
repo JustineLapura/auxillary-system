@@ -3,10 +3,13 @@ import React, { useState, useEffect } from "react";
 import RentalFacilityCards from "../../../components/rentals/RentalFacilityCards";
 import Navbar from "../../../components/navbar/Navbar";
 import axios from "axios";
+import Loading from "@/components/rentals/facilitiesLoading/Loading";
 
 const Facilities = () => {
   const [facilities, setFacilities] = useState([]);
   console.log("Facilities from Rentals: ", facilities);
+ 
+ 
   useEffect(() => {
     const fetchFacilities = async () => {
       try {
@@ -21,6 +24,25 @@ const Facilities = () => {
 
     fetchFacilities();
   }, []);
+
+
+  // useEffect(() => {
+  //   const fetchFacilities = async () => {
+  //     try {
+  //       // Simulate a 3-second delay
+  //       setTimeout(async () => {
+  //         const response = await axios.get(
+  //           `https://auxillary-services-api-rosy.vercel.app/api/facility`
+  //         );
+  //         setFacilities(response.data);
+  //       }, 3000);
+  //     } catch (error) {
+  //       console.log("Error Fetching:", error);
+  //     }
+  //   };
+
+  //   fetchFacilities();
+  // }, []);
   return (
     <>
       <Navbar />
@@ -29,17 +51,20 @@ const Facilities = () => {
           <h1 className="text-center mb-10 text-blue-950 uppercase font-black text-5xl md:text-5xl">
             Facilities
           </h1>
-          <div className="grid place-items-center gap-20 lg:gap-36 sm:grid-cols-2 md:grid-cols-3 mt-16">
-            {facilities.map((facility) => (
-              <RentalFacilityCards
-                key={facility._id}
-                // id={facility.id}
-                // img={facility.img}
-                // facilityName={facility.name}
-                facility={facility}
-              />
-            ))}
-          </div>
+          {facilities.length === 0 && <Loading />}
+          {facilities.length > 0 && (
+            <div className="grid place-items-center gap-20 lg:gap-36 sm:grid-cols-2 md:grid-cols-3 mt-16">
+              {facilities.map((facility) => (
+                <RentalFacilityCards
+                  key={facility._id}
+                  // id={facility.id}
+                  // img={facility.img}
+                  // facilityName={facility.name}
+                  facility={facility}
+                />
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </>
