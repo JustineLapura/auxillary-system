@@ -16,32 +16,12 @@ const SingleFacility = ({ params }) => {
   const { id } = useParams();
   console.log(id);
 
-  // useEffect(() => {
-  //   const fetchFacility = async () => {
-  //     try {
-  //       const response = await axios.get(
-  //         `https://auxillary-services-api-rosy.vercel.app/api/facility/${id}`
-  //       );
-  //       console.log("Facility Response:", response.data);
-  //       setFacility(response.data);
-  //     } catch (error) {
-  //       console.log("Error Fetching:", error);
-  //     }
-  //   };
-
-  //   fetchFacility();
-  // }, [id]);
-
   useEffect(() => {
     const fetchFacility = async () => {
       try {
-        // Simulate a delay of 3 seconds
-        await new Promise((resolve) => setTimeout(resolve, 3000));
-
         const response = await axios.get(
           `https://auxillary-services-api-rosy.vercel.app/api/facility/${id}`
         );
-
         console.log("Facility Response:", response.data);
         setFacility(response.data);
       } catch (error) {
@@ -50,7 +30,27 @@ const SingleFacility = ({ params }) => {
     };
 
     fetchFacility();
-  }, [id]); // Make sure to include id as a dependency if it's used inside the useEffect
+  }, [id]);
+
+  // useEffect(() => {
+  //   const fetchFacility = async () => {
+  //     try {
+  //       // Simulate a delay of 3 seconds
+  //       await new Promise((resolve) => setTimeout(resolve, 3000));
+
+  //       const response = await axios.get(
+  //         `https://auxillary-services-api-rosy.vercel.app/api/facility/${id}`
+  //       );
+
+  //       console.log("Facility Response:", response.data);
+  //       setFacility(response.data);
+  //     } catch (error) {
+  //       console.log("Error Fetching:", error);
+  //     }
+  //   };
+
+  //   fetchFacility();
+  // }, [id]); // Make sure to include id as a dependency if it's used inside the useEffect
 
   return (
     <>
