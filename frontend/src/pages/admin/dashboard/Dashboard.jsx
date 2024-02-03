@@ -6,6 +6,8 @@ const Dashboard = () => {
   const [currentDate, setCurrentDate] = useState("");
   const [currentTime, setCurrentTime] = useState("");
 
+  
+
   useEffect(() => {
     // Update date and time every second
     const intervalId = setInterval(updateDateTime, 1000);
@@ -16,7 +18,12 @@ const Dashboard = () => {
 
   const updateDateTime = () => {
     const now = new Date();
-    const dateOptions = { weekday: "long", month: "long", day: "numeric", year: "numeric" };
+    const dateOptions = {
+      weekday: "long",
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+    };
     const timeOptions = { hour: "numeric", minute: "numeric", hour12: true };
 
     setCurrentDate(now.toLocaleDateString("en-US", dateOptions));

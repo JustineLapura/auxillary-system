@@ -12,12 +12,13 @@ const FacilityCard = ({ facility, setIsBooking }) => {
 
   const [clients, setClients] = useState([]);
 
-  console.log("Bookings: ", clients);
+  // console.log("Bookings: ", clients);
+
   const bookedDates = clients
     .filter((client) => client.facility === facility.name)
     .map((client) => new Date(client.date));
 
-  console.log(bookedDates);
+  // console.log(bookedDates);
 
   useEffect(() => {
     const fetchClients = async () => {
@@ -33,9 +34,6 @@ const FacilityCard = ({ facility, setIsBooking }) => {
 
     fetchClients();
   }, []);
-
-  // Sample initial dates
-  const initialDates = [new Date("2024-02-10"), new Date("2024-02-15")];
 
   const PF = "http://localhost:4000/images/";
 
