@@ -97,7 +97,7 @@ const FacilityCard = ({ facility, setIsBooking }) => {
           </div>
           {/* right container  */}
           <div className="w-full lg:w-2/5 flex flex-col items-center justify-center ">
-            <h1 className="text-gray-900 font-bold my-4 text-xl">
+            <h1 className="text-gray-900 font-bold my-7 text-xl">
               Booked Date:
             </h1>
             <Calendar
