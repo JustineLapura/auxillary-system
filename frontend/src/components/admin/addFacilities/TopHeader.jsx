@@ -8,13 +8,13 @@ const TopHeader = ({ facilitiesCount, setAddModal }) => {
         <h1 className="text-gray-900 text-3xl md:text-5xl">Facilities</h1>
         <button
           onClick={() => setAddModal(true)}
-          className="flex text-white bg-green-500/90 hover:bg-green-600 py-2 sm:py-3 px-5 rounded-lg"
+          className="flex text-white bg-green-500/90 hover:bg-green-600 py-2 px-3 rounded-lg"
         >
           + Add <span className="hidden sm:block ps-2">Facility</span>
         </button>
       </div>
 
-      <div className="w-full flex justify-between items-center mt-12">
+      <div className="w-full flex justify-between items-center my-6">
         <h1 className=" text-sm lg:text-xl font-semibold text-gray-700">
           Showing{" "}
           <span className="px-3 py-1 rounded bg-gray-300 font-bold text-gray-900">
@@ -30,6 +30,7 @@ const TopHeader = ({ facilitiesCount, setAddModal }) => {
             type="text"
             name=""
             id=""
+            placeholder="Facility name..."
           />
         </div>
         <div className="relative sm:hidden">

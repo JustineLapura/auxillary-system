@@ -2,6 +2,7 @@ import axios from "axios";
 import { enqueueSnackbar, useSnackbar } from "notistack";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { TableRow, TableCell } from "@/components/ui/table";
 
 const CustomersTableCard = ({ client }) => {
   const navigate = useNavigate();
@@ -38,24 +39,30 @@ const CustomersTableCard = ({ client }) => {
 
   return (
     <>
-      <tr className="text-xs md:text-base font-semibold text-gray-700 text-center">
-        <td>{client.facility}</td>
-        <td>
+      <TableRow className="text-xs md:text-base font-semibold text-gray-700 text-center">
+        <TableCell className="text-center">{client.facility}</TableCell>
+        <TableCell className="text-center">
           {client.firstName} {client.lastName}
-        </td>
-        <td>{formatDate(client.date)}</td>
-        <td>{formatTime(client.startTime)}</td>
-        <td>{formatTime(client.endTime)}</td>
-        <td className="capitalize text-blue-800 font-bold">{client.status}</td>
-        <td>
+        </TableCell>
+        <TableCell className="text-center">{formatDate(client.date)}</TableCell>
+        <TableCell className="text-center">
+          {formatTime(client.startTime)}
+        </TableCell>
+        <TableCell className="text-center">
+          {formatTime(client.endTime)}
+        </TableCell>
+        <TableCell className="capitalize text-blue-800 font-bold text-center">
+          {client.status}
+        </TableCell>
+        <TableCell className="text-center">
           <button
             onClick={handleComplete}
             className="px-2 py-1 my-1 bg-blue-600 rounded-lg text-white font-boldhover:scale-105 duration-200 hover:bg-blue-700"
           >
             Complete
           </button>
-        </td>
-      </tr>
+        </TableCell>
+      </TableRow>
     </>
   );
 };

@@ -1,6 +1,15 @@
 import React, { useState, useEffect } from "react";
 import CustomersTableCard from "./RentedFacilityTable";
 import axios from "axios";
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const CustomersTable = () => {
   const [clients, setClients] = useState([]);
@@ -25,25 +34,28 @@ const CustomersTable = () => {
   }, []);
 
   return (
-    <div className="w-full h-[250px] mt-10 hidden sm:block">
-      <table className="w-full rounded-lg">
-        <thead className="md:text-2xl text-center">
-          <tr>
-            <th>Facility Name</th>
-            <th>Booked By</th>
-            <th>Date</th>
-            <th>Time Start</th>
-            <th>Time End</th>
-            <th>Status</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
+    <div className="w-full h-[320px] hidden sm:block">
+      <Table className="w-full rounded-sm">
+        <TableCaption className="text-lg">
+          A list of rented facilities.
+        </TableCaption>
+        <TableHeader className="md:text-lg text-center">
+          <TableRow>
+            <TableHead className="text-center">Facility Name</TableHead>
+            <TableHead className="text-center">Booked By</TableHead>
+            <TableHead className="text-center">Date</TableHead>
+            <TableHead className="text-center">Time Start</TableHead>
+            <TableHead className="text-center">Time End</TableHead>
+            <TableHead className="text-center">Status</TableHead>
+            <TableHead className="text-center">Action</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
           {approvedClients.map((client) => (
             <CustomersTableCard key={client._id} client={client} />
           ))}
-        </tbody>
-      </table>
+        </TableBody>
+      </Table>
     </div>
   );
 };

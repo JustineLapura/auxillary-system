@@ -28,7 +28,7 @@ const AdminNavbar = () => {
       </div>
 
       {/* right  */}
-      <div className="h-full hidden lg:flex items-center gap-16 text-white">
+      <div className="h-full flex items-center gap-16 text-white">
         <button
           onClick={handleLogout}
           className="py-3 border border-yellow-400 bg-yellow-400 hover:bg-yellow-300 font-bold hover:scale-105 duration-300 px-6 rounded-xl "

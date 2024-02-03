@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from "react";
 import CustomersTableCard from "./CustomersTableCard";
-import axios from "axios";
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 
 const CustomersTable = ({ clients }) => {
   const pendingClients = clients.filter(
@@ -8,22 +15,21 @@ const CustomersTable = ({ clients }) => {
   );
 
   return (
-    <div className="hidden md:block w-full h-[400px] mt-12">
-      <table className="min-w-full ">
-        <thead>
-          <tr className="lg:font-bold text-xs lg:text-lg">
-            <th>No.</th>
-            <th>Client&apos;s Name</th> {/* Fix the single quote here */}
-            <th>Facility</th>
-            <th>Booking Date</th>
-            <th>Start Time</th>
-            <th>End Time</th>
-            <th>Agency</th>
-            <th>Booking Status</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
+    <div className="hidden md:block w-full h-[400px] mt-4">
+      <Table className="w-full border">
+        <TableCaption className="text-lg">A list of Reservations.</TableCaption>
+        <TableRow className="lg:font-bold text-xs lg:text-lg">
+          <TableHead>No.</TableHead>
+          <TableHead>Client's Name</TableHead>
+          <TableHead>Facility</TableHead>
+          <TableHead>Booking Date</TableHead>
+          <TableHead>Start Time</TableHead>
+          <TableHead>End Time</TableHead>
+          <TableHead>Agency</TableHead>
+          <TableHead>Booking Status</TableHead>
+          <TableHead>Action</TableHead>
+        </TableRow>
+        <TableBody>
           {pendingClients.map((client, index) => (
             <CustomersTableCard
               key={client._id}
@@ -32,8 +38,8 @@ const CustomersTable = ({ clients }) => {
             />
           ))}
           {/* Add more data rows here */}
-        </tbody>
-      </table>
+        </TableBody>
+      </Table>
     </div>
   );
 };

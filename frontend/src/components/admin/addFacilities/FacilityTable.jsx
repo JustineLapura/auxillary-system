@@ -1,19 +1,27 @@
 import React, { useState, useEffect } from "react";
 import FacilityTableCard from "./FacilityTableCard";
 import axios from "axios";
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 
 const FacilityTable = ({ facilities }) => {
   return (
-    <div className="w-full mt-10 hidden sm:block">
-      <table className="w-full">
-        <thead className="text-left text-2xl">
-          <tr>
-            <th>No.</th>
-            <th>Facility Name</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody className="text-sm sm:text-base font-semibold text-gray-600">
+    <div className="w-full hidden sm:block">
+      <Table className="w-full">
+        <TableHeader className="text-left text-lg">
+          <TableRow>
+            <TableHead className="text-center">No.</TableHead>
+            <TableHead className="text-center">Facility Name</TableHead>
+            <TableHead className="text-center">Action</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody className="text-sm sm:text-base font-semibold text-gray-600">
           {facilities &&
             facilities.map((facility, i) => (
               <FacilityTableCard
@@ -22,8 +30,8 @@ const FacilityTable = ({ facilities }) => {
                 facility={facility}
               />
             ))}
-        </tbody>
-      </table>
+        </TableBody>
+      </Table>
     </div>
   );
 };

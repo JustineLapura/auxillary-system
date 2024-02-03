@@ -2,15 +2,20 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { FaCalendarAlt, FaDesktop, FaTooth } from "react-icons/fa";
 import { FaBuildingColumns, FaUserGroup } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 const Facilities = () => {
   const [users, setUsers] = useState([]);
   const [facilities, setFacilities] = useState([]);
   const [reservations, setReservations] = useState([]);
 
+  const pendingReservations = reservations.filter(
+    (reservation) => reservation.status === "pending"
+  );
+
   console.log("Users fr Dashboard: ", users);
   console.log("Facilities fr Dashboard: ", facilities);
-  console.log("Reservations fr Dashboard: ", reservations);
+  console.log("Reservations fr Dashboard: ", pendingReservations);
 
   // get Users
   useEffect(() => {
@@ -79,29 +84,33 @@ const Facilities = () => {
           </div>
         </div>
         {/* card2 */}
-        <div className="w-[300px] h-[100px] flex justify-between items-center cursor-pointer p-4 rounded-lg bg-blue-500 text-white hover:scale-105 hover:bg-blue-600 duration-200">
-          <FaBuildingColumns className="w-1/4 h-1/2 lg:h-full" size={25} />
-          <div className="">
-            <h1 className="text-lg md:text-xl text-white font-bold">
-              Total Facilities
-            </h1>
-            <p className="text-right lg:text-center font-semibold">
-              {facilities.length}
-            </p>
+        <Link to="/admin/add-facilities">
+          <div className="w-[300px] h-[100px] flex justify-between items-center cursor-pointer p-4 rounded-lg bg-blue-500 text-white hover:scale-105 hover:bg-blue-600 duration-200">
+            <FaBuildingColumns className="w-1/4 h-1/2 lg:h-full" size={25} />
+            <div className="">
+              <h1 className="text-lg md:text-xl text-white font-bold">
+                Total Facilities
+              </h1>
+              <p className="text-right lg:text-center font-semibold">
+                {facilities.length}
+              </p>
+            </div>
           </div>
-        </div>
+        </Link>
         {/* card3 */}
-        <div className="w-[300px] h-[100px] flex justify-between items-center cursor-pointer p-4 rounded-lg bg-blue-500 text-white hover:scale-105 hover:bg-blue-600 duration-200">
-          <FaCalendarAlt className="w-1/4 h-1/2 lg:h-full" size={25} />
-          <div className="">
-            <h1 className="text-lg md:text-xl text-white font-bold">
-              Total Reservations
-            </h1>
-            <p className="text-right lg:text-center font-semibold">
-              {reservations.length}
-            </p>
+        <Link to="/admin/bookings">
+          <div className="w-[300px] h-[100px] flex justify-between items-center cursor-pointer p-4 rounded-lg bg-blue-500 text-white hover:scale-105 hover:bg-blue-600 duration-200">
+            <FaCalendarAlt className="w-1/4 h-1/2 lg:h-full" size={25} />
+            <div className="">
+              <h1 className="text-lg md:text-xl text-white font-bold">
+                Total Reservations
+              </h1>
+              <p className="text-right lg:text-center font-semibold">
+                {pendingReservations.length}
+              </p>
+            </div>
           </div>
-        </div>
+        </Link>
       </div>
     </div>
   );

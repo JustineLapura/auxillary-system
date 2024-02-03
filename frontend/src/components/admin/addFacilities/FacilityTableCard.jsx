@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import DeleteFacilityModal from "./DeleteFacilityModal";
 import ViewFacilityModal from "./ViewFacilityModal";
+import { TableCell, TableRow } from "@/components/ui/table";
 
 const FacilityTableCard = ({ facility, no }) => {
   const [deleteModal, setDeleteModal] = useState(false);
   const [viewModal, setViewModal] = useState(false);
   return (
     <>
-      <tr>
-        <td>{no + 1}</td>
-        <td>{facility.name}</td>
-        <td>
+      <TableRow>
+        <TableCell className="text-center">{no + 1}</TableCell>
+        <TableCell className="text-center">{facility.name}</TableCell>
+        <TableCell className="text-center">
           <button
             onClick={() => setViewModal(true)}
             className="py-1 px-5 border bg-blue-500 hover:bg-blue-600 text-white rounded-lg"
@@ -23,8 +24,8 @@ const FacilityTableCard = ({ facility, no }) => {
           >
             Delete
           </button>
-        </td>
-      </tr>
+        </TableCell>
+      </TableRow>
 
       {/* View Modal   */}
       <ViewFacilityModal

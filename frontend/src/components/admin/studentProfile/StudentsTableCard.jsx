@@ -10,7 +10,7 @@ const StudentsTableCard = ({ student, i }) => {
       <td className="py-2 px-4 border-b">{student.firstName}</td>
       <td className="py-2 px-4 border-b">{student.lastName}</td>
       <td className="py-2 px-4 border-b">{student.age}</td>
-      <td className="py-2 px-4 border-b">{student.contact}</td>
+      <td className="py-2 px-4 border-b">0{student.contact}</td>
       <td className="py-2 px-4 border-b">{student.email}</td>
       <td className="py-2 px-4 border-b capitalize">{student.gender}</td>
       <td className="py-2 px-4 border-b">{student.address}</td>

@@ -9,7 +9,8 @@ const FacilityGridCard = ({ facility }) => {
     <>
       <div className="w-[95%] border bg-gray-100 rounded-lg text-center p-5 space-y-2 hover:scale-105 duration-300">
         <div className="flex justify-between items-center">
-          <h1 className="text-gray-500 text-xs">ID {facility._id}</h1>
+          {/* <h1 className="text-gray-500 text-xs">ID {facility._id}</h1> */}
+          <p className="text-gray-900 font-bold">{facility.name}</p>
           <button
             onClick={() => setViewModal(true)}
             className="py-1 px-[18px] border bg-blue-500 hover:bg-blue-600 text-white rounded-lg"
@@ -18,7 +19,7 @@ const FacilityGridCard = ({ facility }) => {
           </button>
         </div>
         <div className="flex justify-between items-center">
-          <p className="text-gray-900 font-bold">{facility.name}</p>
+          <div />
           <button
             onClick={() => setDeleteModal(true)}
             className="py-1 px-4 border bg-red-500 hover:bg-red-600 text-sm text-white rounded-lg"
