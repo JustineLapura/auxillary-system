@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { TableCell, TableRow } from "@/components/ui/table";
 
 const BookTableCard = ({ client, index }) => {
   const formatDate = (dateString) => {
@@ -16,17 +17,17 @@ const BookTableCard = ({ client, index }) => {
 
   return (
     <>
-      <tr className="text-xs text-center font-semibold py-6 md:text-base hover:bg-gray-100">
-        <td>{index + 1}</td>
-        <td>
+      <TableRow className="text-xs text-center font-semibold py-6 md:text-base hover:bg-gray-100">
+        <TableCell>{index + 1}</TableCell>
+        <TableCell>
           {client.firstName} {client.lastName}
-        </td>
-        <td>{client.facility}</td>
-        <td>{formatDate(client.date)}</td>
-        <td>{formatTime(client.startTime)}</td>
-        <td>{formatTime(client.endTime)}</td>
-        <td>{client.agency}</td>
-        <td
+        </TableCell>
+        <TableCell>{client.facility}</TableCell>
+        <TableCell>{formatDate(client.date)}</TableCell>
+        <TableCell>{formatTime(client.startTime)}</TableCell>
+        <TableCell>{formatTime(client.endTime)}</TableCell>
+        <TableCell>{client.agency}</TableCell>
+        <TableCell
           className={
             client.status === "pending"
               ? "text-yellow-500 font-bold capitalize"
@@ -38,16 +39,16 @@ const BookTableCard = ({ client, index }) => {
           }
         >
           {client.status}
-        </td>
-        <td className="hover:underline">
+        </TableCell>
+        <TableCell className="hover:underline">
           <Link
             to={`/profile/booking/${client._id}`}
             className="cursor-pointer"
           >
             View
           </Link>
-        </td>
-      </tr>
+        </TableCell>
+      </TableRow>
     </>
   );
 };

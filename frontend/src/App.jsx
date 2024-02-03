@@ -27,6 +27,7 @@ import DormList from "./pages/admin/dormList/DormList";
 import Inquiries from "./pages/admin/inquiries/Inquiries";
 import Profile from "./pages/client/profile/Profile";
 import Records from "./pages/admin/records/Records";
+import ViewBookingDetails from "./pages/client/profile/viewBookingDetails/ViewBookingDetails";
 
 function App() {
   const { user } = useContext(AuthContext);
@@ -56,6 +57,10 @@ function App() {
         <Route
           path="/profile"
           element={user ? <Profile /> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/profile/booking/:id"
+          element={user ? <ViewBookingDetails /> : <Navigate to="/login" />}
         />
         <Route
           path="/login"

@@ -3,6 +3,14 @@ import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
 import BookTableCard from "./BookTableCard";
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 
 const BookTable = () => {
   const [clients, setClients] = useState([]);
@@ -31,27 +39,27 @@ const BookTable = () => {
 
   return (
     <div className="hidden md:block w-full h-[350px] mt-12">
-      <table className="min-w-full ">
-        <thead>
-          <tr className="lg:font-bold text-xs lg:text-lg">
-            <th>No.</th>
-            <th>Client&apos;s Name</th> {/* Fix the single quote here */}
-            <th>Facility</th>
-            <th>Booking Date</th>
-            <th>Start Time</th>
-            <th>End Time</th>
-            <th>Agency</th>
-            <th>Booking Status</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
+      <Table className="min-w-full ">
+        <TableHeader>
+          <TableRow className="lg:font-bold text-xs lg:text-lg uppercase">
+            <TableHead className="text-center">No.</TableHead>
+            <TableHead className="text-center">Client's Name</TableHead>
+            <TableHead className="text-center">Facility</TableHead>
+            <TableHead className="text-center">Booking Date</TableHead>
+            <TableHead className="text-center">Start Time</TableHead>
+            <TableHead className="text-center">End Time</TableHead>
+            <TableHead className="text-center">Agency</TableHead>
+            <TableHead className="text-center">Booking Status</TableHead>
+            <TableHead className="text-center">Action</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
           {personalDisplay.map((client, index) => (
             <BookTableCard key={client._id} client={client} index={index} />
           ))}
           {/* Add more data rows here */}
-        </tbody>
-      </table>
+        </TableBody>
+      </Table>
     </div>
   );
 };

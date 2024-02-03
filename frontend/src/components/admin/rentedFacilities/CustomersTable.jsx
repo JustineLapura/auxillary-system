@@ -39,7 +39,7 @@ const CustomersTable = () => {
         <TableCaption className="text-lg">
           A list of rented facilities.
         </TableCaption>
-        <TableHeader className="md:text-lg text-center">
+        <TableHeader className="md:text-lg text-center uppercase">
           <TableRow>
             <TableHead className="text-center">Facility Name</TableHead>
             <TableHead className="text-center">Booked By</TableHead>

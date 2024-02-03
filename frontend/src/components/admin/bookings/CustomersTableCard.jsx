@@ -16,7 +16,7 @@ const CustomersTableCard = ({ client, index }) => {
   };
 
   return (
-    <TableRow className="text-xs text-center font-semibold py-6 md:text-base hover:bg-gray-100">
+    <TableRow className="text-xs text-center font-semibold md:text-base hover:bg-gray-100">
       <TableCell>{index + 1}</TableCell>
       <TableCell>
         {client.firstName} {client.lastName}

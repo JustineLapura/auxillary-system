@@ -1,4 +1,5 @@
 import React from "react";
+import { TableCell, TableRow } from "@/components/ui/table";
 
 const RecordsTableCard = ({ client }) => {
   const formatDate = (dateString) => {
@@ -14,19 +15,21 @@ const RecordsTableCard = ({ client }) => {
   };
 
   return (
-    <>
-      <tr className="text-xs md:text-base font-semibold text-gray-700 text-center">
-        <td className="py-1 my-1">
-          {client.firstName} {client.lastName}
-        </td>
-        <td className="py-1 my-1">{client.facility}</td>
-        <td className="py-1 my-1">{formatDate(client.date)}</td>
-        <td className="py-1 my-1">{formatTime(client.startTime)}</td>
-        <td className="py-1 my-1">{formatTime(client.endTime)}</td>
-        <td className="py-1 my-1">₱10,000</td>
-        <td className="capitalize py-1 my-1 text-green-500 font-bold">{client.status}</td>
-      </tr>
-    </>
+    <TableRow className="text-xs md:text-base font-semibold text-gray-700 text-center">
+      <TableCell className="py-1 my-1">
+        {client.firstName} {client.lastName}
+      </TableCell>
+      <TableCell className="py-1 my-1">{client.facility}</TableCell>
+      <TableCell className="py-1 my-1">{formatDate(client.date)}</TableCell>
+      <TableCell className="py-1 my-1">
+        {formatTime(client.startTime)}
+      </TableCell>
+      <TableCell className="py-1 my-1">{formatTime(client.endTime)}</TableCell>
+      <TableCell className="py-1 my-1">₱10,000</TableCell>
+      <TableCell className="capitalize py-1 my-1 text-green-500 font-bold">
+        {client.status}
+      </TableCell>
+    </TableRow>
   );
 };
 

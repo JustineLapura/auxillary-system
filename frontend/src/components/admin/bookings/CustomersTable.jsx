@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from "react";
 import CustomersTableCard from "./CustomersTableCard";
 import {
   Table,
@@ -18,16 +17,16 @@ const CustomersTable = ({ clients }) => {
     <div className="hidden md:block w-full h-[400px] mt-4">
       <Table className="w-full border">
         <TableCaption className="text-lg">A list of Reservations.</TableCaption>
-        <TableRow className="lg:font-bold text-xs lg:text-lg">
-          <TableHead>No.</TableHead>
-          <TableHead>Client's Name</TableHead>
-          <TableHead>Facility</TableHead>
-          <TableHead>Booking Date</TableHead>
-          <TableHead>Start Time</TableHead>
-          <TableHead>End Time</TableHead>
-          <TableHead>Agency</TableHead>
-          <TableHead>Booking Status</TableHead>
-          <TableHead>Action</TableHead>
+        <TableRow className="lg:font-bold text-xs lg:text-sm uppercase">
+          <TableHead className="text-center">No.</TableHead>
+          <TableHead className="text-center">Client's Name</TableHead>
+          <TableHead className="text-center">Facility</TableHead>
+          <TableHead className="text-center">Booking Date</TableHead>
+          <TableHead className="text-center">Start Time</TableHead>
+          <TableHead className="text-center">End Time</TableHead>
+          <TableHead className="text-center">Agency</TableHead>
+          <TableHead className="text-center">Booking Status</TableHead>
+          <TableHead className="text-center">Action</TableHead>
         </TableRow>
         <TableBody>
           {pendingClients.map((client, index) => (
