@@ -6,8 +6,8 @@ import { enqueueSnackbar, useSnackbar } from "notistack";
 const BookedFacility = () => {
   const [client, setClient] = useState({});
   const [facility, setFacility] = useState({});
-  console.log("Client from BookedFacility: ", client);
-  console.log("Facility from BookedFacility: ", facility);
+  // console.log("Client from BookedFacility: ", client);
+  // console.log("Facility from BookedFacility: ", facility);
   // const agencyPrice =
   //   client && facility && client.agency === "government"
   //     ? facility.governmentPrice
@@ -15,30 +15,48 @@ const BookedFacility = () => {
   //     ? facility.nonGovernmentPrice
   //     : facility.otherPrice;
 
-  console.log(`
-    Government Price: ${facility.governmentPrice}
-    Non-Government Price: ${facility.nonGovernmentPrice}
-    Other Price: ${facility.otherPrice}
-  `);
+  // console.log(`
+  //   Government Price: ${facility.governmentPrice}
+  //   Non-Government Price: ${facility.nonGovernmentPrice}
+  //   Other Price: ${facility.otherPrice}
+  // `);
 
   const { enqueueSnackbar } = useSnackbar();
 
   const { id } = useParams();
   const navigate = useNavigate();
 
+  // useEffect(() => {
+  //   const fetchFacility = async () => {
+  //     try {
+  //       const response = await axios.get(
+  //         `https://auxillary-services-api-rosy.vercel.app/api/facility/${client.facilityId}`
+  //       );
+  //       setFacility(response.data);
+  //     } catch (error) {
+  //       console.log("Error Fetching:", error);
+  //     }
+  //   };
+  //   fetchFacility();
+  // }, [client.facilityId]);
+
   useEffect(() => {
     const fetchFacility = async () => {
       try {
-        const response = await axios.get(
-          `https://auxillary-services-api-rosy.vercel.app/api/facility/${client.facilityId}`
-        );
-        setFacility(response.data);
+        // Check if client.facilityId is defined before making the request
+        if (client.facilityId) {
+          const response = await axios.get(
+            `https://auxillary-services-api-rosy.vercel.app/api/facility/${client.facilityId}`
+          );
+          setFacility(response.data);
+        }
       } catch (error) {
         console.log("Error Fetching:", error);
       }
     };
     fetchFacility();
   }, [client.facilityId]);
+  
 
   useEffect(() => {
     const fetchClient = async () => {

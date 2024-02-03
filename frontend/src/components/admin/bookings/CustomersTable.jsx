@@ -2,27 +2,10 @@ import React, { useState, useEffect } from "react";
 import CustomersTableCard from "./CustomersTableCard";
 import axios from "axios";
 
-const CustomersTable = () => {
-  const [clients, setClients] = useState([]);
-
+const CustomersTable = ({ clients }) => {
   const pendingClients = clients.filter(
     (client) => client.status === "pending"
   );
-
-  useEffect(() => {
-    const fetchClients = async () => {
-      try {
-        const response = await axios.get(
-          `https://auxillary-services-api-rosy.vercel.app/api/booking`
-        );
-        setClients(response.data);
-      } catch (error) {
-        console.log("Error Fetching:", error);
-      }
-    };
-
-    fetchClients();
-  }, []);
 
   return (
     <div className="hidden md:block w-full h-[400px] mt-12">
