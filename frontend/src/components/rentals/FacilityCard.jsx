@@ -1,14 +1,38 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { AiFillStar } from "react-icons/ai";
 import { FaCircle } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { Calendar } from "../ui/calendar";
 import { Skeleton } from "../ui/skeleton";
+import axios from "axios";
 
 const FacilityCard = ({ facility, setIsBooking }) => {
   const { user } = useContext(AuthContext).user || {};
-  const [date, setDate] = useState(new Date());
+
+  const [clients, setClients] = useState([]);
+
+  console.log("Bookings: ", clients);
+  const bookedDates = clients
+    .filter((client) => client.facility === facility.name)
+    .map((client) => new Date(client.date));
+
+  console.log(bookedDates);
+
+  useEffect(() => {
+    const fetchClients = async () => {
+      try {
+        const response = await axios.get(
+          `https://auxillary-services-api-rosy.vercel.app/api/booking`
+        );
+        setClients(response.data);
+      } catch (error) {
+        console.log("Error Fetching:", error);
+      }
+    };
+
+    fetchClients();
+  }, []);
 
   // Sample initial dates
   const initialDates = [new Date("2024-02-10"), new Date("2024-02-15")];
@@ -102,7 +126,7 @@ const FacilityCard = ({ facility, setIsBooking }) => {
             </h1>
             <Calendar
               mode="multiple"
-              selected={initialDates}
+              selected={bookedDates}
               // onSelect={setDate}
               className="rounded-md"
             />

@@ -2,7 +2,7 @@ const Booking = require("../models/bookings");
 
 // Create a Booking
 const createBooking = async (req, res) => {
-  const { agency, date, startTime, endTime } = req.body;
+  const { facility, agency, date, startTime, endTime } = req.body;
 
   let emptyFields = [];
 
@@ -19,7 +19,7 @@ const createBooking = async (req, res) => {
 
   try {
     // Check for duplicate bookings
-    const existingBooking = await Booking.findOne({ date });
+    const existingBooking = await Booking.findOne({ facility, date });
 
     if (existingBooking) {
       return res.status(400).json({
