@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
+import { useSnackbar } from "notistack";
 
 const ViewFacilityModal = ({ facility, viewModal, setViewModal }) => {
   const [name, setName] = useState("");
@@ -7,8 +8,51 @@ const ViewFacilityModal = ({ facility, viewModal, setViewModal }) => {
   const [photo, setPhoto] = useState("");
   const [updateMode, setUpdateMode] = useState(false);
 
+  const { enqueueSnackbar } = useSnackbar();
+
   console.log("Facility: ", facility);
   const PF = "http://localhost:4000/images/";
+
+  useEffect(() => {
+    setName(facility.name);
+    setDesc(facility.desc);
+    setPhoto(facility.photo);
+  }, []);
+
+  const handleUpdate = async () => {
+    try {
+      const response = await fetch(
+        `http://localhost:4000/api/facility/${facility._id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ name, desc, photo }),
+        }
+      );
+
+      if (!response.ok) {
+        // Handle non-200 response
+        if (response.status === 400) {
+          const errorData = await response.json();
+          console.log("Validation error:", errorData);
+          // Handle validation error (e.g., display error messages to the user)
+        } else {
+          console.log("Other error:", response.statusText);
+        }
+      } else {
+        enqueueSnackbar("Facility has been updated", { variant: "success" });
+        // Reload the page upon successful submission
+        window.location.reload();
+      }
+    } catch (error) {
+      console.log("Fetch error:", error);
+    }
+
+    setUpdateMode(false);
+    setViewModal(false);
+  };
 
   return (
     <>
@@ -83,7 +127,10 @@ const ViewFacilityModal = ({ facility, viewModal, setViewModal }) => {
             </button>
           )}
           {updateMode ? (
-            <button className="px-6 py-2 rounded-xl bg-blue-500 font-bold text-white">
+            <button
+              onClick={handleUpdate}
+              className="px-6 py-2 rounded-xl bg-blue-500 font-bold text-white"
+            >
               Save
             </button>
           ) : (
