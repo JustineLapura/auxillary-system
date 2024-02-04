@@ -1,6 +1,12 @@
-import React from "react";
+import axios from "axios";
+import React, { useState, useEffect } from "react";
 
 const ViewFacilityModal = ({ facility, viewModal, setViewModal }) => {
+  const [name, setName] = useState("");
+  const [desc, setDesc] = useState("");
+  const [photo, setPhoto] = useState("");
+  const [updateMode, setUpdateMode] = useState(false);
+
   console.log("Facility: ", facility);
   const PF = "http://localhost:4000/images/";
 
@@ -32,22 +38,62 @@ const ViewFacilityModal = ({ facility, viewModal, setViewModal }) => {
             alt={facility.name}
           />
         )}
-        <h1 className="text-center font-bold text-gray-900 text-2xl mt-6">
-          {facility && facility.name}
-        </h1>
-        <p className="text-sm mt-4 text-gray-700">
-          {facility && facility.desc}
-        </p>
+        {updateMode ? (
+          <input
+            className="text-center text-2xl border border-gray-500 rounded py-1 mt-6 focus:outline-none"
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            onFocus={true}
+          />
+        ) : (
+          <h1 className="text-center font-bold text-gray-900 text-2xl mt-6">
+            {facility && facility.name}
+          </h1>
+        )}
+        {updateMode ? (
+          <textarea
+            className="mt-4 border border-gray-500 rounded p-3 focus:outline-none"
+            name=""
+            id=""
+            cols="30"
+            rows="4"
+            value={desc}
+            onChange={(e) => setDesc(e.target.value)}
+          />
+        ) : (
+          <p className="text-sm mt-4 text-gray-700">
+            {facility && facility.desc}
+          </p>
+        )}
         <div className="mt-6 flex justify-end items-center gap-4">
-          <button className="px-6 py-2 rounded-xl bg-green-600 font-bold text-white">
-            Edit
-          </button>
-          <button
-            onClick={() => setViewModal(false)}
-            className="px-6 py-2 rounded-xl bg-red-500 font-bold text-white"
-          >
-            Done
-          </button>
+          {updateMode ? (
+            <button
+              onClick={() => setUpdateMode(false)}
+              className="px-6 py-2 rounded-xl bg-red-500 font-bold text-white"
+            >
+              Cancel
+            </button>
+          ) : (
+            <button
+              onClick={() => setUpdateMode(true)}
+              className="px-6 py-2 rounded-xl bg-green-600 font-bold text-white"
+            >
+              Edit
+            </button>
+          )}
+          {updateMode ? (
+            <button className="px-6 py-2 rounded-xl bg-blue-500 font-bold text-white">
+              Save
+            </button>
+          ) : (
+            <button
+              onClick={() => setViewModal(false)}
+              className="px-6 py-2 rounded-xl bg-red-500 font-bold text-white"
+            >
+              Done
+            </button>
+          )}
         </div>
       </div>
     </>
