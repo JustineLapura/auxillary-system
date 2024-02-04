@@ -1,18 +1,21 @@
 import React, { useState } from "react";
 import DeleteDormModal from "./DeleteDormModal";
 import { FaRegEdit, FaTrashAlt } from "react-icons/fa";
+import { TableCell, TableRow } from "@/components/ui/table";
 
 const DormTableCard = ({ dorm, i }) => {
   const [deleteModal, setDeleteModal] = useState(false);
 
   return (
-    <tr className="text-gray-500">
-      <td className="py-2 px-4 border-b">{i + 1}</td>
-      <td className="py-2 px-4 border-b capitalize">{dorm.type} Dorm</td>
-      <td className="py-2 px-4 border-b">{dorm.roomNumber}</td>
-      <td className="py-2 px-4 border-b">₱{dorm.monthlyRate}</td>
-      <td className="py-2 px-4 border-b">{dorm.status}</td>
-      <td className="h-full flex justify-center items-center gap-2 py-2 px-4">
+    <TableRow className="text-gray-500">
+      <TableCell className="py-2 px-4 border-b">{i + 1}</TableCell>
+      <TableCell className="py-2 px-4 border-b capitalize">
+        {dorm.type} Dorm
+      </TableCell>
+      <TableCell className="py-2 px-4 border-b">{dorm.roomNumber}</TableCell>
+      <TableCell className="py-2 px-4 border-b">₱{dorm.monthlyRate}</TableCell>
+      <TableCell className="py-2 px-4 border-b">{dorm.status}</TableCell>
+      <TableCell className="h-full flex justify-center items-center gap-2 py-2 px-4">
         <FaRegEdit
           className="text-yellow-500 cursor-pointer hover:scale-125 duration-200"
           size={20}
@@ -29,9 +32,9 @@ const DormTableCard = ({ dorm, i }) => {
             setDeleteModal={setDeleteModal}
           />
         )}
-      </td>
+      </TableCell>
       {/* Add more cells as needed */}
-    </tr>
+    </TableRow>
   );
 };
 

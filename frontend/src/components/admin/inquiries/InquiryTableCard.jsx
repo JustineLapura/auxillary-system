@@ -1,24 +1,25 @@
 import React, { useState } from "react";
 import ViewInquiryModal from "./ViewInquiryModal";
+import { TableCell, TableRow } from "@/components/ui/table";
 
 const InquiryTableCard = ({ inquiry, i }) => {
   const [viewInquiry, setViewInquiry] = useState(false);
 
   return (
-    <tr>
-      <td className="py-2 px-4 border-b">{i + 1}</td>
-      <td className="py-2 px-4 border-b">
+    <TableRow>
+      <TableCell className="py-2 px-4 border-b">{i + 1}</TableCell>
+      <TableCell className="py-2 px-4 border-b">
         {inquiry.firstName} {inquiry.lastName}
-      </td>
-      <td className="py-2 px-4 border-b">{inquiry.address}</td>
-      <td className="py-2 px-4 border-b">+63{inquiry.phoneNumber}</td>
-      <td className="py-2 px-4 border-b">{inquiry.email}</td>
-      <td
-        className="py-2 px-4 border-b bg-blue-500 text-white font-bold cursor-pointer hover:bg-blue-600 duration-200"
+      </TableCell>
+      <TableCell className="py-2 px-4 border-b">{inquiry.address}</TableCell>
+      <TableCell className="py-2 px-4 border-b">+63{inquiry.phoneNumber}</TableCell>
+      <TableCell className="py-2 px-4 border-b">{inquiry.email}</TableCell>
+      <TableCell
+        className="py-2 px-2 border-b bg-blue-500 text-white font-bold cursor-pointer hover:bg-blue-600 duration-200 rounded"
         onClick={() => setViewInquiry(true)}
       >
         Read More
-      </td>
+      </TableCell>
       {viewInquiry && (
         <ViewInquiryModal
           inquiry={inquiry}
@@ -27,7 +28,7 @@ const InquiryTableCard = ({ inquiry, i }) => {
         />
       )}
       {/* Add more cells as needed */}
-    </tr>
+    </TableRow>
   );
 };
 

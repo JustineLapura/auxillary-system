@@ -3,6 +3,7 @@ import DeleteDormModal from "./DeleteDormModal";
 import SendMessageModal from "./SendMessageModal";
 import { FaRegEdit, FaTrashAlt } from "react-icons/fa";
 import { SiGooglemessages } from "react-icons/si";
+import { TableCell, TableRow } from "@/components/ui/table";
 
 const DormListTableCard = ({ i, dorm }) => {
   const [deleteModal, setDeleteModal] = useState(false);
@@ -14,15 +15,15 @@ const DormListTableCard = ({ i, dorm }) => {
   };
 
   return (
-    <tr key={dorm._id} className="text-gray-500">
-      <td className="py-2 px-4 border-b">{i + 1}</td>
-      <td className="py-2 px-4 border-b">{dorm.firstName}</td>
-      <td className="py-2 px-4 border-b">{dorm.lastName}</td>
-      <td className="py-2 px-4 border-b capitalize">{dorm.type}</td>
-      <td className="py-2 px-4 border-b">{dorm.roomNumber}</td>
-      <td className="py-2 px-4 border-b">{formatDate(dorm.dueStart)}</td>
-      <td className="py-2 px-4 border-b">{formatDate(dorm.dueDate)}</td>
-      <td className="h-full flex justify-center items-center gap-2 py-2 px-4">
+    <TableRow key={dorm._id} className="text-gray-500">
+      <TableCell className="py-2 px-4 border-b">{i + 1}</TableCell>
+      <TableCell className="py-2 px-4 border-b">{dorm.firstName}</TableCell>
+      <TableCell className="py-2 px-4 border-b">{dorm.lastName}</TableCell>
+      <TableCell className="py-2 px-4 border-b capitalize">{dorm.type}</TableCell>
+      <TableCell className="py-2 px-4 border-b">{dorm.roomNumber}</TableCell>
+      <TableCell className="py-2 px-4 border-b">{formatDate(dorm.dueStart)}</TableCell>
+      <TableCell className="py-2 px-4 border-b">{formatDate(dorm.dueDate)}</TableCell>
+      <TableCell className="h-full flex justify-center items-center gap-2 py-2 px-4">
         <SiGooglemessages
           className="text-blue-900 cursor-pointer hover:scale-125 duration-200"
           size={20}
@@ -51,9 +52,9 @@ const DormListTableCard = ({ i, dorm }) => {
             setDeleteModal={setDeleteModal}
           />
         )}
-      </td>
+      </TableCell>
       {/* Add more cells as needed */}
-    </tr>
+    </TableRow>
   );
 };
 

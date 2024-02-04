@@ -1,20 +1,23 @@
 import React, { useState } from "react";
 import DeleteStudentModal from "./DeleteStudentModal";
 import { FaRegEdit, FaTrashAlt } from "react-icons/fa";
+import { TableCell, TableRow } from "@/components/ui/table";
 
 const StudentsTableCard = ({ student, i }) => {
   const [deleteModal, setDeleteModal] = useState(false);
   return (
-    <tr className="text-gray-500" key={student._id}>
-      <td className="py-2 px-4 border-b">{i + 1}</td>
-      <td className="py-2 px-4 border-b">{student.firstName}</td>
-      <td className="py-2 px-4 border-b">{student.lastName}</td>
-      <td className="py-2 px-4 border-b">{student.age}</td>
-      <td className="py-2 px-4 border-b">0{student.contact}</td>
-      <td className="py-2 px-4 border-b">{student.email}</td>
-      <td className="py-2 px-4 border-b capitalize">{student.gender}</td>
-      <td className="py-2 px-4 border-b">{student.address}</td>
-      <td className="h-full flex justify-center items-center gap-2 py-2 px-4">
+    <TableRow className="text-gray-500" key={student._id}>
+      <TableCell className="py-2 px-4 border-b">{i + 1}</TableCell>
+      <TableCell className="py-2 px-4 border-b">{student.firstName}</TableCell>
+      <TableCell className="py-2 px-4 border-b">{student.lastName}</TableCell>
+      <TableCell className="py-2 px-4 border-b">{student.age}</TableCell>
+      <TableCell className="py-2 px-4 border-b">0{student.contact}</TableCell>
+      <TableCell className="py-2 px-4 border-b">{student.email}</TableCell>
+      <TableCell className="py-2 px-4 border-b capitalize">
+        {student.gender}
+      </TableCell>
+      <TableCell className="py-2 px-4 border-b">{student.address}</TableCell>
+      <TableCell className="h-full flex justify-center items-center gap-2 py-2 px-4">
         <FaRegEdit
           className="text-yellow-500 cursor-pointer hover:scale-125 duration-200"
           size={20}
@@ -31,8 +34,8 @@ const StudentsTableCard = ({ student, i }) => {
             setDeleteModal={setDeleteModal}
           />
         )}
-      </td>
-    </tr>
+      </TableCell>
+    </TableRow>
   );
 };
 
