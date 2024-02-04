@@ -3,6 +3,7 @@ import { FaDesktop, FaTooth } from "react-icons/fa";
 import { FaBed, FaBedPulse } from "react-icons/fa6";
 import { BsDoorOpenFill, BsHouseDoorFill } from "react-icons/bs";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Dormitories = () => {
   const [dorms, setDorms] = useState([]);
@@ -34,22 +35,24 @@ const Dormitories = () => {
       </h1>
       <div className="w-full grid md:grid-cols-3 place-items-center gap-4 lg:gap-10">
         {/* card1 */}
-        <div className="relative w-[300px] h-[100px]  flex justify-between items-center cursor-pointer p-4 rounded-lg bg-yellow-500 hover:scale-105 hover:bg-yellow-600 duration-200">
-          <FaBed className="w-1/4 h-1/2 lg:h-full" size={25} />
-          <div className="">
-            <h1 className="text-lg md:text-xl font-bold">Total Dorms</h1>
-            <p className="text-right lg:text-center font-semibold">
-              {dorms.length}
-            </p>
+        <Link to="/admin/manage-dorm">
+          <div className="relative w-[300px] h-[100px]  flex justify-between items-center cursor-pointer p-4 rounded-lg bg-yellow-500 hover:scale-105 hover:bg-yellow-600 duration-200">
+            <FaBed className="w-1/4 h-1/2 lg:h-full" size={25} />
+            <div className="">
+              <h1 className="text-lg md:text-xl font-bold">Total Dorms</h1>
+              <p className="text-right lg:text-center font-semibold">
+                {dorms.length > 0 && dorms.length}
+              </p>
+            </div>
           </div>
-        </div>
+        </Link>
         {/* card2 */}
         <div className="relative w-[300px] h-[100px] flex justify-between items-center cursor-pointer p-4 rounded-lg bg-yellow-500 hover:scale-105 hover:bg-yellow-600 duration-200">
           <BsDoorOpenFill className="w-1/4 h-1/2 lg:h-full" size={25} />
           <div className="">
             <h1 className="text-lg md:text-xl font-bold">Occupied Rooms</h1>
             <p className="text-right lg:text-center font-semibold">
-              {occupiedRooms.length}
+              {occupiedRooms.length > 0 && occupiedRooms.length}
             </p>
           </div>
         </div>
@@ -59,7 +62,7 @@ const Dormitories = () => {
           <div className="">
             <h1 className="text-lg md:text-xl font-bold">Available Rooms</h1>
             <p className="text-right lg:text-center font-semibold">
-              {availableRooms.length}
+              {availableRooms.length > 0 && availableRooms.length}
             </p>
           </div>
         </div>

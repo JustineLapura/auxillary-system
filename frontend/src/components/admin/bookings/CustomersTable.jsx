@@ -19,7 +19,7 @@ const CustomersTable = ({ clients }) => {
         <TableCaption className="text-lg">
           {pendingClients.length > 0
             ? pendingClients.length + " list of Reservations."
-            : "No list of Reservartions"}
+            : "No list of Reservations"}
         </TableCaption>
         <TableRow className="lg:font-bold text-xs lg:text-sm uppercase">
           <TableHead className="text-center">No.</TableHead>

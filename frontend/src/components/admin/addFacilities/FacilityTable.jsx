@@ -14,6 +14,11 @@ const FacilityTable = ({ facilities }) => {
   return (
     <div className="w-full hidden sm:block">
       <Table className="w-full">
+        <TableCaption className="text-lg">
+          {facilities.length > 0
+            ? facilities.length + " list of Facilities."
+            : "No list of Facilities"}
+        </TableCaption>
         <TableHeader className="text-lg uppercase tracking-wide">
           <TableRow>
             <TableHead className="text-center">No.</TableHead>

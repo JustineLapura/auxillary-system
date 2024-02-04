@@ -50,13 +50,18 @@ const FacilityCard = ({ facility, setIsBooking }) => {
   return (
     <div className="w-full h-full lg:flex justify-between items-center gap-16">
       <div className="w-full">
-        {facility && facility.photo && (
+        {/* {facility && facility.photo && (
           <img
             className="w-full h-[400px] md:w-full rounded-lg object-cover"
             src={PF + facility.photo}
             alt={facility.name}
           />
-        )}
+        )} */}
+        <img
+          className="w-full h-[400px] md:w-full rounded-lg object-cover"
+          src="/SSU.jpg"
+          alt={facility.name}
+        />
         {!facility && facility.photo && (
           <Skeleton className="w-full h-[400px] md:w-full rounded-lg object-cover" />
         )}
@@ -87,21 +92,21 @@ const FacilityCard = ({ facility, setIsBooking }) => {
                   <FaCircle size={5} />
                   Government Agencies -
                   {facility.governmentPrice
-                    ? "₱" + facility.governmentPrice + "/8hour"
+                    ? "₱" + facility.governmentPrice + "/8hours"
                     : "N/A"}
                 </li>
                 <li className="flex gap-2 items-center">
                   <FaCircle size={5} />
                   Non-Government Agencies -
                   {facility.nonGovernmentPrice
-                    ? "₱" + facility.nonGovernmentPrice + "/8hour"
+                    ? "₱" + facility.nonGovernmentPrice + "/8hours"
                     : "N/A"}
                 </li>
                 <li className="flex gap-2 items-center">
                   <FaCircle size={5} />
                   Others -
                   {facility.otherPrice
-                    ? "₱" + facility.otherPrice + "/8hour"
+                    ? "₱" + facility.otherPrice + "/8hours"
                     : "N/A"}
                 </li>
               </ul>

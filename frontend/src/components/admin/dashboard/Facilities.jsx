@@ -79,7 +79,7 @@ const Facilities = () => {
               Total Users
             </h1>
             <p className="text-right lg:text-center font-semibold">
-              {users.length}
+              {users.length > 0 && users.length}
             </p>
           </div>
         </div>
@@ -92,7 +92,7 @@ const Facilities = () => {
                 Total Facilities
               </h1>
               <p className="text-right lg:text-center font-semibold">
-                {facilities.length}
+                {facilities.length > 0 && facilities.length}
               </p>
             </div>
           </div>
@@ -106,7 +106,7 @@ const Facilities = () => {
                 Total Reservations
               </h1>
               <p className="text-right lg:text-center font-semibold">
-                {pendingReservations.length}
+                {pendingReservations.length > 0 && pendingReservations.length}
               </p>
             </div>
           </div>
