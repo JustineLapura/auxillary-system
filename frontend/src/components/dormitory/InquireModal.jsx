@@ -88,7 +88,7 @@ const InquireModal = ({ openModal, setOpenModal }) => {
           name=""
           id=""
           cols="30"
-          rows="8"
+          rows="6"
           placeholder="Write a message for any inquiries"
           onChange={(e) => setMessage(e.target.value)}
           className={

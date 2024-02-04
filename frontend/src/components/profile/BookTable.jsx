@@ -40,6 +40,11 @@ const BookTable = () => {
   return (
     <div className="hidden md:block w-full h-[350px] mt-12">
       <Table className="min-w-full ">
+        <TableCaption className="text-lg">
+          {personalDisplay.length > 0
+            ? personalDisplay.length + " list of Reservations."
+            : "No list of Reservations"}
+        </TableCaption>
         <TableHeader>
           <TableRow className="lg:font-bold text-xs lg:text-lg uppercase">
             <TableHead className="text-center">No.</TableHead>

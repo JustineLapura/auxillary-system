@@ -14,7 +14,7 @@ const Profile = () => {
           </button>
         </Link>
         <h1 className="text-5xl text-gray-800 font-bold mt-20">
-          My Booking Details
+          My Reservation Details
         </h1>
         <BookTable />
       </div>
