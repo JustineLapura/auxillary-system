@@ -37,7 +37,9 @@ const CustomersTable = () => {
     <div className="w-full h-[320px] hidden sm:block">
       <Table className="w-full rounded-sm">
         <TableCaption className="text-lg">
-          A list of rented facilities.
+          {approvedClients.length > 0
+            ? approvedClients.length + " list of Rented Facilities."
+            : "No list of Reservartions"}
         </TableCaption>
         <TableHeader className="md:text-lg text-center uppercase">
           <TableRow>

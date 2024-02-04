@@ -35,6 +35,11 @@ const RecordsTable = () => {
   return (
     <div className="w-full h-[250px] mt-10 hidden sm:block">
       <Table className="w-full rounded-lg">
+        <TableCaption className="text-lg">
+          {completedClients.length > 0
+            ? completedClients.length + " list of Reports."
+            : "No list of Reports"}
+        </TableCaption>
         <TableHeader className="md:text-lg text-center uppercase">
           <TableRow>
             <TableHead className="text-center">Client's Name</TableHead>

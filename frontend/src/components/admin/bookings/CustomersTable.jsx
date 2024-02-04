@@ -16,7 +16,11 @@ const CustomersTable = ({ clients }) => {
   return (
     <div className="hidden md:block w-full h-[400px] mt-4">
       <Table className="w-full border">
-        <TableCaption className="text-lg">A list of Reservations.</TableCaption>
+        <TableCaption className="text-lg">
+          {pendingClients.length > 0
+            ? pendingClients.length + " list of Reservations."
+            : "No list of Reservartions"}
+        </TableCaption>
         <TableRow className="lg:font-bold text-xs lg:text-sm uppercase">
           <TableHead className="text-center">No.</TableHead>
           <TableHead className="text-center">Client's Name</TableHead>
