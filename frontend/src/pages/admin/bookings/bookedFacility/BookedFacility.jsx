@@ -136,7 +136,7 @@ const BookedFacility = () => {
                 {client.firstName} {client.lastName}
               </p>
               <p className="text-xs">{client.address}</p>
-              <p>{client.phoneNumber}</p>
+              <p>0{client.phoneNumber}</p>
               <p>{client.email}</p>
             </div>
           </div>

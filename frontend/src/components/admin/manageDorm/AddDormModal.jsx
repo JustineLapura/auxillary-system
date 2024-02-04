@@ -132,9 +132,10 @@ const AddDormModal = ({ addModal, setAddModal }) => {
             type="number"
             className={
               emptyFields && emptyFields.includes("monthlyRate")
-                ? "w-full rounded py-2 focus:outline-none mt-2 ps-1 border border-red-500"
-                : "w-full rounded py-2 focus:outline-none mt-2 ps-1"
+                ? "w-full rounded py-2 focus:outline-none mt-2 ps-3 border border-red-500"
+                : "w-full rounded py-2 focus:outline-none mt-2 ps-3"
             }
+            placeholder="₱"
             onChange={(e) => setMonthlyRate(e.target.value)}
             value={monthlyRate}
           />

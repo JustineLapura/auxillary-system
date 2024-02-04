@@ -8,8 +8,8 @@ const StudentsTableCard = ({ student, i }) => {
   return (
     <TableRow className="text-gray-500" key={student._id}>
       <TableCell className="py-2 px-4 border-b">{i + 1}</TableCell>
-      <TableCell className="py-2 px-4 border-b">{student.firstName}</TableCell>
-      <TableCell className="py-2 px-4 border-b">{student.lastName}</TableCell>
+      <TableCell className="py-2 px-4 border-b capitalize">{student.firstName}</TableCell>
+      <TableCell className="py-2 px-4 border-b capitalize">{student.lastName}</TableCell>
       <TableCell className="py-2 px-4 border-b">{student.age}</TableCell>
       <TableCell className="py-2 px-4 border-b">0{student.contact}</TableCell>
       <TableCell className="py-2 px-4 border-b">{student.email}</TableCell>

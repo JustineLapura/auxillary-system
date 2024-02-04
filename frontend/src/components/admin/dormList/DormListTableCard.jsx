@@ -17,8 +17,8 @@ const DormListTableCard = ({ i, dorm }) => {
   return (
     <TableRow key={dorm._id} className="text-gray-500">
       <TableCell className="py-2 px-4 border-b">{i + 1}</TableCell>
-      <TableCell className="py-2 px-4 border-b">{dorm.firstName}</TableCell>
-      <TableCell className="py-2 px-4 border-b">{dorm.lastName}</TableCell>
+      <TableCell className="py-2 px-4 border-b capitalize">{dorm.firstName}</TableCell>
+      <TableCell className="py-2 px-4 border-b capitalize">{dorm.lastName}</TableCell>
       <TableCell className="py-2 px-4 border-b capitalize">{dorm.type}</TableCell>
       <TableCell className="py-2 px-4 border-b">{dorm.roomNumber}</TableCell>
       <TableCell className="py-2 px-4 border-b">{formatDate(dorm.dueStart)}</TableCell>

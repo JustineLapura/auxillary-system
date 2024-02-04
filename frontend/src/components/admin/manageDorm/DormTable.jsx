@@ -25,7 +25,7 @@ const DormTable = ({ dorms }) => {
             <TableHead className="text-center">ID</TableHead>
             <TableHead className="text-center">Dormitory</TableHead>
             <TableHead className="text-center">Room No.</TableHead>
-            <TableHead className="text-center">MonTableHeadly Rate</TableHead>
+            <TableHead className="text-center">Monthly Rate</TableHead>
             <TableHead className="text-center">Status</TableHead>
             <TableHead className="text-center">Action</TableHead>
             {/* Add more columns as needed */}

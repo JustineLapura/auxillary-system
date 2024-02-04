@@ -1,5 +1,6 @@
+import axios from "axios";
 import { enqueueSnackbar, useSnackbar } from "notistack";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const AddDormModal = ({ addModal, setAddModal }) => {
   const [firstName, setFirstName] = useState("");
@@ -12,6 +13,24 @@ const AddDormModal = ({ addModal, setAddModal }) => {
   const [error, setError] = useState(null);
 
   const { enqueueSnackbar } = useSnackbar();
+
+  const [students, setStudents] = useState([]);
+  console.log("Students from AddDormListModal ", students);
+
+  useEffect(() => {
+    const fetchStudents = async () => {
+      try {
+        const response = await axios.get(
+          `https://auxillary-services-api-rosy.vercel.app/api/student`
+        );
+        setStudents(response.data);
+      } catch (error) {
+        console.log("Error Fetching:", error);
+      }
+    };
+
+    fetchStudents();
+  }, []);
 
   const handleAddDormList = async (e) => {
     e.preventDefault();
@@ -101,7 +120,7 @@ const AddDormModal = ({ addModal, setAddModal }) => {
           <label htmlFor="" className="font-semibold ">
             Firstname:
           </label>
-          <input
+          {/* <input
             type="text"
             className={
               emptyFields && emptyFields.includes("lastName")
@@ -110,13 +129,29 @@ const AddDormModal = ({ addModal, setAddModal }) => {
             }
             onChange={(e) => setFirstName(e.target.value)}
             value={firstName}
-          />
+          /> */}
+          <select
+            className={
+              emptyFields && emptyFields.includes("firstName")
+                ? "w-full rounded py-1 mt-2 ps-1 text-gray-500 focus:outline-none capitalize border border-red-500"
+                : "w-full rounded py-1 mt-2 ps-1 text-gray-500 focus:outline-none capitalize"
+            }
+            name=""
+            id=""
+            onChange={(e) => setFirstName(e.target.value)}
+            value={firstName}
+          >
+            <option value="">Select Firstname</option>
+            {students.map((student) => (
+              <option value={student.firstName}>{student.firstName}</option>
+            ))}
+          </select>
         </div>
         <div className="w-full flex flex-col">
           <label htmlFor="" className="font-semibold ">
             Lastname:
           </label>
-          <input
+          {/* <input
             type="text"
             className={
               emptyFields && emptyFields.includes("lastName")
@@ -125,7 +160,25 @@ const AddDormModal = ({ addModal, setAddModal }) => {
             }
             onChange={(e) => setLastName(e.target.value)}
             value={lastName}
-          />
+          /> */}
+          <select
+            className={
+              emptyFields && emptyFields.includes("lastName")
+                ? "w-full rounded py-1 mt-2 ps-1 text-gray-500 focus:outline-none capitalize border border-red-500"
+                : "w-full rounded py-1 mt-2 ps-1 text-gray-500 focus:outline-none capitalize"
+            }
+            name=""
+            id=""
+            onChange={(e) => setLastName(e.target.value)}
+            value={lastName}
+          >
+            <option value="">Select Lastname</option>
+            {students.map((student) => (
+              <option className="capitalize" value={student.lastName}>
+                {student.lastName}
+              </option>
+            ))}
+          </select>
         </div>
       </div>
       <div className="w-full flex flex-col">
