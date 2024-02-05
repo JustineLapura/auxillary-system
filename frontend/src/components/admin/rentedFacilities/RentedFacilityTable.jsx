@@ -23,11 +23,11 @@ const CustomersTableCard = ({ client }) => {
   const handleComplete = async () => {
     try {
       await axios.put(
-        `http://localhost:4000/api/booking/${client._id}/complete`
+        `https://auxillary-services-api-rosy.vercel.app/api/booking/${client._id}/complete`
       );
       // Optionally, you can fetch the updated booking after approval
       const response = await axios.get(
-        `http://localhost:4000/api/booking/${client._id}`
+        `https://auxillary-services-api-rosy.vercel.app/api/booking/${client._id}`
       );
       // setClient(response.data);
       enqueueSnackbar("Booking successfuly completed", { variant: "success" });
