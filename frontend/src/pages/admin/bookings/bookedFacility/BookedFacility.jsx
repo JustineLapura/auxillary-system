@@ -56,13 +56,12 @@ const BookedFacility = () => {
     };
     fetchFacility();
   }, [client.facilityId]);
-  
 
   useEffect(() => {
     const fetchClient = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:4000/api/booking/${id}`
+          `https://auxillary-services-api-rosy.vercel.app/api/booking/${id}`
         );
         setClient(response.data);
       } catch (error) {
@@ -75,10 +74,12 @@ const BookedFacility = () => {
 
   const handleApprove = async () => {
     try {
-      await axios.put(`http://localhost:4000/api/booking/${id}/approve`);
+      await axios.put(
+        `https://auxillary-services-api-rosy.vercel.app/api/booking/${id}/approve`
+      );
       // Optionally, you can fetch the updated booking after approval
       const response = await axios.get(
-        `http://localhost:4000/api/booking/${id}`
+        `https://auxillary-services-api-rosy.vercel.app/api/booking/${id}`
       );
       setClient(response.data);
       enqueueSnackbar("Approved Successfuly", { variant: "success" });
