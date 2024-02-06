@@ -42,15 +42,9 @@ const Login = () => {
           />
         </div>
         <div className="flex flex-col gap-6 justify-center items-center px-16">
-          <div className="">
-            <img
-              className="w-24 lg:hidden"
-              width={100}
-              height={100}
-              src="/ssunewlogo.png"
-              alt="logo"
-            />
-          </div>
+          <h1 className="mt-2 text-xl md:text-2xl text-white font-bold">
+            Sign in
+          </h1>
           <div className="relative w-2/3 flex justify-center overflow-hidden font-semibold rounded-lg bg-gray-300/70 text-gray-800 border-none gap-4">
             <div className="h-full w-full text-center py-2 pe-1 z-10">
               <h1>Login</h1>

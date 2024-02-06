@@ -66,13 +66,13 @@ const Facilities = () => {
   }, []);
 
   return (
-    <div className="w-full h-full pb-5 px-5">
+    <div className="h-full pb-5 px-5">
       <h1 className="flex gap-4 text-lg lg:text-2xl font-bold text-gray-600 my-3">
         Facilities
       </h1>
       <div className="w-full grid md:grid-cols-3 place-items-center gap-4 lg:gap-10">
         {/* card1 */}
-        <div className="w-[300px] h-[100px] flex justify-between items-center cursor-pointer p-4 rounded-lg bg-blue-500 text-white hover:scale-105 hover:bg-blue-600 duration-200">
+        <div className="w-[250px] h-[100px] flex justify-between items-center cursor-pointer p-4 rounded-lg bg-blue-500 text-white hover:scale-105 hover:bg-blue-600 duration-200">
           <FaUserGroup className="w-1/4 h-1/2 lg:h-full" size={25} />
           <div className="">
             <h1 className="text-lg md:text-xl text-white font-bold">
@@ -85,7 +85,7 @@ const Facilities = () => {
         </div>
         {/* card2 */}
         <Link to="/admin/add-facilities">
-          <div className="w-[300px] h-[100px] flex justify-between items-center cursor-pointer p-4 rounded-lg bg-blue-500 text-white hover:scale-105 hover:bg-blue-600 duration-200">
+          <div className="w-[250px] h-[100px] flex justify-between items-center cursor-pointer p-4 rounded-lg bg-blue-500 text-white hover:scale-105 hover:bg-blue-600 duration-200">
             <FaBuildingColumns className="w-1/4 h-1/2 lg:h-full" size={25} />
             <div className="">
               <h1 className="text-lg md:text-xl text-white font-bold">
@@ -99,7 +99,7 @@ const Facilities = () => {
         </Link>
         {/* card3 */}
         <Link to="/admin/bookings">
-          <div className="w-[300px] h-[100px] flex justify-between items-center cursor-pointer p-4 rounded-lg bg-blue-500 text-white hover:scale-105 hover:bg-blue-600 duration-200">
+          <div className="w-[250px] h-[100px] flex justify-between items-center cursor-pointer p-4 rounded-lg bg-blue-500 text-white hover:scale-105 hover:bg-blue-600 duration-200">
             <FaCalendarAlt className="w-1/4 h-1/2 lg:h-full" size={25} />
             <div className="">
               <h1 className="text-lg md:text-xl text-white font-bold">
