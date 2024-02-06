@@ -4,7 +4,7 @@ import DormContainer from "../../../components/admin/manageDorm/DormContainer";
 
 const ManageDorm = () => {
   return (
-    <div className="w-full p-5 bg-gray-200">
+    <div className="w-full h-[85vh] p-5 bg-gray-200">
       <TopHeader />
       <DormContainer />
     </div>

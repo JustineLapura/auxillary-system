@@ -34,7 +34,7 @@ const Bookings = () => {
       <CustomersTable clients={clients} />
 
       {/* Costumers grid  */}
-      <CustomersGrid />
+      {/* <CustomersGrid /> */}
 
       {/* Pagination Section  */}
       <PaginationSection />

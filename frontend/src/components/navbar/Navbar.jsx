@@ -17,7 +17,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="fixed h-24 w-full bg-blue-900/90 mx-auto flex justify-between items-center px-4 z-20">
+    <div className="fixed h-24 w-full bg-blue-900/90 mx-auto flex justify-between items-center px-2 lg:px-6 z-20">
       {/* left */}
       <div className="hidden lg:flex text-white font-bold text-xl gap-4 items-center">
         {/* image  */}
@@ -70,10 +70,10 @@ const Navbar = () => {
       {user && (
         <div className="flex gap-4 items-center text-white">
           <Link to="/profile">
-            <p className="font-bold cursor-pointer">{user.email}</p>
+            <p className="text-xs lg:text-base font-semibold cursor-pointer">{user.email}</p>
           </Link>
           <button
-            className="py-2 border border-yellow-400 bg-yellow-400 hover:bg-yellow-300 font-bold hover:scale-105 duration-300 px-4 rounded-xl "
+            className="lg:py-2 px-2 lg:px-4 border border-yellow-400 bg-yellow-400 hover:bg-yellow-300 font-bold hover:scale-105 duration-300 rounded lg:rounded-xl "
             onClick={handleLogout}
           >
             Logout
@@ -81,12 +81,12 @@ const Navbar = () => {
         </div>
       )}
       {!user && (
-        <div className="flex items-center gap-8 text-xl font-bold text-white">
+        <div className="flex items-center gap-8 lg:text-xl font-bold text-white">
           <Link className="hover:text-blue-200/90" to="/login">
             <button>Login</button>
           </Link>
           <Link to="/signup">
-            <button className="py-3 border border-yellow-400 bg-yellow-400 hover:bg-yellow-300 hover:scale-105 duration-300 px-6 rounded-xl ">
+            <button className="py-1 lg:py-3 px-2 lg:px-6 border border-yellow-400 bg-yellow-400 hover:bg-yellow-300 hover:scale-105 duration-300 rounded lg:rounded-xl ">
               Sign Up
             </button>
           </Link>

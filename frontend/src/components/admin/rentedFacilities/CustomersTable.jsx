@@ -34,7 +34,7 @@ const CustomersTable = () => {
   }, []);
 
   return (
-    <div className="w-full h-[320px] hidden sm:block">
+    <div className="w-full h-[320px]">
       <Table className="w-full rounded-sm">
         <TableCaption className="text-lg">
           {approvedClients.length > 0

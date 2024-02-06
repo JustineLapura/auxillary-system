@@ -8,7 +8,7 @@ import axios from "axios";
 const AddFacilities = () => {
   const [addModal, setAddModal] = useState(false);
   const [facilities, setFacilities] = useState([]);
-  console.log("Facilities from AddFacility ", facilities);
+  // console.log("Facilities from AddFacility ", facilities);
 
   useEffect(() => {
     const fetchFacilities = async () => {

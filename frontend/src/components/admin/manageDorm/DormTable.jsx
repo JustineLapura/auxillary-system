@@ -13,8 +13,8 @@ import {
 
 const DormTable = ({ dorms }) => {
   return (
-    <div className="hidden lg:block container mx-auto p-4 max-h-96 overflow-y-auto">
-      <Table className="min-w-full bg-white border border-gray-300 text-center ">
+    <div className="bg-white p-4 rounded mt-6">
+      <Table>
         <TableCaption className="text-lg">
           {dorms.length > 0
             ? dorms.length + " list of Dorms."

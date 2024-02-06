@@ -5,7 +5,7 @@ import StudentProfileContainer from "../../../components/admin/studentProfile/St
 const StudentProfile = () => {
 
   return (
-    <div className="w-full h-full p-5 bg-gray-200">
+    <div className="w-full h-[85vh] p-5 bg-gray-200">
       <TopHeader />
       <StudentProfileContainer />
       

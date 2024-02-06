@@ -11,7 +11,7 @@ const RentedFacilities = () => {
       <CustomersTable />
 
       {/* Costumers grid  */}
-      <CustomersGrid />
+      {/* <CustomersGrid /> */}
 
       <PaginationSection />
     </div>

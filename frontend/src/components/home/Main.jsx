@@ -13,7 +13,7 @@ const Main = () => {
   //   }
 
   return (
-    <div className='relative h-screen w-full  bg-[url("/SSU.jpg")] bg-no-repeat bg-cover bg-center'>
+    <div className='relative h-screen min-w-[410px]  bg-[url("/SSU.jpg")] bg-no-repeat bg-cover bg-center'>
       <div className="absolute top-0 left-0 h-full w-full bg-blue-500/50" />
       <div className="relative px-4 h-full w-full flex flex-col gap-8 items-center justify-center text-white font-bold">
         {/* Main Text */}
@@ -42,7 +42,9 @@ const Main = () => {
           openModal ? ` fixed w-full h-screen bg-black/70 top-0 left-0` : ""
         }
       />
-      {openModal && <CategoryModal openModal={openModal} setIsOpenModal={setIsOpenModal} />}
+      {openModal && (
+        <CategoryModal openModal={openModal} setIsOpenModal={setIsOpenModal} />
+      )}
     </div>
   );
 };

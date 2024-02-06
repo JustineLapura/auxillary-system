@@ -8,8 +8,7 @@ import Loading from "@/components/rentals/facilitiesLoading/Loading";
 const Facilities = () => {
   const [facilities, setFacilities] = useState([]);
   console.log("Facilities from Rentals: ", facilities);
- 
- 
+
   useEffect(() => {
     const fetchFacilities = async () => {
       try {
@@ -24,7 +23,6 @@ const Facilities = () => {
 
     fetchFacilities();
   }, []);
-
 
   // useEffect(() => {
   //   const fetchFacilities = async () => {
@@ -46,22 +44,16 @@ const Facilities = () => {
   return (
     <>
       <Navbar />
-      <div className="h-full w-full pt-24">
+      <div className="h-full w-full pt-24 px-4">
         <div className="h-full w-full max-w-[960px] mx-auto py-12">
           <h1 className="text-center mb-10 text-blue-950 uppercase font-black text-5xl md:text-5xl">
             Facilities
           </h1>
           {facilities.length === 0 && <Loading />}
           {facilities.length > 0 && (
-            <div className="grid place-items-center gap-20 lg:gap-36 sm:grid-cols-2 md:grid-cols-3 mt-16">
+            <div className="grid place-items-center gap-20 lg:gap-36 sm:grid-cols-2 lg:grid-cols-3 mt-16">
               {facilities.map((facility) => (
-                <RentalFacilityCards
-                  key={facility._id}
-                  // id={facility.id}
-                  // img={facility.img}
-                  // facilityName={facility.name}
-                  facility={facility}
-                />
+                <RentalFacilityCards key={facility._id} facility={facility} />
               ))}
             </div>
           )}

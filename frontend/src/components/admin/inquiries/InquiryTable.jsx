@@ -11,8 +11,8 @@ import {
 
 const InquiryTable = ({ inquiries }) => {
   return (
-    <div className="hidden lg:block container mx-auto p-4">
-      <Table className="min-w-full bg-white border border-gray-300 text-center">
+    <div className="bg-white mt-12 rounded p-4">
+      <Table>
         <TableCaption className="text-lg">
           {inquiries.length > 0
             ? inquiries.length + " list of Inquiries."
@@ -22,7 +22,7 @@ const InquiryTable = ({ inquiries }) => {
           <TableRow>
             <TableHead className="text-center">No</TableHead>
             <TableHead className="text-center">Name</TableHead>
-            <TableHead className="text-center">Address</TableHead>
+            <TableHead className="min-w-[200px] text-center">Address</TableHead>
             <TableHead className="text-center">Contact</TableHead>
             <TableHead className="text-center">Email</TableHead>
             <TableHead className="text-center">Inquiries</TableHead>

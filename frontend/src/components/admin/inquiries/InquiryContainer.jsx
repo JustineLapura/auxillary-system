@@ -21,9 +21,9 @@ const InquiryContainer = () => {
     fetchInquiries();
   }, []);
   return (
-    <div className="w-full bg-white rounded-lg h-[400px] mt-12">
+    <>
       <InquiryTable inquiries={inquiries} />
-    </div>
+    </>
   );
 };
 

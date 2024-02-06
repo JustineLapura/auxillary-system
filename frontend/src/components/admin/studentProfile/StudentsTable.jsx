@@ -14,8 +14,8 @@ import {
 
 const StudentsTable = ({ students }) => {
   return (
-    <div className="hidden lg:block container mx-auto p-4 max-h-96 overflow-y-auto">
-      <Table className="h-full min-w-full bg-white border border-gray-300 text-center">
+    <div className="bg-white container mx-auto p-4 rounded mt-6">
+      <Table>
         <TableCaption className="text-lg">
           {students.length > 0
             ? students.length + " list of Students."
@@ -30,7 +30,7 @@ const StudentsTable = ({ students }) => {
             <TableHead className="text-center">Contact</TableHead>
             <TableHead className="text-center">Email</TableHead>
             <TableHead className="text-center">Gender</TableHead>
-            <TableHead className="text-center">Address</TableHead>
+            <TableHead className="min-w-[200px] text-center">Address</TableHead>
             <TableHead className="text-center">Action</TableHead>
             {/* Add more columns as needed */}
           </TableRow>

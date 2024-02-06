@@ -33,7 +33,7 @@ const RecordsTable = () => {
   }, []);
 
   return (
-    <div className="w-full h-[250px] mt-10 hidden sm:block">
+    <div className="w-full h-[250px] mt-10">
       <Table className="w-full rounded-lg">
         <TableCaption className="text-lg">
           {completedClients.length > 0

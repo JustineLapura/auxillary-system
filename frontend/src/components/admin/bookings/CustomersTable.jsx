@@ -14,7 +14,7 @@ const CustomersTable = ({ clients }) => {
   );
 
   return (
-    <div className="hidden md:block w-full h-[400px] mt-4">
+    <div className="w-full h-[400px] mt-4">
       <Table className="w-full border">
         <TableCaption className="text-lg">
           {pendingClients.length > 0
@@ -23,10 +23,16 @@ const CustomersTable = ({ clients }) => {
         </TableCaption>
         <TableRow className="lg:font-bold text-xs lg:text-sm uppercase">
           <TableHead className="text-center">No.</TableHead>
-          <TableHead className="text-center">Client's Name</TableHead>
+          <TableHead className="text-center">
+            Client's Name
+          </TableHead>
           <TableHead className="text-center">Facility</TableHead>
-          <TableHead className="text-center">Booking Date</TableHead>
-          <TableHead className="text-center">Start Time</TableHead>
+          <TableHead className="text-center">
+            Booking Date
+          </TableHead>
+          <TableHead className="text-center">
+            Start Time
+          </TableHead>
           <TableHead className="text-center">End Time</TableHead>
           <TableHead className="text-center">Agency</TableHead>
           <TableHead className="text-center">Booking Status</TableHead>

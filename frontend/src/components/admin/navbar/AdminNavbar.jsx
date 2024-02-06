@@ -12,7 +12,7 @@ const AdminNavbar = () => {
   return (
     <div className="fixed h-24 w-full bg-blue-900/90 mx-auto flex justify-between items-center px-4 z-20">
       {/* left */}
-      <div className="text-white font-bold text-xl flex gap-4 items-center">
+      <div className="text-white font-bold flex gap-4 items-center">
         {/* image  */}
         <img
           className="w-14 rounded-full border-2 border-white"
@@ -21,8 +21,8 @@ const AdminNavbar = () => {
           src="/auxillaryLogo.png"
           alt="logo"
         />
-        <h1 className="text-xl font-black">
-          Auxilliary <br />
+        <h1 className="text-sm lg:text-xl font-black">
+          Auxilliary
           Services
         </h1>
       </div>
@@ -31,7 +31,7 @@ const AdminNavbar = () => {
       <div className="h-full flex items-center gap-16 text-white">
         <button
           onClick={handleLogout}
-          className="py-3 border border-yellow-400 bg-yellow-400 hover:bg-yellow-300 font-bold hover:scale-105 duration-300 px-6 rounded-xl "
+          className="py-1 lg:py-3 px-2 lg:px-6 border text-sm lg:text-base border-yellow-400 bg-yellow-400 hover:bg-yellow-300 font-bold hover:scale-105 duration-300 rounded lg:rounded-xl "
         >
           Logout
         </button>

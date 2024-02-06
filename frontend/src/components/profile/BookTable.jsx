@@ -15,12 +15,12 @@ import {
 const BookTable = () => {
   const [clients, setClients] = useState([]);
   const { user } = useContext(AuthContext).user || {};
-  console.log(user);
+  // console.log(user);
   const personalDisplay = clients.filter(
     (client) =>
       client.firstName === user.firstName && client.lastName === user.lastName
   );
-  console.log(personalDisplay);
+  // console.log(personalDisplay);
 
   useEffect(() => {
     const fetchClients = async () => {
@@ -38,7 +38,7 @@ const BookTable = () => {
   }, []);
 
   return (
-    <div className="hidden md:block w-full h-[350px] mt-12">
+    <div className="w-full h-[350px] mt-12">
       <Table className="min-w-full ">
         <TableCaption className="text-lg">
           {personalDisplay.length > 0
@@ -47,13 +47,13 @@ const BookTable = () => {
         </TableCaption>
         <TableHeader>
           <TableRow className="lg:font-bold text-xs lg:text-lg uppercase">
-            <TableHead className="text-center">No.</TableHead>
-            <TableHead className="text-center">Client's Name</TableHead>
-            <TableHead className="text-center">Facility</TableHead>
-            <TableHead className="text-center">Booking Date</TableHead>
-            <TableHead className="text-center">Start Time</TableHead>
-            <TableHead className="text-center">End Time</TableHead>
-            <TableHead className="text-center">Agency</TableHead>
+            <TableHead className="min-w-[150px] text-center">No.</TableHead>
+            <TableHead className="min-w-[150px] text-center">Client's Name</TableHead>
+            <TableHead className="min-w-[150px] text-center">Facility</TableHead>
+            <TableHead className="min-w-[150px] text-center">Booking Date</TableHead>
+            <TableHead className="min-w-[150px] text-center">Start Time</TableHead>
+            <TableHead className="min-w-[150px] text-center">End Time</TableHead>
+            <TableHead className="min-w-[150px] text-center">Agency</TableHead>
             <TableHead className="text-center">Booking Status</TableHead>
             <TableHead className="text-center">Action</TableHead>
           </TableRow>
