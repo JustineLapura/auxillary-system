@@ -97,8 +97,8 @@ const BookingModal = ({ facility, isBooking, setIsBooking }) => {
       onSubmit={handleBook}
       className={
         isBooking
-          ? "fixed w-[60%] max-w-[600px] h-[90%] lg:h-[78%] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gray-200 z-20 rounded-lg space-y-3 p-5 ease-in duration-300 overflow-y-scroll lg:overflow-hidden"
-          : "fixed w-[60%] max-w-[600px] h-[90%] lg:h-[78%] top-[-100%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gray-200 z-20 rounded-lg space-y-3 p-5 ease-in duration-300"
+          ? "fixed w-[80%] max-w-[600px] h-[90%] lg:h-[78%] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gray-200 z-20 rounded-lg space-y-3 p-5 ease-in duration-300 overflow-y-scroll lg:overflow-hidden"
+          : "fixed w-[80%] max-w-[600px] h-[90%] lg:h-[78%] top-[-100%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gray-200 z-20 rounded-lg space-y-3 p-5 ease-in duration-300"
       }
     >
       {/* <div className=" w-full flex justify-end items-center border-2 ">

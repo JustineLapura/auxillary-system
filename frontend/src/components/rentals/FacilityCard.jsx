@@ -58,12 +58,12 @@ const FacilityCard = ({ facility, setIsBooking }) => {
           />
         )} */}
         <img
-          className="w-full h-[400px] md:w-full rounded-lg object-cover"
+          className="w-full h-[200px] sm:h-[400px] md:w-full rounded-lg object-cover"
           src="/SSU.jpg"
           alt={facility.name}
         />
         {!facility && facility.photo && (
-          <Skeleton className="w-full h-[400px] md:w-full rounded-lg object-cover" />
+          <Skeleton className="w-full h-[200px] sm:h-[400px] md:w-full rounded-lg object-cover" />
         )}
       </div>
       <div className=" w-full h-full">
@@ -131,7 +131,7 @@ const FacilityCard = ({ facility, setIsBooking }) => {
               mode="multiple"
               selected={bookedDates}
               // onSelect={setDate}
-              className="rounded-md"
+              className="rounded-md border shadow"
             />
           </div>
         </div>

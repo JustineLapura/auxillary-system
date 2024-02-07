@@ -22,7 +22,7 @@ const DormTable = ({ dorms }) => {
         </TableCaption>
         <TableHeader>
           <TableRow className="text-gray-900">
-            <TableHead className="text-center">ID</TableHead>
+            <TableHead className="text-center">#</TableHead>
             <TableHead className="text-center">Dormitory</TableHead>
             <TableHead className="text-center">Room No.</TableHead>
             <TableHead className="text-center">Monthly Rate</TableHead>

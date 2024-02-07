@@ -6,7 +6,7 @@ import CustomersGrid from "../../../components/admin/rentedFacilities/CustomersG
 const RentedFacilities = () => {
   return (
     <div className="w-full h-full min-h-[85vh] p-5 md:flex flex-col justify-between">
-      <h1 className="text-2xl md:text-4xl font-bold">Rented Facilites</h1>
+      <h1 className="text-2xl md:text-4xl font-bold my-4">Rented Facilites</h1>
       {/* Costumers Table  */}
       <CustomersTable />
 

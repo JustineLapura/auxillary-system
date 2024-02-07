@@ -16,13 +16,13 @@ const DormListTableCard = ({ i, dorm }) => {
 
   return (
     <TableRow key={dorm._id} className="text-gray-500">
-      <TableCell className="py-2 px-4 border-b">{i + 1}</TableCell>
-      <TableCell className="py-2 px-4 border-b capitalize">{dorm.firstName}</TableCell>
-      <TableCell className="py-2 px-4 border-b capitalize">{dorm.lastName}</TableCell>
-      <TableCell className="py-2 px-4 border-b capitalize">{dorm.type}</TableCell>
-      <TableCell className="py-2 px-4 border-b">{dorm.roomNumber}</TableCell>
-      <TableCell className="py-2 px-4 border-b">{formatDate(dorm.dueStart)}</TableCell>
-      <TableCell className="py-2 px-4 border-b">{formatDate(dorm.dueDate)}</TableCell>
+      <TableCell className="text-center py-2 px-4 border-b">{i + 1}</TableCell>
+      <TableCell className="text-center py-2 px-4 border-b capitalize">{dorm.firstName}</TableCell>
+      <TableCell className="text-center py-2 px-4 border-b capitalize">{dorm.lastName}</TableCell>
+      <TableCell className="text-center py-2 px-4 border-b capitalize">{dorm.type}</TableCell>
+      <TableCell className="text-center py-2 px-4 border-b">{dorm.roomNumber}</TableCell>
+      <TableCell className="text-center py-2 px-4 border-b">{formatDate(dorm.dueStart)}</TableCell>
+      <TableCell className="text-center py-2 px-4 border-b">{formatDate(dorm.dueDate)}</TableCell>
       <TableCell className="h-full flex justify-center items-center gap-2 py-2 px-4">
         <SiGooglemessages
           className="text-blue-900 cursor-pointer hover:scale-125 duration-200"

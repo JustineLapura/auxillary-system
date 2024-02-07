@@ -16,7 +16,7 @@ const StudentsTableCard = ({ student, i }) => {
       <TableCell className="py-2 px-4 border-b capitalize">
         {student.gender}
       </TableCell>
-      <TableCell className="py-2 px-4 border-b">{student.address}</TableCell>
+      <TableCell className="py-2 px-4 border-b text-center">{student.address}</TableCell>
       <TableCell className="h-full flex justify-center items-center gap-2 py-2 px-4">
         <FaRegEdit
           className="text-yellow-500 cursor-pointer hover:scale-125 duration-200"

@@ -48,7 +48,7 @@ const SingleFacility = ({ params }) => {
         <div
           onClick={() => setIsBooking(false)}
           className={
-            isBooking ? "fixed top-0 left-0 w-full h-full bg-blue-900/60" : ""
+            isBooking ? "fixed top-0 left-0 w-full h-full bg-blue-900/60 z-20" : ""
           }
         />
 

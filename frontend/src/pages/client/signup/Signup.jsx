@@ -46,7 +46,7 @@ const Signup = () => {
         <h1 className="mt-2 text-xl md:text-2xl text-white font-bold">
           Create an Account
         </h1>
-        <div className="relative flex justify-center overflow-hidden text-gray-800 font-semibold rounded-lg w-2/3 md:w-1/3 bg-gray-300/70 border-none gap-4 px-2">
+        {/* <div className="relative flex justify-center overflow-hidden text-gray-800 font-semibold rounded-lg w-2/3 md:w-1/3 bg-gray-300/70 border-none gap-4 px-2">
           <div
             className="h-full w-1/2 text-center py-2 rounded-xl ps-1 z-10"
             onMouseEnter={handleMouseEnter}
@@ -59,7 +59,6 @@ const Signup = () => {
           <div className="h-full w-full text-center py-2 ps-2 rounded-xl z-10">
             <h1>SignUp</h1>
           </div>
-          {/* background  */}
           <div
             className={
               isHovered
@@ -67,10 +66,10 @@ const Signup = () => {
                 : "absolute right-0 h-full w-1/2 rounded-lg bg-gradient-to-l from-yellow-100 to-yellow-400/80 duration-300 ease-in transform"
             }
           />
-        </div>
+        </div> */}
 
         <form className="">
-          <div className="w-full flex items-center gap-4 mb-3">
+          <div className="w-full lg:flex items-center gap-4 mb-2 space-y-2">
             <input
               className={
                 emptyFields && emptyFields.includes("firstName")
@@ -97,7 +96,7 @@ const Signup = () => {
               required
             />
           </div>
-          <div className="w-full flex items-center gap-4 mb-3">
+          <div className="w-full lg:flex items-center gap-4 mb-2 space-y-2">
             <input
               className={
                 emptyFields && emptyFields.includes("email")
@@ -139,7 +138,7 @@ const Signup = () => {
             onChange={(e) => setAddress(e.target.value)}
             required
           />
-          <div className="w-full flex items-center gap-4 mt-3">
+          <div className="w-full lg:flex items-center gap-4 mt-3 space-y-2">
             <input
               className={
                 emptyFields && emptyFields.includes("password")
@@ -189,18 +188,18 @@ const Signup = () => {
             </button>
           </div>
           {error && (
-            <p className="w-full text-red-500 text-center text-sm mt-4 font-semibold">
+            <p className="w-full text-red-500 text-center text-sm my-2 font-semibold">
               {error}
             </p>
           )}
+          <div className="w-full flex justify-center mt-2">
+            <Link to="/login">
+              <button className="py-2 px-5 rounded-lg bg-gray-500 font-bold shadow-xl text-white ">
+                Log into Account
+              </button>
+            </Link>
+          </div>
         </form>
-        <div className="w-full flex justify-center">
-          <Link to="/login">
-            <button className="py-2 px-5 rounded-lg bg-gray-500 font-bold shadow-xl text-white ">
-              Log into Account
-            </button>
-          </Link>
-        </div>
       </div>
     </div>
   );

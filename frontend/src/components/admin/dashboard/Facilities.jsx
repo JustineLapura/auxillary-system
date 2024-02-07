@@ -13,9 +13,9 @@ const Facilities = () => {
     (reservation) => reservation.status === "pending"
   );
 
-  console.log("Users fr Dashboard: ", users);
-  console.log("Facilities fr Dashboard: ", facilities);
-  console.log("Reservations fr Dashboard: ", pendingReservations);
+  // console.log("Users fr Dashboard: ", users);
+  // console.log("Facilities fr Dashboard: ", facilities);
+  // console.log("Reservations fr Dashboard: ", pendingReservations);
 
   // get Users
   useEffect(() => {
@@ -75,7 +75,7 @@ const Facilities = () => {
         <div className="w-[250px] h-[100px] flex justify-between items-center cursor-pointer p-4 rounded-lg bg-blue-500 text-white hover:scale-105 hover:bg-blue-600 duration-200">
           <FaUserGroup className="w-1/4 h-1/2 lg:h-full" size={25} />
           <div className="">
-            <h1 className="text-lg md:text-xl text-white font-bold">
+            <h1 className="text-base md:text-lg text-white font-bold">
               Total Users
             </h1>
             <p className="text-right lg:text-center font-semibold">
@@ -88,7 +88,7 @@ const Facilities = () => {
           <div className="w-[250px] h-[100px] flex justify-between items-center cursor-pointer p-4 rounded-lg bg-blue-500 text-white hover:scale-105 hover:bg-blue-600 duration-200">
             <FaBuildingColumns className="w-1/4 h-1/2 lg:h-full" size={25} />
             <div className="">
-              <h1 className="text-lg md:text-xl text-white font-bold">
+              <h1 className="text-base md:text-lg text-white font-bold">
                 Total Facilities
               </h1>
               <p className="text-right lg:text-center font-semibold">
@@ -102,7 +102,7 @@ const Facilities = () => {
           <div className="w-[250px] h-[100px] flex justify-between items-center cursor-pointer p-4 rounded-lg bg-blue-500 text-white hover:scale-105 hover:bg-blue-600 duration-200">
             <FaCalendarAlt className="w-1/4 h-1/2 lg:h-full" size={25} />
             <div className="">
-              <h1 className="text-lg md:text-xl text-white font-bold">
+              <h1 className="text-base md:text-lg text-white font-bold">
                 Total Reservations
               </h1>
               <p className="text-right lg:text-center font-semibold">
