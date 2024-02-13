@@ -139,8 +139,8 @@ const AddFacilityModal = ({ addModal, setAddModal }) => {
         ></textarea>
       </div>
       <div className="w-full">
-        <h1 className="text-lg font-semibold text-center my-3">Price Rate:</h1>
-        <div className="flex justify-between items-center gap-4">
+        <h1 className="text-lg font-semibold sm:text-center my-3">Price Rate:</h1>
+        <div className="sm:flex justify-between items-center gap-4">
           <div className="flex flex-col">
             <label className="text-gray-500" htmlFor="">
               Government:
