@@ -28,13 +28,16 @@ const AddStudentModal = ({ addModal, setAddModal }) => {
     };
 
     try {
-      const response = await fetch("https://auxillary-services-api-rosy.vercel.app/api/student", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newStudent),
-      });
+      const response = await fetch(
+        "https://auxillary-services-api-rosy.vercel.app/api/student",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(newStudent),
+        }
+      );
 
       const json = await response.json();
 
@@ -72,8 +75,8 @@ const AddStudentModal = ({ addModal, setAddModal }) => {
       onSubmit={handleAddStudent}
       className={
         addModal
-          ? "fixed w-[60%] max-w-[600px] h-[90%] lg:h-[65%] top-1/2 left-1/2 transdiv -translate-x-1/2 -translate-y-1/2 bg-gray-200 z-20 rounded-lg space-y-3 p-5 ease-in duration-300"
-          : "fixed w-[60%] max-w-[600px] h-[90%] lg:h-[65%] top-[-100%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gray-200 z-20 rounded-lg space-y-3 p-5 ease-in duration-300"
+          ? "fixed w-[90%]  max-w-[600px] h-[90%] lg:h-[65%] top-1/2 left-1/2 transdiv -translate-x-1/2 -translate-y-1/2 bg-gray-200 z-20 rounded-lg space-y-3 p-5 ease-in duration-300"
+          : "fixed w-[90%]  max-w-[600px] h-[90%] lg:h-[65%] top-[-100%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gray-200 z-20 rounded-lg space-y-3 p-5 ease-in duration-300"
       }
     >
       {/* <div className=" w-full flex justify-end items-center border-2 ">

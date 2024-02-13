@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SidebarMenu from "./SidebarMenu";
 
 const AdminNavbar = () => {
-  const [nav, setNav] = useState(true);
+  const [nav, setNav] = useState(false);
   const navigate = useNavigate();
 
   const toggleMode = () => {
@@ -16,7 +16,7 @@ const AdminNavbar = () => {
   };
 
   return (
-    <div className="fixed h-24 w-full bg-blue-900/90 mx-auto flex justify-between items-center px-4 z-30">
+    <div className="fixed h-24 w-full bg-blue-900/90 mx-auto flex justify-between items-center px-4 z-20">
       {/* left */}
 
       <div className="text-white font-bold flex gap-4 items-center">
@@ -24,13 +24,15 @@ const AdminNavbar = () => {
           <AiOutlineMenu size={20} />
         </div>
         {/* image  */}
-        <img
-          className="w-14 rounded-full border-2 border-white"
-          width={80}
-          height={80}
-          src="/auxillaryLogo.png"
-          alt="logo"
-        />
+        <Link to="/admin">
+          <img
+            className="w-14 rounded-full border-2 border-white"
+            width={80}
+            height={80}
+            src="/auxillaryLogo.png"
+            alt="logo"
+          />
+        </Link>
         <h1 className="text-sm lg:text-xl font-black">Auxilliary Services</h1>
       </div>
 
