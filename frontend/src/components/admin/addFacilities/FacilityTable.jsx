@@ -12,7 +12,7 @@ import {
 
 const FacilityTable = ({ facilities }) => {
   return (
-    <div className="w-full hidden sm:block">
+    <div className="w-full">
       <Table className="w-full">
         <TableCaption className="text-lg">
           {facilities.length > 0

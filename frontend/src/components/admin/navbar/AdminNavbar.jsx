@@ -1,18 +1,28 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState } from "react";
+import { AiOutlineMenu } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
+import SidebarMenu from "./SidebarMenu";
 
 const AdminNavbar = () => {
-  //   const [nav, setNav] = useState(false);
+  const [nav, setNav] = useState(true);
   const navigate = useNavigate();
+
+  const toggleMode = () => {
+    setNav((prevNav) => !prevNav);
+  };
 
   const handleLogout = () => {
     navigate("/admin-login");
   };
 
   return (
-    <div className="fixed h-24 w-full bg-blue-900/90 mx-auto flex justify-between items-center px-4 z-20">
+    <div className="fixed h-24 w-full bg-blue-900/90 mx-auto flex justify-between items-center px-4 z-30">
       {/* left */}
+
       <div className="text-white font-bold flex gap-4 items-center">
+        <div className="md:hidden cursor-pointer" onClick={toggleMode}>
+          <AiOutlineMenu size={20} />
+        </div>
         {/* image  */}
         <img
           className="w-14 rounded-full border-2 border-white"
@@ -21,10 +31,7 @@ const AdminNavbar = () => {
           src="/auxillaryLogo.png"
           alt="logo"
         />
-        <h1 className="text-sm lg:text-xl font-black">
-          Auxilliary
-          Services
-        </h1>
+        <h1 className="text-sm lg:text-xl font-black">Auxilliary Services</h1>
       </div>
 
       {/* right  */}
@@ -36,6 +43,18 @@ const AdminNavbar = () => {
           Logout
         </button>
       </div>
+
+      {/* mobile menu */}
+      {/* overlat */}
+      {nav && (
+        <div
+          className="md:hidden bg-black/40 fixed w-full h-screen z-10 top-0 left-0"
+          // onClick={setNav(false)}
+        />
+      )}
+
+      {/* Side Drawer menu  */}
+      {nav && <SidebarMenu nav={nav} setNav={setNav} />}
     </div>
   );
 };

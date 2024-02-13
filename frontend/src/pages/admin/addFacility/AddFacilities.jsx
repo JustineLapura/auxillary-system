@@ -39,7 +39,7 @@ const AddFacilities = () => {
       <FacilityTable facilities={facilities} />
 
       {/* Facility Grid  */}
-      <FacilityGrid facilities={facilities} />
+      {/* <FacilityGrid facilities={facilities} /> */}
 
       {/*Modal Overlay  */}
       <div

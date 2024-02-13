@@ -9,25 +9,23 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-import { ChevronDown } from "lucide-react";
-
 const Filters = () => {
   return (
     <div className="">
       <h1 className="text-xl lg:text-3xl mb-2 font-bold my-4 text-gray-700">
         Reservations
       </h1>
-      <div className="flex items-center justify-between py-1">
+      <div className="sm:flex items-center justify-between py-1">
         <Input
           placeholder="Filter client's name..."
           // value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
           // onChange={(event) =>
           //   table.getColumn("email")?.setFilterValue(event.target.value)
           // }
-          className="max-w-sm"
+          className="w-full sm:w-[180px]"
         />
         <Select>
-          <SelectTrigger className="w-[180px]">
+          <SelectTrigger className="w-full sm:w-[180px]">
             <SelectValue placeholder="Filter by:" />
           </SelectTrigger>
           <SelectContent>

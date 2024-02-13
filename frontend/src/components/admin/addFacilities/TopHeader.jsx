@@ -14,7 +14,7 @@ const TopHeader = ({ facilitiesCount, setAddModal }) => {
         </button>
       </div>
 
-      <div className="w-full flex justify-between items-center my-6">
+      <div className="w-full sm:flex justify-between items-center my-6">
         <h1 className=" text-sm lg:text-xl font-semibold text-gray-700">
           Showing{" "}
           <span className="px-3 py-1 rounded bg-gray-300 font-bold text-gray-900">
@@ -33,17 +33,17 @@ const TopHeader = ({ facilitiesCount, setAddModal }) => {
             placeholder="Facility name..."
           />
         </div>
-        <div className="relative sm:hidden">
+        <div className="relative sm:hidden mt-2">
           <input
-            className="border-2 border-gray-300 py-2.5 ps-9 w-[150px] rounded"
+            className="border border-gray-300 py-1 ps-9 w-[150px] rounded"
             type="text"
             name=""
             id=""
             placeholder="Search..."
           />
           <FaSearch
-            className="sm:hidden absolute top-2 left-2 text-gray-500"
-            size={25}
+            className="sm:hidden absolute top-3 left-2 text-gray-500"
+            size={15}
           />
         </div>
       </div>

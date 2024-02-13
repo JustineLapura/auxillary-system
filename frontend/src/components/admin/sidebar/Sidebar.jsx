@@ -1,5 +1,7 @@
-import React from "react";
-import { RxSketchLogo, RxDashboard } from "react-icons/rx";
+import React, { useState } from "react";
+import { IoIosArrowForward } from "react-icons/io";
+import { IoIosArrowBack } from "react-icons/io";
+import { PiSquaresFourFill } from "react-icons/pi";
 import { FiSettings, FiClock } from "react-icons/fi";
 import { FaTooth, FaDesktop, FaRegQuestionCircle } from "react-icons/fa";
 import { FaBuildingColumns } from "react-icons/fa6";
@@ -12,100 +14,222 @@ import { Link } from "react-router-dom";
 import "./Sidebar.css";
 
 const Sidebar = () => {
+  const [openSidebarMenu, setOpenSidebarMenu] = useState(false);
+
   return (
-    <div className="fixed border-2  top-24 w-20 md:w-40 h-full p-4 bg-white border-r-[1px] flex flex-col justify-between overflow-y-scroll">
+    <div
+      className={`hidden fixed border-2 top-24 ${
+        openSidebarMenu ? "w-[300px]" : "w-20"
+      } duration-200 ease-in h-full p-4 bg-white border-r-[1px] md:flex flex-col overflow-y-scroll z-20`}
+    >
       <div className="flex flex-col items-center uppercase text-sm font-bold w-full">
-        <Link to="/admin">
-          <div className="group w-full flex justify-between items-center gap-1 px-2 lg:mr-3 lg:hover:bg-gray-100 ">
-            <div className="w-full bg-gray-100 group-hover:bg-white hover:bg-gray-200 cursor-pointer my-4 p-3 rounded-lg inline-block">
-              <FaDesktop size={20} />
+        <div className="w-full">
+          <div className="group w-full flex justify-center items-center gap-4 px-2 ">
+            <div
+              className="w-11 bg-gray-100  hover:bg-gray-200 cursor-pointer my-4 p-3 rounded-lg inline-block"
+              onClick={() => setOpenSidebarMenu(!openSidebarMenu)}
+            >
+              {openSidebarMenu ? (
+                <IoIosArrowBack size={20} />
+              ) : (
+                <IoIosArrowForward size={20} />
+              )}
             </div>
-            <h1 className="hidden md:block text-xs">Dashboard</h1>
+            {openSidebarMenu && (
+              <h1 className="hidden md:block text-lg font-black text-gray-500">
+                Auxilliary Admin
+              </h1>
+            )}
+          </div>
+        </div>
+
+        <Link
+          to="/admin"
+          className="w-full"
+          onClick={() => setOpenSidebarMenu(false)}
+        >
+          <div
+            className={`group w-full flex ${
+              openSidebarMenu ? "justify-start hover:bg-gray-200" : "justify-center"
+            } items-center gap-4 px-2 rounded`}
+          >
+            <div className="w-11 bg-gray-100 group-hover:bg-white hover:bg-gray-200 cursor-pointer my-4 p-3 rounded-lg inline-block">
+              <PiSquaresFourFill size={20} />
+            </div>
+            {openSidebarMenu && (
+              <h1 className="hidden md:block text-xs">Dashboard</h1>
+            )}
           </div>
         </Link>
-        <span className="border-b-[1px] border-gray-200 w-full p-2 mt-3 mb-6" />
-        <h1 className="hidden md:flex text-gray-500 mb-4">Facilities</h1>
+        {openSidebarMenu && (
+          <div className="w-full h-full flex justify-start items-center">
+            <span className="border-b-[1px] border-gray-200 w-full mx-1" />
+            <h1 className="hidden md:flex text-gray-500">Facilities</h1>
+            <span className="border-b-[1px] border-gray-200 w-full mx-1" />
+          </div>
+        )}
 
-        <Link to="/admin/bookings">
-          <div className="group w-full flex justify-between items-center gap-2 px-2 lg:mr-3 lg:hover:bg-gray-100 ">
-            <div className="w-full bg-gray-100 group-hover:bg-white hover:bg-gray-200 cursor-pointer my-4 p-3 rounded-lg inline-block">
+        <Link
+          className="w-full"
+          onClick={() => setOpenSidebarMenu(false)}
+          to="/admin/bookings"
+        >
+          <div
+            className={`group w-full flex ${
+              openSidebarMenu ? "justify-start hover:bg-gray-200" : "justify-center"
+            } items-center gap-4 px-2 rounded`}
+          >
+            <div className="w-11 bg-gray-100 group-hover:bg-white hover:bg-gray-200 cursor-pointer my-4 p-3 rounded-lg inline-block">
               <MdBookmarkAdded size={20} />
             </div>
-            <h1 className="hidden md:block text-xs">Bookings</h1>
+            {openSidebarMenu && (
+              <h1 className="hidden md:block text-xs">Bookings</h1>
+            )}
           </div>
         </Link>
-        <Link to="/admin/rented-facilities">
-          <div className="group w-full flex justify-between items-center gap-4 px-2 lg:hover:bg-gray-100">
-            <div className="w-full bg-gray-100 group-hover:bg-white hover:bg-gray-200 cursor-pointer my-4 p-3 rounded-lg inline-block">
+        <Link
+          className="w-full"
+          onClick={() => setOpenSidebarMenu(false)}
+          to="/admin/rented-facilities"
+        >
+          <div
+            className={`group w-full flex ${
+              openSidebarMenu ? "justify-start hover:bg-gray-200" : "justify-center"
+            } items-center gap-4 px-2 rounded`}
+          >
+            <div className="w-11 bg-gray-100 group-hover:bg-white hover:bg-gray-200 cursor-pointer my-4 p-3 rounded-lg inline-block">
               <FaBuildingColumns size={20} />
             </div>
-            <h1 className="hidden md:block text-xs">
-              Rented <br /> Facilities
-            </h1>
+            {openSidebarMenu && (
+              <h1 className="hidden md:block text-xs">Rented Facilities</h1>
+            )}
           </div>
         </Link>
-        <Link to="/admin/add-facilities">
-          <div className="group w-full flex justify-between items-center gap-4 px-2 lg:hover:bg-gray-100">
-            <div className="w-full bg-gray-100 group-hover:bg-white hover:bg-gray-200 cursor-pointer my-4 p-3 rounded-lg inline-block">
+        <Link
+          className="w-full"
+          onClick={() => setOpenSidebarMenu(false)}
+          to="/admin/add-facilities"
+        >
+          <div
+            className={`group w-full flex ${
+              openSidebarMenu ? "justify-start hover:bg-gray-200" : "justify-center"
+            } items-center gap-4 px-2 rounded`}
+          >
+            <div className="w-11 bg-gray-100 group-hover:bg-white hover:bg-gray-200 cursor-pointer my-4 p-3 rounded-lg inline-block">
               <BsBuildingAdd size={20} />
             </div>
-            <h1 className="hidden md:block text-xs">
-              Add <br /> Facilities
-            </h1>
+            {openSidebarMenu && (
+              <h1 className="hidden md:block text-xs">Add Facilities</h1>
+            )}
           </div>
         </Link>
-        <Link to="/admin/records">
-          <div className="group w-full flex justify-between items-center gap-4 px-2 lg:hover:bg-gray-100">
-            <div className="w-full bg-gray-100 group-hover:bg-white hover:bg-gray-200 cursor-pointer my-4 p-3 rounded-lg inline-block">
+        <Link
+          className="w-full"
+          onClick={() => setOpenSidebarMenu(false)}
+          to="/admin/records"
+        >
+          <div
+            className={`group w-full flex ${
+              openSidebarMenu ? "justify-start hover:bg-gray-200" : "justify-center"
+            } items-center gap-4 px-2 rounded`}
+          >
+            <div className="w-11 bg-gray-100 group-hover:bg-white hover:bg-gray-200 cursor-pointer my-4 p-3 rounded-lg inline-block">
               <TbReport size={20} />
             </div>
-            <h1 className="hidden md:block text-xs">Records</h1>
+            {openSidebarMenu && (
+              <h1 className="hidden md:block text-xs">Records</h1>
+            )}
           </div>
         </Link>
-        <span className="border-b-[1px] border-gray-200 w-full p-2 mt-3 mb-6" />
-        <h1 className="hidden md:flex text-gray-500 mb-4">Dormitory</h1>
-        <Link to="/admin/student-profile">
-          <div className="group w-full flex justify-between items-center gap-4 px-2 lg:hover:bg-gray-100">
-            <div className="w-full bg-gray-100 group-hover:bg-white hover:bg-gray-200 cursor-pointer my-4 p-3 rounded-lg inline-block">
+        {openSidebarMenu && (
+          <div className="w-full h-full flex justify-start items-center">
+            <span className="border-b-[1px] border-gray-200 w-full mx-1" />
+            <h1 className="hidden md:flex text-gray-500">Dormitories</h1>
+            <span className="border-b-[1px] border-gray-200 w-full mx-1" />
+          </div>
+        )}
+        <Link
+          className="w-full"
+          onClick={() => setOpenSidebarMenu(false)}
+          to="/admin/student-profile"
+        >
+          <div
+            className={`group w-full flex ${
+              openSidebarMenu ? "justify-start hover:bg-gray-200" : "justify-center"
+            } items-center gap-4 px-2 rounded`}
+          >
+            <div className="w-11 bg-gray-100 group-hover:bg-white hover:bg-gray-200 cursor-pointer my-4 p-3 rounded-lg inline-block">
               <ImProfile size={20} />
             </div>
-            <h1 className="hidden md:block text-xs">
-              Student <br /> Profile
-            </h1>
+            {openSidebarMenu && (
+              <h1 className="hidden md:block text-xs">Student Profile</h1>
+            )}
           </div>
         </Link>
-        <Link to="/admin/manage-dorm">
-          <div className="group w-full flex justify-between items-center gap-4 px-2 lg:hover:bg-gray-100">
-            <div className="w-full bg-gray-100 group-hover:bg-white hover:bg-gray-200 cursor-pointer my-4 p-3 rounded-lg inline-block">
+        <Link
+          className="w-full"
+          onClick={() => setOpenSidebarMenu(false)}
+          to="/admin/manage-dorm"
+        >
+          <div
+            className={`group w-full flex ${
+              openSidebarMenu ? "justify-start hover:bg-gray-200" : "justify-center"
+            } items-center gap-4 px-2 rounded`}
+          >
+            <div className="w-11 bg-gray-100 group-hover:bg-white hover:bg-gray-200 cursor-pointer my-4 p-3 rounded-lg inline-block">
               <MdManageHistory size={20} />
             </div>
-            <h1 className="hidden md:block text-xs">
-              Manage <br /> Dorm
-            </h1>
+            {openSidebarMenu && (
+              <h1 className="hidden md:block text-xs">Manage Dorm</h1>
+            )}
           </div>
         </Link>
-        <Link to="/admin/dorm-list">
-          <div className="group w-full flex justify-between items-center gap-4 px-2 lg:hover:bg-gray-100">
-            <div className="w-full bg-gray-100 group-hover:bg-white hover:bg-gray-200 cursor-pointer my-4 p-3 rounded-lg inline-block">
+        <Link
+          className="w-full"
+          onClick={() => setOpenSidebarMenu(false)}
+          to="/admin/dorm-list"
+        >
+          <div
+            className={`group w-full flex ${
+              openSidebarMenu ? "justify-start hover:bg-gray-200" : "justify-center"
+            } items-center gap-4 px-2 rounded`}
+          >
+            <div className="w-11 bg-gray-100 group-hover:bg-white hover:bg-gray-200 cursor-pointer my-4 p-3 rounded-lg inline-block">
               <CiViewList size={20} />
             </div>
-            <h1 className="hidden md:block text-xs">Dorm List</h1>
+            {openSidebarMenu && (
+              <h1 className="hidden md:block text-xs">Dorm List</h1>
+            )}
           </div>
         </Link>
-        <Link to="/admin/inquiries">
-          <div className="group w-full flex justify-between items-center gap-4 px-2 lg:hover:bg-gray-100">
-            <div className="w-full bg-gray-100 group-hover:bg-white hover:bg-gray-200 cursor-pointer my-4 p-3 rounded-lg inline-block">
+        <Link
+          className="w-full"
+          onClick={() => setOpenSidebarMenu(false)}
+          to="/admin/inquiries"
+        >
+          <div
+            className={`group w-full flex ${
+              openSidebarMenu ? "justify-start hover:bg-gray-200" : "justify-center"
+            } items-center gap-4 px-2 rounded`}
+          >
+            <div className="w-11 bg-gray-100 group-hover:bg-white hover:bg-gray-200 cursor-pointer my-4 p-3 rounded-lg inline-block">
               <FaRegQuestionCircle size={20} />
             </div>
-            <h1 className="hidden md:block text-xs">Inquiries</h1>
+            {openSidebarMenu && (
+              <h1 className="hidden md:block text-xs">Inquiries</h1>
+            )}
           </div>
         </Link>
         <Link to="/">
-          <div className="group w-full flex justify-between items-center gap-4 px-2 lg:hover:bg-gray-100">
-            <div className="w-full bg-gray-100 group-hover:bg-white hover:bg-gray-200 cursor-pointer my-4 p-3 rounded-lg inline-block">
+          <div
+            className={`group w-full flex ${
+              openSidebarMenu ? "justify-start hover:bg-gray-200" : "justify-center"
+            } items-center gap-4 px-2 rounded`}
+          >
+            <div className="w-11 bg-gray-100 group-hover:bg-white hover:bg-gray-200 cursor-pointer my-4 p-3 rounded-lg inline-block">
               <FiSettings size={20} />
             </div>
-            <h1 className="hidden md:block text-xs">Inquiries</h1>
+            {/* <h1 className="hidden md:block text-xs">Inquiries</h1> */}
           </div>
         </Link>
       </div>

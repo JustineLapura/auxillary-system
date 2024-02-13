@@ -4,7 +4,7 @@ import DormListContainer from "../../../components/admin/dormList/DormListContai
 
 const DormList = () => {
   return (
-    <div className="w-full h-[85vh] p-5 bg-gray-200">
+    <div className="w-full min-h-screen p-5 bg-gray-200">
       <TopHeader />
       <DormListContainer />
     </div>

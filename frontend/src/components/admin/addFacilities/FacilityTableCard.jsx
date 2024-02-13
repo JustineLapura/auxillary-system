@@ -11,7 +11,7 @@ const FacilityTableCard = ({ facility, no }) => {
       <TableRow>
         <TableCell className="text-center">{no + 1}</TableCell>
         <TableCell className="text-center">{facility.name}</TableCell>
-        <TableCell className="text-center">
+        <TableCell className="text-center text-xs sm:text-sm">
           <button
             onClick={() => setViewModal(true)}
             className="py-1 px-5 border bg-blue-500 hover:bg-blue-600 text-white rounded-lg"
@@ -20,7 +20,7 @@ const FacilityTableCard = ({ facility, no }) => {
           </button>
           <button
             onClick={() => setDeleteModal(true)}
-            className="py-1 px-4 ms-2 border bg-red-500 hover:bg-red-600 text-white rounded-lg"
+            className="py-1 px-4 sm:ms-2 border bg-red-500 hover:bg-red-600 text-white rounded-lg"
           >
             Delete
           </button>

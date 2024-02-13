@@ -11,7 +11,7 @@ const Layout = () => {
       <AdminNavbar />
       <div className="w-full flex pt-24">
         <Sidebar />
-        <div className="w-full h-full ml-20 md:ml-40">
+        <div className="w-full h-full md:ml-20">
           <Outlet />
         </div>
       </div>
