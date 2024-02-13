@@ -3,6 +3,14 @@ import { AiFillHome, AiOutlineLoading3Quarters } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { useSignup } from "../../../hooks/useSignup";
 
+import { FaRegEye, FaRegEyeSlash, FaCheckCircle } from "react-icons/fa";
+
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/hover-card";
+
 const Signup = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -12,7 +20,17 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
 
-  const [isHovered, setIsHovered] = useState(false);
+  const [visible, setVisible] = useState(false);
+
+  const icon = visible ? <FaRegEye size={20} /> : <FaRegEyeSlash size={20} />;
+
+  const inputType = visible ? "text" : "password";
+
+  const toggleShowPassword = () => {
+    setVisible(!visible);
+  };
+
+  // const [isHovered, setIsHovered] = useState(false);
 
   const { signup, isLoading, error, emptyFields } = useSignup();
 
@@ -31,22 +49,22 @@ const Signup = () => {
   };
 
   // Event handler for when the mouse enters the element
-  const handleMouseEnter = () => {
-    setIsHovered(true);
-  };
+  // const handleMouseEnter = () => {
+  //   setIsHovered(true);
+  // };
 
-  // Event handler for when the mouse leaves the element
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-  };
+  // // Event handler for when the mouse leaves the element
+  // const handleMouseLeave = () => {
+  //   setIsHovered(false);
+  // };
 
   return (
     <div className="min-h-screen w-full bg-gradient-to-b from-blue-500 to-yellow-300 flex justify-center items-center text-gray-900">
-      <div className="w-[80%] md:w-[40%] py-4 px-6 mt-6 rounded-xl flex flex-col items-center gap-6 bg-white/30">
+      <div className="w-[80%] max-w-[500px] py-4 px-6 mt-6 rounded-xl flex flex-col items-center gap-6 bg-white/30">
         <h1 className="mt-2 text-xl md:text-2xl text-white font-bold">
           Create an Account
         </h1>
-        {/* <div className="relative flex justify-center overflow-hidden text-gray-800 font-semibold rounded-lg w-2/3 md:w-1/3 bg-gray-300/70 border-none gap-4 px-2">
+        {/* <div className="relative hidden  justify-center overflow-hidden text-gray-800 font-semibold rounded-lg w-2/3 md:w-1/3 bg-gray-300/70 border-none gap-4 px-2">
           <div
             className="h-full w-1/2 text-center py-2 rounded-xl ps-1 z-10"
             onMouseEnter={handleMouseEnter}
@@ -69,7 +87,7 @@ const Signup = () => {
         </div> */}
 
         <form className="">
-          <div className="w-full lg:flex items-center gap-4 mb-2 space-y-2">
+          <div className="w-full  items-center gap-4 mb-2 space-y-2 ">
             <input
               className={
                 emptyFields && emptyFields.includes("firstName")
@@ -96,7 +114,7 @@ const Signup = () => {
               required
             />
           </div>
-          <div className="w-full lg:flex items-center gap-4 mb-2 space-y-2">
+          <div className="w-full  items-center gap-4 mb-2 space-y-2 ">
             <input
               className={
                 emptyFields && emptyFields.includes("email")
@@ -138,31 +156,88 @@ const Signup = () => {
             onChange={(e) => setAddress(e.target.value)}
             required
           />
-          <div className="w-full lg:flex items-center gap-4 mt-3 space-y-2">
-            <input
-              className={
-                emptyFields && emptyFields.includes("password")
-                  ? "w-full py-2 px-4 rounded-full bg-white/80 shadow-lg focus:outline-none border border-red-500"
-                  : "w-full py-2 px-4 rounded-full bg-white/80 shadow-lg focus:outline-none"
-              }
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-            <input
-              className={
-                emptyFields && emptyFields.includes("passwordConfirm")
-                  ? "w-full py-2 px-4 rounded-full bg-white/80 shadow-lg focus:outline-none border border-red-500"
-                  : "w-full py-2 px-4 rounded-full bg-white/80 shadow-lg focus:outline-none"
-              }
-              type="password"
-              placeholder="Confirm Password"
-              value={passwordConfirm}
-              onChange={(e) => setPasswordConfirm(e.target.value)}
-              required
-            />
+          <div className="w-full  items-center gap-4 mt-3 space-y-2 ">
+            <HoverCard>
+              <HoverCardTrigger>
+                <div className="relative w-full">
+                  <input
+                    className={
+                      emptyFields && emptyFields.includes("password")
+                        ? "w-full py-2 px-4 rounded-full bg-white/80 shadow-lg focus:outline-none border border-red-500"
+                        : "w-full py-2 px-4 rounded-full bg-white/80 shadow-lg focus:outline-none"
+                    }
+                    type={inputType}
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                  />
+                  <span
+                    className="absolute right-3 top-3 text-gray-500 cursor-pointer"
+                    onClick={toggleShowPassword}
+                  >
+                    {icon}
+                  </span>
+                </div>
+              </HoverCardTrigger>
+              <HoverCardContent className="w-[300px] md:w-[400px]">
+                <div>
+                  <h1 className="text-center mb-1 text-gray-600 font-semibold">
+                    Password Must Have:
+                  </h1>
+                  <div className="flex justify-between">
+                    <div className="flex justify-center gap-2 mt-1">
+                      <FaCheckCircle className="text-green-500" />{" "}
+                      <span className="text-xs">8 to 64 characters</span>{" "}
+                    </div>
+                    <div className="flex justify-center gap-2 mt-1">
+                      <FaCheckCircle className="text-green-500" />{" "}
+                      <span className="text-xs">1 uppercase character</span>{" "}
+                    </div>
+                  </div>
+                  <div className="flex justify-between">
+                    <div className="flex justify-center gap-2 mt-1">
+                      <FaCheckCircle className="text-green-500" />{" "}
+                      <span className="text-xs">1 number</span>{" "}
+                    </div>
+                    <div className="flex justify-center gap-2 mt-1">
+                      <FaCheckCircle className="text-green-500" />{" "}
+                      <span className="text-xs">1 lowercase character</span>{" "}
+                    </div>
+                  </div>
+                  <div className="flex justify-between">
+                    <div className="flex justify-center gap-2 mt-1">
+                      <FaCheckCircle className="text-green-500" />{" "}
+                      <span className="text-xs">1 special character</span>{" "}
+                    </div>
+                    <div className="flex justify-center gap-2 mt-1">
+                      <FaCheckCircle className="text-green-500" />{" "}
+                      <span className="text-xs">Password should match</span>{" "}
+                    </div>
+                  </div>
+                </div>
+              </HoverCardContent>
+            </HoverCard>
+            <div className="relative w-full">
+              <input
+                className={
+                  emptyFields && emptyFields.includes("passwordConfirm")
+                    ? "w-full py-2 px-4 rounded-full bg-white/80 shadow-lg focus:outline-none border border-red-500"
+                    : "w-full py-2 px-4 rounded-full bg-white/80 shadow-lg focus:outline-none"
+                }
+                type={inputType}
+                placeholder="Confirm Password"
+                value={passwordConfirm}
+                onChange={(e) => setPasswordConfirm(e.target.value)}
+                required
+              />
+              <span
+                className="absolute right-3 top-3 text-gray-500 cursor-pointer"
+                onClick={toggleShowPassword}
+              >
+                {icon}
+              </span>
+            </div>
           </div>
           <div className="w-full mt-4 flex justify-center gap-2">
             <Link

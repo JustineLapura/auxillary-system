@@ -3,15 +3,24 @@ import { Link } from "react-router-dom";
 import { useLogin } from "../../../hooks/useLogin";
 import { AiFillHome } from "react-icons/ai";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { FaRegEye, FaRegEyeSlash, FaCheckCircle } from "react-icons/fa";
 
 const Login = () => {
   const [isHovered, setIsHovered] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [visible, setVisible] = useState(false);
 
   const { login, isLoading, error, emptyFields } = useLogin();
 
+  const icon = visible ? <FaRegEye size={20} /> : <FaRegEyeSlash size={20} />;
+  const inputType = visible ? "text" : "password";
+
   // console.log("email: ", email, "Password: ", password);
+
+  const toggleShowPassword = () => {
+    setVisible(!visible);
+  };
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -80,16 +89,36 @@ const Login = () => {
               onChange={(e) => setEmail(e.target.value)}
               autoFocus={true}
             />
-            <input
+            {/* <input
               className={
                 emptyFields && emptyFields.includes("password")
                   ? "w-full py-2 px-4 rounded-full bg-white/80 shadow-lg focus:outline-none border-2 border-red-500 mb-2"
                   : "w-full py-2 px-4 rounded-full bg-white/80 shadow-lg focus:outline-none mb-2"
               }
-              type="password"
+              type={inputType}
               placeholder="Password"
               onChange={(e) => setPassword(e.target.value)}
-            />
+            /> */}
+            <div className="relative w-full">
+              <input
+                className={
+                  emptyFields && emptyFields.includes("password")
+                    ? "w-full py-2 px-4 rounded-full bg-white/80 shadow-lg focus:outline-none border border-red-500"
+                    : "w-full py-2 px-4 rounded-full bg-white/80 shadow-lg focus:outline-none"
+                }
+                type={inputType}
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+              <span
+                className="absolute right-3 top-3 text-gray-500 cursor-pointer"
+                onClick={toggleShowPassword}
+              >
+                {icon}
+              </span>
+            </div>
             <div className="flex justify-center gap-4 mt-2">
               <Link
                 to="/"

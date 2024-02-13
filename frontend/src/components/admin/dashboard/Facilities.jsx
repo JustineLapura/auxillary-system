@@ -66,13 +66,13 @@ const Facilities = () => {
   }, []);
 
   return (
-    <div className="h-full pb-5 px-5">
-      <h1 className="flex gap-4 text-lg lg:text-2xl font-bold text-gray-600 my-3">
+    <div className="h-full pb-5">
+      <h1 className="gap-4 text-lg text-center lg:text-left lg:text-2xl font-bold text-gray-600 my-3">
         Facilities
       </h1>
-      <div className="w-full grid md:grid-cols-3 place-items-center gap-4 lg:gap-10">
+      <div className="w-full grid lg:grid-cols-3 place-items-center gap-4 lg:gap-10">
         {/* card1 */}
-        <div className="w-[250px] h-[100px] flex justify-between items-center cursor-pointer p-4 rounded-lg bg-blue-500 text-white hover:scale-105 hover:bg-blue-600 duration-200">
+        <div className="w-full max-w-[400px] h-[100px] flex justify-between items-center cursor-pointer p-4 rounded-lg bg-blue-500 text-white hover:scale-105 hover:bg-blue-600 duration-200">
           <FaUserGroup className="w-1/4 h-1/2 lg:h-full" size={25} />
           <div className="">
             <h1 className="text-base md:text-lg text-white font-bold">
@@ -84,8 +84,11 @@ const Facilities = () => {
           </div>
         </div>
         {/* card2 */}
-        <Link to="/admin/add-facilities">
-          <div className="w-[250px] h-[100px] flex justify-between items-center cursor-pointer p-4 rounded-lg bg-blue-500 text-white hover:scale-105 hover:bg-blue-600 duration-200">
+        <Link
+          className="w-full max-w-[400px] h-[100px]  cursor-pointer p-4 rounded-lg bg-blue-500 text-white hover:scale-105 hover:bg-blue-600 duration-200"
+          to="/admin/add-facilities"
+        >
+          <div className="w-full h-full flex justify-between items-center">
             <FaBuildingColumns className="w-1/4 h-1/2 lg:h-full" size={25} />
             <div className="">
               <h1 className="text-base md:text-lg text-white font-bold">
@@ -98,8 +101,11 @@ const Facilities = () => {
           </div>
         </Link>
         {/* card3 */}
-        <Link to="/admin/bookings">
-          <div className="w-[250px] h-[100px] flex justify-between items-center cursor-pointer p-4 rounded-lg bg-blue-500 text-white hover:scale-105 hover:bg-blue-600 duration-200">
+        <Link
+          className="w-full max-w-[400px] h-[100px]  cursor-pointer p-4 rounded-lg bg-blue-500 text-white hover:scale-105 hover:bg-blue-600 duration-200"
+          to="/admin/bookings"
+        >
+          <div className="w-full h-full flex justify-between items-center">
             <FaCalendarAlt className="w-1/4 h-1/2 lg:h-full" size={25} />
             <div className="">
               <h1 className="text-base md:text-lg text-white font-bold">

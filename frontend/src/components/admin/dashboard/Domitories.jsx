@@ -29,14 +29,17 @@ const Dormitories = () => {
   }, []);
 
   return (
-    <div className="w-full h-1/2 lg:h-full pb-5 px-5">
-      <h1 className="flex gap-4 text-lg lg:text-2xl font-bold text-gray-600 my-3">
+    <div className="w-full h-1/2 lg:h-full pb-5">
+      <h1 className="gap-4 text-lg text-center lg:text-left lg:text-2xl font-bold text-gray-600 my-3">
         Dormitories
       </h1>
       <div className="w-full grid md:grid-cols-3 place-items-center gap-4 lg:gap-10">
         {/* card1 */}
-        <Link to="/admin/manage-dorm">
-          <div className="relative w-[250px] h-[100px]  flex justify-between items-center cursor-pointer p-4 rounded-lg bg-yellow-500 hover:scale-105 hover:bg-yellow-600 duration-200">
+        <Link
+          className="w-full max-w-[350px] h-[100px] flex justify-between items-center cursor-pointer p-4 rounded-lg bg-yellow-500 hover:scale-105 hover:bg-yellow-600 duration-200"
+          to="/admin/manage-dorm"
+        >
+          <div className="w-full h-full flex justify-between items-center">
             <FaBed className="w-1/4 h-1/2 lg:h-full" size={25} />
             <div className="">
               <h1 className="text-lg md:text-xl font-bold">Total Dorms</h1>
@@ -47,7 +50,7 @@ const Dormitories = () => {
           </div>
         </Link>
         {/* card2 */}
-        <div className="relative w-[250px] h-[100px] flex justify-between items-center cursor-pointer p-4 rounded-lg bg-yellow-500 hover:scale-105 hover:bg-yellow-600 duration-200">
+        <div className="w-full max-w-[350px] h-[100px] flex justify-between items-center cursor-pointer p-4 rounded-lg bg-yellow-500 hover:scale-105 hover:bg-yellow-600 duration-200">
           <BsDoorOpenFill className="w-1/4 h-1/2 lg:h-full" size={25} />
           <div className="">
             <h1 className="text-lg md:text-xl font-bold">Occupied Rooms</h1>
@@ -57,7 +60,7 @@ const Dormitories = () => {
           </div>
         </div>
         {/* card3 */}
-        <div className="relative w-[250px] h-[100px] flex justify-between items-center cursor-pointer p-4 rounded-lg bg-yellow-500 hover:scale-105 hover:bg-yellow-600 duration-200">
+        <div className="w-full max-w-[350px] h-[100px] flex justify-between items-center cursor-pointer p-4 rounded-lg bg-yellow-500 hover:scale-105 hover:bg-yellow-600 duration-200">
           <BsHouseDoorFill className="w-1/4 h-1/2 lg:h-full" size={25} />
           <div className="">
             <h1 className="text-lg md:text-xl font-bold">Available Rooms</h1>

@@ -12,7 +12,7 @@ const LadiesSection = () => {
         alt=""
         className="w-full max-w-[800px] lg:h-[450px] rounded-xl object-cover"
       />
-      <p className="max-w-[800px] font-semibold text-gray-500 mt-10 text-justify md:text-xl">
+      <p className="max-w-[800px] font-semibold text-gray-500 mt-10 text-justify text-sm md:text-xl">
         Nestled near Samar State University, our ladies dormitory stands as a
         secure and inviting haven, tailored to meet the unique needs of female
         students. With a prime location offering easy access to local shops,
@@ -25,7 +25,7 @@ const LadiesSection = () => {
       </p>
       <div className="w-full max-w-[800px] flex justify-end mt-12">
         <Link to="/dorm/available-room-ladies">
-          <button className="px-6 py-3 text-white bg-blue-800 rounded-xl text-xl font-semibold">
+          <button className="px-3 py-1 md:px-6 md:py-3 text-white bg-blue-800 rounded-xl md:text-xl font-semibold">
             Room Availability
           </button>
         </Link>

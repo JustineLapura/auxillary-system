@@ -6,10 +6,9 @@ import CategoryModal from "../../../components/home/CategoryModal";
 import Navbar from "../../../components/navbar/Navbar";
 
 const Home = () => {
-
   return (
-    <div>
-      <Navbar/>
+    <div className="w-full">
+      <Navbar />
       <Main />
       <Categories />
       <Map />

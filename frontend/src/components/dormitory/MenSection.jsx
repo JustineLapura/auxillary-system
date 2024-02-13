@@ -12,7 +12,7 @@ const MenSection = () => {
         alt=""
         className="w-full max-w-[800px] lg:h-[450px] rounded-xl object-cover"
       />
-      <p className="max-w-[800px] font-semibold text-gray-500 mt-10 text-justify md:text-xl">
+      <p className="max-w-[800px] font-semibold text-gray-500 mt-10 text-justify text-sm md:text-xl">
         Our men's dormitory is conveniently located near Samar State University
         and within easy reach of local shops, restaurants, and public
         transportation, making it a prime choice for students looking for a
@@ -20,7 +20,7 @@ const MenSection = () => {
       </p>
       <div className="w-full max-w-[800px] flex justify-end mt-12">
         <Link to="/dorm/available-room-men">
-          <button className="px-6 py-3 text-white bg-blue-800 rounded-xl text-xl font-semibold">
+          <button className="px-3 py-1 md:px-6 md:py-3 text-white bg-blue-800 rounded-xl md:text-xl font-semibold">
             Room Availability
           </button>
         </Link>

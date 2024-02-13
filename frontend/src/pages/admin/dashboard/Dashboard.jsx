@@ -6,8 +6,6 @@ const Dashboard = () => {
   const [currentDate, setCurrentDate] = useState("");
   const [currentTime, setCurrentTime] = useState("");
 
-  
-
   useEffect(() => {
     // Update date and time every second
     const intervalId = setInterval(updateDateTime, 1000);
@@ -31,12 +29,12 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="w-full">
-      <div className="w-full h-full lg:flex justify-between gap-4 py-6 px-8">
+    <div className="w-full px-3">
+      <div className="w-full h-full md:flex justify-between gap-4 py-6">
         <h1 className="text-2xl lg:text-5xl font-black text-gray-950 text-center">
           Welcome Admin!
         </h1>
-        <div className="flex gap-4 text-lg lg:text-2xl font-bold text-gray-500">
+        <div className="flex justify-center items-center gap-4 text-lg lg:text-2xl font-bold text-gray-500">
           <p>{currentDate}</p>
           <p>{currentTime}</p>
         </div>
@@ -46,7 +44,7 @@ const Dashboard = () => {
       <div className="w-full">
         <Facilities />
 
-        <div className="w-full h-[1px] bg-gray-300/90 shadow my-8 mx-6" />
+        <div className="w-full h-[1px] bg-gray-300/90 shadow my-8" />
 
         <Dormitories />
       </div>

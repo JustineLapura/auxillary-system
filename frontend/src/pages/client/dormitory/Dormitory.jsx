@@ -32,7 +32,7 @@ const Dormitory = () => {
       <LadiesSection />
       <div className="w-full flex justify-center py-10 px-8">
         <button
-          className="px-6 py-3 text-white flex items-center gap-2 bg-yellow-400 rounded-xl text-xl font-semibold mt-12"
+          className="px-3 py-1 md:px-6 md:py-3 text-white flex items-center gap-2 bg-yellow-400 rounded-xl md:text-xl font-semibold mt-12"
           onClick={handleOpenInquireModal}
         >
           <FaRegQuestionCircle /> Inquire Now
