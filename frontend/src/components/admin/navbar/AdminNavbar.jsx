@@ -33,7 +33,7 @@ const AdminNavbar = () => {
             alt="logo"
           />
         </Link>
-        <h1 className="text-sm lg:text-xl font-black">Auxilliary Services</h1>
+        <h1 className="text-sm lg:text-xl font-black">Auxiliary Services</h1>
       </div>
 
       {/* right  */}

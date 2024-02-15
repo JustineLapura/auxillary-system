@@ -26,7 +26,7 @@ const SidebarMenu = ({ nav, setNav }) => {
               <IoIosArrowBack size={20} />
             </div>
             <h1 className="font-black text-xs text-gray-500 text-center">
-              Auxilliary Admin
+              Auxiliary Admin
             </h1>
           </div>
         </div>

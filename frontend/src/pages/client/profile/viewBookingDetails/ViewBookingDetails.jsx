@@ -105,7 +105,7 @@ const ViewBookingDetails = () => {
   return (
     <>
       <Navbar />
-      <div className="p-5 pt-24">
+      <div className="p-5 pt-24 overflow-x-auto">
         <div className="w-full h-full lg:flex justify-between my-6">
           <h1 className="text-2xl lg:text-4xl mb-6 lg:mb-0 font-bold text-gray-800">
             BookingID:{" "}
@@ -126,7 +126,7 @@ const ViewBookingDetails = () => {
           {/* Costumer Section  */}
           <div className="">
             <h1 className="text-xl font-bold text-gray-900 mb-4">
-              Costumer Details:
+              Customer Details:
             </h1>
 
             <div className="flex justify-between items-center">

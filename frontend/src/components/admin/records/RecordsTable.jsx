@@ -42,12 +42,22 @@ const RecordsTable = () => {
         </TableCaption>
         <TableHeader className="md:text-lg text-center uppercase">
           <TableRow>
-            <TableHead className="min-w-[140px] text-center">Client's Name</TableHead>
-            <TableHead className="min-w-[140px] text-center">Facility</TableHead>
-            <TableHead className="min-w-[140px] text-center">Date</TableHead>
-            <TableHead className="min-w-[140px] text-center">Time Start</TableHead>
-            <TableHead className="min-w-[140px] text-center">Time End</TableHead>
-            <TableHead className="min-w-[140px] text-center">Price Rate</TableHead>
+            <TableHead className="min-w-[120px] text-center">
+              Client's Name
+            </TableHead>
+            <TableHead className="min-w-[120px] text-center">
+              Facility
+            </TableHead>
+            <TableHead className="min-w-[120px] text-center">Date</TableHead>
+            <TableHead className="min-w-[120px] text-center">
+              Time Start
+            </TableHead>
+            <TableHead className="min-w-[120px] text-center">
+              Time End
+            </TableHead>
+            <TableHead className="min-w-[120px] text-center">
+              Price Rate
+            </TableHead>
             <TableHead className="text-center">Status</TableHead>
           </TableRow>
         </TableHeader>
