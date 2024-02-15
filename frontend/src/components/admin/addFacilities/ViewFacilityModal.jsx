@@ -11,7 +11,7 @@ const ViewFacilityModal = ({ facility, viewModal, setViewModal }) => {
   const { enqueueSnackbar } = useSnackbar();
 
   console.log("Facility: ", facility);
-  const PF = "http://localhost:4000/images/";
+  const PF = "http://localhost:4000/api/images/";
 
   useEffect(() => {
     setName(facility.name);

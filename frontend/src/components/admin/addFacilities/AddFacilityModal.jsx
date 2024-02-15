@@ -31,7 +31,8 @@ const AddFacilityModal = ({ addModal, setAddModal }) => {
       newFacility.photo = filename;
       try {
         await axios.post(
-          "https://auxillary-services-api-rosy.vercel.app/api/upload/",
+          // "https://auxillary-services-api-rosy.vercel.app/api/upload/",
+          "http://localhost:4000/api/upload",
           data
         );
       } catch (error) {
@@ -41,7 +42,8 @@ const AddFacilityModal = ({ addModal, setAddModal }) => {
 
     try {
       const response = await fetch(
-        "https://auxillary-services-api-rosy.vercel.app/api/facility",
+        // "https://auxillary-services-api-rosy.vercel.app/api/facility",
+        "http://localhost:4000/api/facility",
         {
           method: "POST",
           headers: {
@@ -139,7 +141,9 @@ const AddFacilityModal = ({ addModal, setAddModal }) => {
         ></textarea>
       </div>
       <div className="w-full">
-        <h1 className="text-lg font-semibold sm:text-center my-3">Price Rate:</h1>
+        <h1 className="text-lg font-semibold sm:text-center my-3">
+          Price Rate:
+        </h1>
         <div className="sm:flex justify-between items-center gap-4">
           <div className="flex flex-col">
             <label className="text-gray-500" htmlFor="">

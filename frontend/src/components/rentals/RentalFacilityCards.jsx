@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const RentalFacilityCards = ({ facility }) => {
-  const PF = "http://localhost:4000/images/";
+  const PF = "http://localhost:4000/api/images/";
 
   return (
     <div className="h-[300px] w-[300px] text-center flex flex-col justify-center items-center gap-4">

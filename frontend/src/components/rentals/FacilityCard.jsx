@@ -35,7 +35,7 @@ const FacilityCard = ({ facility, setIsBooking }) => {
     fetchClients();
   }, []);
 
-  const PF = "http://localhost:4000/images/";
+  const PF = "http://localhost:4000/api/images/";
 
   const navigate = useNavigate();
 
@@ -50,18 +50,18 @@ const FacilityCard = ({ facility, setIsBooking }) => {
   return (
     <div className="w-full h-full lg:flex justify-between items-center gap-16">
       <div className="w-full">
-        {/* {facility && facility.photo && (
+        {facility && facility.photo && (
           <img
             className="w-full h-[400px] md:w-full rounded-lg object-cover"
             src={PF + facility.photo}
             alt={facility.name}
           />
-        )} */}
-        <img
+        )}
+        {/* <img
           className="w-full h-[200px] sm:h-[400px] md:w-full rounded-lg object-cover"
           src="/SSU.jpg"
           alt={facility.name}
-        />
+        /> */}
         {!facility && facility.photo && (
           <Skeleton className="w-full h-[200px] sm:h-[400px] md:w-full rounded-lg object-cover" />
         )}
