@@ -73,7 +73,7 @@ const ViewFacilityModal = ({ facility, viewModal, setViewModal }) => {
             : "fixed w-[90%] max-w-[500px] h-[90%] max-h-[600px] flex flex-col justify-between bg-white rounded-xl top-[-100%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 p-5 ease-in duration-300"
         }
       >
-        {/* {facility && facility.photo && (
+        {facility && facility.photo && (
           <img
             className="w-full h-[300px] rounded-xl object-cover"
             width={300}
@@ -81,14 +81,14 @@ const ViewFacilityModal = ({ facility, viewModal, setViewModal }) => {
             src={PF + facility.photo}
             alt={facility.name}
           />
-        )} */}
-        <img
+        )}
+        {/* <img
           className="w-full h-[300px] rounded-xl object-cover"
           width={300}
           height={200}
           src="/SSU.jpg"
           alt={facility.name}
-        />
+        /> */}
         {updateMode ? (
           <input
             className="text-center text-2xl border border-gray-500 rounded py-1 mt-6 focus:outline-none"

@@ -50,7 +50,9 @@ const Sidebar = () => {
         >
           <div
             className={`group w-full flex ${
-              openSidebarMenu ? "justify-start hover:bg-gray-200" : "justify-center"
+              openSidebarMenu
+                ? "justify-start hover:bg-gray-200"
+                : "justify-center"
             } items-center gap-4 px-2 rounded`}
           >
             <div className="w-11 bg-gray-100 group-hover:bg-white hover:bg-gray-200 cursor-pointer my-4 p-3 rounded-lg inline-block">
@@ -76,7 +78,9 @@ const Sidebar = () => {
         >
           <div
             className={`group w-full flex ${
-              openSidebarMenu ? "justify-start hover:bg-gray-200" : "justify-center"
+              openSidebarMenu
+                ? "justify-start hover:bg-gray-200"
+                : "justify-center"
             } items-center gap-4 px-2 rounded`}
           >
             <div className="w-11 bg-gray-100 group-hover:bg-white hover:bg-gray-200 cursor-pointer my-4 p-3 rounded-lg inline-block">
@@ -94,7 +98,9 @@ const Sidebar = () => {
         >
           <div
             className={`group w-full flex ${
-              openSidebarMenu ? "justify-start hover:bg-gray-200" : "justify-center"
+              openSidebarMenu
+                ? "justify-start hover:bg-gray-200"
+                : "justify-center"
             } items-center gap-4 px-2 rounded`}
           >
             <div className="w-11 bg-gray-100 group-hover:bg-white hover:bg-gray-200 cursor-pointer my-4 p-3 rounded-lg inline-block">
@@ -112,7 +118,9 @@ const Sidebar = () => {
         >
           <div
             className={`group w-full flex ${
-              openSidebarMenu ? "justify-start hover:bg-gray-200" : "justify-center"
+              openSidebarMenu
+                ? "justify-start hover:bg-gray-200"
+                : "justify-center"
             } items-center gap-4 px-2 rounded`}
           >
             <div className="w-11 bg-gray-100 group-hover:bg-white hover:bg-gray-200 cursor-pointer my-4 p-3 rounded-lg inline-block">
@@ -130,7 +138,9 @@ const Sidebar = () => {
         >
           <div
             className={`group w-full flex ${
-              openSidebarMenu ? "justify-start hover:bg-gray-200" : "justify-center"
+              openSidebarMenu
+                ? "justify-start hover:bg-gray-200"
+                : "justify-center"
             } items-center gap-4 px-2 rounded`}
           >
             <div className="w-11 bg-gray-100 group-hover:bg-white hover:bg-gray-200 cursor-pointer my-4 p-3 rounded-lg inline-block">
@@ -155,7 +165,9 @@ const Sidebar = () => {
         >
           <div
             className={`group w-full flex ${
-              openSidebarMenu ? "justify-start hover:bg-gray-200" : "justify-center"
+              openSidebarMenu
+                ? "justify-start hover:bg-gray-200"
+                : "justify-center"
             } items-center gap-4 px-2 rounded`}
           >
             <div className="w-11 bg-gray-100 group-hover:bg-white hover:bg-gray-200 cursor-pointer my-4 p-3 rounded-lg inline-block">
@@ -173,7 +185,9 @@ const Sidebar = () => {
         >
           <div
             className={`group w-full flex ${
-              openSidebarMenu ? "justify-start hover:bg-gray-200" : "justify-center"
+              openSidebarMenu
+                ? "justify-start hover:bg-gray-200"
+                : "justify-center"
             } items-center gap-4 px-2 rounded`}
           >
             <div className="w-11 bg-gray-100 group-hover:bg-white hover:bg-gray-200 cursor-pointer my-4 p-3 rounded-lg inline-block">
@@ -191,7 +205,9 @@ const Sidebar = () => {
         >
           <div
             className={`group w-full flex ${
-              openSidebarMenu ? "justify-start hover:bg-gray-200" : "justify-center"
+              openSidebarMenu
+                ? "justify-start hover:bg-gray-200"
+                : "justify-center"
             } items-center gap-4 px-2 rounded`}
           >
             <div className="w-11 bg-gray-100 group-hover:bg-white hover:bg-gray-200 cursor-pointer my-4 p-3 rounded-lg inline-block">
@@ -209,7 +225,9 @@ const Sidebar = () => {
         >
           <div
             className={`group w-full flex ${
-              openSidebarMenu ? "justify-start hover:bg-gray-200" : "justify-center"
+              openSidebarMenu
+                ? "justify-start hover:bg-gray-200"
+                : "justify-center"
             } items-center gap-4 px-2 rounded`}
           >
             <div className="w-11 bg-gray-100 group-hover:bg-white hover:bg-gray-200 cursor-pointer my-4 p-3 rounded-lg inline-block">
@@ -218,18 +236,6 @@ const Sidebar = () => {
             {openSidebarMenu && (
               <h1 className="hidden md:block text-xs">Inquiries</h1>
             )}
-          </div>
-        </Link>
-        <Link to="/">
-          <div
-            className={`group w-full flex ${
-              openSidebarMenu ? "justify-start hover:bg-gray-200" : "justify-center"
-            } items-center gap-4 px-2 rounded`}
-          >
-            <div className="w-11 bg-gray-100 group-hover:bg-white hover:bg-gray-200 cursor-pointer my-4 p-3 rounded-lg inline-block">
-              <FiSettings size={20} />
-            </div>
-            {/* <h1 className="hidden md:block text-xs">Inquiries</h1> */}
           </div>
         </Link>
       </div>

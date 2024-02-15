@@ -103,7 +103,7 @@ const BookedFacility = () => {
 
   return (
     <div className="p-5 overflow-x-auto">
-      <div className="w-full h-full lg:flex justify-between my-6 border">
+      <div className="w-full h-full lg:flex justify-between my-6">
         <h1 className="text-2xl lg:text-4xl mb-6 lg:mb-0 font-bold text-gray-800">
           BookingID: <span className="text-lg text-gray-500">{client._id}</span>
         </h1>
@@ -118,7 +118,7 @@ const BookedFacility = () => {
         </div>
       </div>
 
-      <div className="w-full grid lg:grid-cols-2 max-w-[1000px] mt-8 mx-auto border">
+      <div className="w-full grid lg:grid-cols-2 max-w-[1000px] mt-8 mx-auto">
         {/* Costumer Section  */}
         <div className="">
           <h1 className="text-xl font-bold text-gray-900 mb-4">
