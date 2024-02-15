@@ -1,27 +1,27 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 const RentalFacilityCards = ({ facility }) => {
-  const PF = "http://localhost:4000/api/images/";
+  const PF = "http://localhost:4000/images/";
 
   return (
     <div className="h-[300px] w-[300px] text-center flex flex-col justify-center items-center gap-4">
       <div className="w-full h-full">
-        {facility && facility.photo && (
+        {/* {facility && facility.photo && (
           <img
             className="rounded-xl h-[200px] w-full object-cover -z-10"
             src={PF + facility.photo}
             alt="logo"
           />
-        )}
-        {/* <img
+        )} */}
+        <img
           className="w-full h-[200px] rounded-xl object-cover"
           width={300}
           height={200}
           src="/SSU.jpg"
           alt={facility.name}
-        /> */}
+        />
       </div>
       <div className="">
         <h1 className="text-xl text-blue-950 font-bold ">{facility.name}</h1>
